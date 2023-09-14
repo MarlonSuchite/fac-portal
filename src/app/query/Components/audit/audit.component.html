@@ -47,11 +47,12 @@
 
       <div class="col-1 p-2">
         <i class="bi bi-search" (click)="buscarParametros()"></i>
+        <i class="bi bi-trash" (click)="limpiarParametros()"></i>
       </div>
     </div>
   </form>
 </div>
 
-{{ datos | json }}
-
 <router-outlet></router-outlet>
+<app-table [dataSource]="datos"></app-table>
+

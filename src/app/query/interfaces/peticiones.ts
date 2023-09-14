@@ -1,7 +1,7 @@
 export interface Peticiones {
   identifier: string;
-  date: Date;
+  date: string;
   entity: string;
   user: string;
-  opearation: string;
+  operation: string;
 }

@@ -5,9 +5,10 @@ import { AuditRoutingModule } from './query-routing.module';
 import { MaterialModule } from '../materials.module';
 import { MostrarComponent } from './Components/mostrar/mostrar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TableComponent } from './Components/table/table.component';
 
 @NgModule({
-  declarations: [AuditComponent, MostrarComponent],
+  declarations: [AuditComponent, MostrarComponent, TableComponent],
   imports: [CommonModule, AuditRoutingModule, MaterialModule, HttpClientModule]
 })
 export class QueryModule {}

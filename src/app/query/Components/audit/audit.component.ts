@@ -17,6 +17,7 @@ export class AuditComponent {
   operacion: string;
   entidad: string;
 
+
   constructor(
     private router: Router,
     private auditService: AuditService,
@@ -24,7 +25,9 @@ export class AuditComponent {
   ) {
     this.activateRoute.queryParams.subscribe(parametros => {
       console.log(parametros);
-      this.llamaServicio();
+      if(parametros?.["start"]){
+        this.llamaServicio();
+      }
     });
   }
 
@@ -51,5 +54,12 @@ export class AuditComponent {
     this.router.navigate(['audit/busqueda'], {
       queryParams: parametros
     });
+  }
+  limpiarParametros(){
+    this.datos=[]
+    this.starDate.setValue('')
+    this.endDate.setValue('')
+    this.operacion=''
+    this.entidad=''
   }
 }
