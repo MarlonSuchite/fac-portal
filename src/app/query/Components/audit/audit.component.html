@@ -1,0 +1,57 @@
+<div class="container">
+  <form action="">
+    <div class="row gx-5">
+      <div class="col-3 p-2">
+        <mat-form-field>
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="picker" [formControl]="starDate" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-3 p-2">
+        <mat-form-field>
+          <mat-label>End date</mat-label>
+          <input matInput [matDatepicker]="date" [formControl]="endDate" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="date"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #date></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-3 p-2">
+        <mat-form-field>
+          <mat-label>Operacion</mat-label>
+          <mat-select [(ngModel)]="operacion" name="selection">
+            <mat-option value="one">Operacion 1</mat-option>
+            <mat-option value="two">Operacion 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-2 p-2">
+        <mat-form-field>
+          <mat-label>Entidad</mat-label>
+          <mat-select [(ngModel)]="entidad" name="selection">
+            <mat-option value="one">Entidad 1</mat-option>
+            <mat-option value="two">Entidad 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-1 p-2">
+        <i class="bi bi-search" (click)="buscarParametros()"></i>
+      </div>
+    </div>
+  </form>
+</div>
+
+{{ datos | json }}
+
+<router-outlet></router-outlet>
