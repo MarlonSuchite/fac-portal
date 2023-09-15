@@ -6,9 +6,16 @@ import { MaterialModule } from '../materials.module';
 import { MostrarComponent } from './Components/mostrar/mostrar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TableComponent } from './Components/table/table.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [AuditComponent, MostrarComponent, TableComponent],
-  imports: [CommonModule, AuditRoutingModule, MaterialModule, HttpClientModule]
+  imports: [
+    CommonModule,
+    AuditRoutingModule,
+    MaterialModule,
+    HttpClientModule,
+    SharedModule
+  ]
 })
 export class QueryModule {}

@@ -1,0 +1,30 @@
+nav{
+    background-color: #F1C40F;
+    height: 50px;
+
+    ul{
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        line-height: 50px;
+        
+        li{
+            margin-left: 1rem;
+            font-style: none;
+
+            a{
+                font-size: 20px;
+                font-weight: bold;
+                color: white;
+                text-transform: uppercase;
+                text-decoration: none;
+                transition: 300ms;
+                cursor: pointer;
+
+                &:hover{
+                    color: rgb(19, 18, 18, 0.5);
+                }
+            }
+        }
+    }
+}
