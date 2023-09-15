@@ -1,0 +1,20 @@
+.container{
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 5px rgb(24, 22, 22, 0.5);
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+
+    .button{
+        font-size: 20px;
+        cursor: pointer;
+        transition: 300ms;
+    
+        &:hover{
+            color:rgb(26, 25, 25, 0.5) ;
+        }
+    }
+}
