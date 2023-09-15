@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-5 table">
+<table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8 mt-5 table">
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
@@ -34,3 +34,5 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+
+<mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
