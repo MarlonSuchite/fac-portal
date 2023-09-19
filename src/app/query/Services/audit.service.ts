@@ -96,7 +96,7 @@ export class AuditService {
 
   constructor(private http: HttpClient) {}
 
-  getPrueba() {
+  getData() {
     return of(this.datosFalsos.content);
   }
 }

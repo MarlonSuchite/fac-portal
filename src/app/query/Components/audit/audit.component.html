@@ -34,7 +34,7 @@
       <div class="col-3">
         <mat-form-field>
           <mat-label>Operacion</mat-label>
-          <mat-select [(ngModel)]="operacion" name="selection">
+          <mat-select [(ngModel)]="operation" name="selection">
             <mat-option value="one">Operacion 1</mat-option>
             <mat-option value="two">Operacion 2</mat-option>
           </mat-select>
@@ -43,7 +43,7 @@
       <div class="col-2">
         <mat-form-field>
           <mat-label>Entidad</mat-label>
-          <mat-select [(ngModel)]="entidad" name="selection">
+          <mat-select [(ngModel)]="entity" name="selection">
             <mat-option value="one">Entidad 1</mat-option>
             <mat-option value="two">Entidad 2</mat-option>
           </mat-select>
@@ -51,11 +51,11 @@
       </div>
 
       <div class="col-1 mt-2 buttons">
-        <i class="bi bi-search button" (click)="buscarParametros()"></i>
-        <i class="bi bi-trash button mt-2" (click)="limpiarParametros()"></i>
+        <i class="bi bi-search button" (click)="searchParams()"></i>
+        <i class="bi bi-trash button mt-2" (click)="clearParams()"></i>
       </div>
     </div>
   </form>
 
-  <app-table [dataSource]="datos"></app-table>
+  <app-table [dataSource]="data"></app-table>
 </div>
