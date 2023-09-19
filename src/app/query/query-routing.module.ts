@@ -5,7 +5,7 @@ import { AuditComponent } from './Components/audit/audit.component';
 
 const routes: Routes = [
   {
-    path: 'busqueda',
+    path: 'search',
     component: AuditComponent
   }
 ];

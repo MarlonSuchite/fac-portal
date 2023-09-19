@@ -11,55 +11,50 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./audit.component.scss']
 })
 export class AuditComponent {
-  datos: Peticiones[] = [];
+  data: Peticiones[] = [];
   starDate = new FormControl('');
   endDate = new FormControl('');
-  operacion: string;
-  entidad: string;
-
+  operation: string;
+  entity: string;
 
   constructor(
     private router: Router,
     private auditService: AuditService,
     private activateRoute: ActivatedRoute
   ) {
-    this.activateRoute.queryParams.subscribe(parametros => {
-      console.log(parametros);
-      if(parametros?.["start"]){
-        this.llamaServicio();
+    this.activateRoute.queryParams.subscribe(params => {
+      if (params?.['start']) {
+        this.callService();
       }
     });
   }
 
-  llamaServicio() {
-    this.auditService.getPrueba().subscribe({
+  callService() {
+    this.auditService.getData().subscribe({
       next: res => {
-        this.datos = res;
-        console.log(this.datos);
+        this.data = res;
       }
     });
   }
 
-  buscarParametros() {
-    const parametros = {
+  searchParams() {
+    const params = {
+      //Formatear fechas
       start: formatDate(this.starDate.value, 'yyyy-MM-dd', 'en-US'),
       end: formatDate(this.endDate.value, 'yyyy-MM-dd', 'en-US'),
-      operacion: this.operacion,
-      entity: this.entidad,
-      size: 10,
-      page: 0
+      operation: this.operation,
+      entity: this.entity
     };
-    //Formatear fechas
 
-    this.router.navigate(['audit/busqueda'], {
-      queryParams: parametros
+    this.router.navigate(['audit/search'], {
+      queryParams: params
     });
   }
-  limpiarParametros(){
-    this.datos=[]
-    this.starDate.setValue('')
-    this.endDate.setValue('')
-    this.operacion=''
-    this.entidad=''
+  clearParams() {
+    this.data = [];
+    this.starDate.setValue('');
+    this.endDate.setValue('');
+    this.operation = '';
+    this.entity = '';
   }
 }
