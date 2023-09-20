@@ -1,0 +1,12 @@
+$background-color-li: rgb(213, 220, 220, 0.5);
+$background-color-hover: white; 
+
+.li{
+    background-color: $background-color-li;
+    transition: 300ms;
+    cursor: pointer;
+
+    &:hover{
+        background-color:$background-color-hover;
+    }
+}

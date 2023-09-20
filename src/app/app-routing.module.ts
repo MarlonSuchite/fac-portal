@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { SecurityModule } from './security/security.module';
-import { SharedModule } from './shared/shared.module';
 import { QueryModule } from './query/query.module';
-import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
@@ -15,6 +13,10 @@ const routes: Routes = [
   {
     path: 'audit',
     loadChildren: () => import('./query/query.module').then(m => m.QueryModule)
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
   }
 ];
 

@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row gx-5 gy-2">
+    <section class="col-12 mt-3">
+      <h1>Usuarios</h1>
+    </section>
+
+    <!-- Listado usuarios -->
+    <section class="col-md-4">
+      <div class="p-3">
+        <div class="search row bg-white shadow-lg">
+          <div class="col-10">
+            <input type="text" placeholder="Bucar..." />
+          </div>
+
+          <div class="col-2 mt-3 search-icon">
+            <mat-icon matSuffix>search</mat-icon>
+          </div>
+        </div>
+        <div class="mt-3 listado">
+          <ul class="list-group">
+            <app-users-list
+              *ngFor="let user of users"
+              [user]="user"
+              (clickUserEmail)="clickUser($event)"
+            ></app-users-list>
+          </ul>
+        </div>
+        <mat-paginator
+          [length]="users.length"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          aria-label="Select page"
+        >
+        </mat-paginator>
+      </div>
+    </section>
+
+    <!-- Panel usuarios -->
+    <section class="col-md-8 mt-4">
+      <div class="border p-3 panel shadow-lg bg-white"></div>
+    </section>
+  </div>
+</div>
