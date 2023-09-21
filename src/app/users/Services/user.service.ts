@@ -22,4 +22,8 @@ export class UserService {
   getUser(email: string) {
     return this.users.filter(m => m.email === email);
   }
+
+  addNewUser(value: any){
+    console.log(value)
+  }
 }

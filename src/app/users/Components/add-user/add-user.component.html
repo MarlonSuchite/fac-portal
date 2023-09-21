@@ -1,0 +1,38 @@
+<h1>Agregar</h1>
+        <form>
+          
+          <div class="row gx-4">
+            <mat-form-field class="col-6">
+                <mat-label class="">Correo electrónico</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"placeholder="">
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Por favor, introduce una dirección de correo electrónico válida
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                El campo es requerido
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="col-6">
+                <mat-label class="">Nombre</mat-label>
+                <input type="name" matInput [formControl]="nameFormControl" [errorStateMatcher]="matcher"placeholder="">
+                <mat-error *ngIf="nameFormControl.hasError('name') && !nameFormControl.hasError('required')">
+                  Por favor, introduce una nombre válido
+                </mat-error>
+                <mat-error *ngIf="nameFormControl.hasError('required')">
+                El campo es requerido
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="col-6">
+                <mat-label>Perfil</mat-label>
+                  <mat-error *ngIf="opcionControl.hasError('required')">
+                  El campo es requerido
+                  </mat-error>
+                <mat-select  [formControl]="opcionControl">
+                  <mat-option *ngFor="let op of opciones" [value]="op.id">{{op.name}} {{op.description}}</mat-option>
+                </mat-select>
+              </mat-form-field>              
+        </div>     
+        <button class="btn btn-primary button" (click)="addUserFunction()">Guardar</button>
+</form>

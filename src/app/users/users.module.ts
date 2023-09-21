@@ -5,9 +5,11 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './Components/users/users.component';
 import { UsersListComponent } from './Components/users-list/users-list.component';
 import { MaterialModule } from '../materials.module';
+import { AddUserComponent } from './Components/add-user/add-user.component';
+import { EditUserComponent } from './Components/edit-user/edit-user.component';
 
 @NgModule({
-  declarations: [UsersComponent, UsersListComponent],
+  declarations: [UsersComponent, UsersListComponent, AddUserComponent, EditUserComponent],
   imports: [CommonModule, UsersRoutingModule, MaterialModule]
 })
 export class UsersModule {}

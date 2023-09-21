@@ -37,7 +37,10 @@
 
     <!-- Panel usuarios -->
     <section class="col-md-8 mt-4">
-      <div class="border p-3 panel shadow-lg bg-white"></div>
+      <div class="border p-3 panel shadow-lg bg-white">
+        <app-add-user (addUser)="addUser($event)"></app-add-user>
+        <!--<app-edit-user></app-edit-user>-->
+      </div>
     </section>
   </div>
 </div>
