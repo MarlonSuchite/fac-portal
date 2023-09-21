@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from '../../Interfaces/user';
+import { UserApi } from '../../Interfaces/user-api';
 
 @Component({
   selector: 'app-users-list',
@@ -7,7 +7,7 @@ import { User } from '../../Interfaces/user';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent {
-  @Input() user!: User;
+  @Input() user!: UserApi;
   @Output() clickUserEmail = new EventEmitter<string>();
 
   clickUser(email: string) {

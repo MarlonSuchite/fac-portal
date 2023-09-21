@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 import { MyErrorStateMatcher } from '../users/users.component';
 
 @Component({
@@ -8,40 +13,48 @@ import { MyErrorStateMatcher } from '../users/users.component';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent {
-  @Output() addUser = new EventEmitter<any>()
-  opciones: any = [
-    {id: 1, 
-     name: 'QA - Proveedor',
-    },
-    {id: 2,
-     name: 'PRF - Administrador General'
-    },
-    {id: 3,
-     name: 'PRF - Proveedores'
-    },
-    {id: 4,
-     name: 'Test Role'
-      }
-  ]
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  nameFormControl = new FormControl('', Validators.required)
-  opcionControl = new FormControl(null,[Validators.required]);
-  matcher = new MyErrorStateMatcher();
+  @Output() addUser = new EventEmitter<any>();
 
-  addUserFunction(){
-    let params = {
-      email: this.emailFormControl.value,
-      name: this.nameFormControl.value,
-      option: this.opcionControl.value
+  form!: FormGroup;
+  matcher = new MyErrorStateMatcher();
+  opciones: any = [
+    {
+      id: 1,
+      name: 'QA - Proveedor'
+    },
+    {
+      id: 2,
+      name: 'PRF - Administrador General'
+    },
+    {
+      id: 3,
+      name: 'PRF - Proveedores'
+    },
+    {
+      id: 4,
+      name: 'Test Role'
     }
-    this.addUser.emit(params)
-    this.emailFormControl.setValue('')
-    this.nameFormControl.setValue('')
-    this.opcionControl.setValue(null)
+  ];
+
+  constructor(private fb: FormBuilder) {
+    this.buildForm();
   }
 
+  buildForm() {
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      name: ['', Validators.required],
+      options: ['', Validators.required]
+    });
+  }
 
+  addUserFunction() {
+    const params = {
+      email: this.form.get('email').value,
+      name: this.form.get('name').value,
+      option: this.form.get('options').value
+    };
+    this.addUser.emit(params);
+    this.form.reset();
+  }
 }
-
-
-
