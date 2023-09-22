@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -13,6 +13,7 @@ import { MyErrorStateMatcher } from '../users/users.component';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
+  @Input() mode: 'add' | 'edit'
   @Output() addUser = new EventEmitter<any>();
 
   form!: FormGroup;

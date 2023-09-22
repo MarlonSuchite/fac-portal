@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
-import { UsersComponent } from './Components/users/users.component';
 import { FormComponent } from './Components/form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
@@ -13,9 +12,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
+import { UsersComponent } from './Components/users/users.component';
 
 @NgModule({
-  declarations: [UsersComponent, FormComponent],
+  declarations: [FormComponent, UsersComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

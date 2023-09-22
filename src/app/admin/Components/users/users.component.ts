@@ -10,6 +10,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     control: FormControl | null,
     form: FormGroupDirective | NgForm | null
   ): boolean {
+
     const isSubmitted = form && form.submitted;
     return !!(
       control &&
@@ -23,16 +24,21 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
+
 })
+
 export class UsersComponent implements OnInit {
   users: UserApi[] = [];
   user!: any;
+  modeUser: any = 'add'
 
   constructor(
     private router: Router,
     private activedRouter: ActivatedRoute,
     private _userService: UserService
-  ) {}
+  ) { }
+
+
 
   ngOnInit(): void {
     this.activedRouter.queryParams.subscribe(params => {
@@ -43,12 +49,17 @@ export class UsersComponent implements OnInit {
     this.users = this._userService.getUsers();
   }
 
+
+
   clickUser(valor: string): void {
-    this.router.navigate(['users'], { queryParams: { email: valor } });
+    this.router.navigate(['/admin/users'], { queryParams: { email: valor } });
+    this.modeUser = 'edit'
   }
 
   pageSize = 7;
   pageSizeOptions = [7];
+
+
 
   //Agregar usuario
   addUser(value: any) {

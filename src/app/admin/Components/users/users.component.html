@@ -38,7 +38,7 @@
     <!-- Panel usuarios -->
     <section class="col-md-8 mt-4">
       <div class="border p-3 panel shadow-lg bg-white">
-        <app-form (addUser)="addUser($event)"></app-form>
+        <app-form (addUser)="addUser($event)" [mode] = "modeUser"></app-form>
         <!--<app-edit-user></app-edit-user>-->
       </div>
     </section>
