@@ -8,11 +8,11 @@ import {
 import { MyErrorStateMatcher } from '../users/users.component';
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
 })
-export class AddUserComponent {
+export class FormComponent {
   @Output() addUser = new EventEmitter<any>();
 
   form!: FormGroup;
@@ -52,7 +52,8 @@ export class AddUserComponent {
     const params = {
       email: this.form.get('email').value,
       name: this.form.get('name').value,
-      option: this.form.get('options').value
+      option: this.form.get('options').value,
+      status: true
     };
     this.addUser.emit(params);
     this.form.reset();
