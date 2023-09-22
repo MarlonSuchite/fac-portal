@@ -7,16 +7,16 @@ import { QueryModule } from './query/query.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/audit/search',
+    redirectTo: '/query/search',
     pathMatch: 'full'
   },
   {
-    path: 'audit',
+    path: 'query',
     loadChildren: () => import('./query/query.module').then(m => m.QueryModule)
   },
   {
-    path: 'users',
-    loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   }
 ];
 

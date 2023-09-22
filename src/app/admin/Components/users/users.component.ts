@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import { ErrorStateMatcher } from '@angular/material/core';
-import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators
-} from '@angular/forms';
-import { UserApi } from '../../Interfaces/user-api';
+import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { UserApi } from '../../../admin/Interfaces/user-api';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -32,13 +27,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class UsersComponent implements OnInit {
   users: UserApi[] = [];
   user!: any;
-
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email
-  ]);
-
-  matcher = new MyErrorStateMatcher();
 
   constructor(
     private router: Router,
