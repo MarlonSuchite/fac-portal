@@ -3,9 +3,16 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersComponent } from './Components/users/users.component';
 import { FormComponent } from './Components/form/form.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../materials.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [UsersComponent, FormComponent],
@@ -13,8 +20,17 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    MaterialModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatIconModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatSelectModule,
   ]
 })
 export class AdminModule {}

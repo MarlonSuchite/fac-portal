@@ -23,7 +23,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    AdminModule,
     SecurityModule,
     QueryModule
   ],

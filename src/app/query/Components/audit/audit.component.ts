@@ -46,7 +46,7 @@ export class AuditComponent {
       entity: this.entity
     };
 
-    this.router.navigate(['audit/search'], {
+    this.router.navigate(['query/search'], {
       queryParams: params
     });
   }
