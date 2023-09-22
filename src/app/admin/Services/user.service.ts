@@ -142,4 +142,8 @@ export class UserService {
   addNewUser(value: any) {
     console.log(value);
   }
+
+  updateUser(value: any) {
+    console.log(value);
+  }
 }

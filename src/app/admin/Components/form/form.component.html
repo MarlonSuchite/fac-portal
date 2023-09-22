@@ -1,70 +1,88 @@
-<h1 *ngIf="mode === 'add'">Agregar</h1>
-<h1 *ngIf="mode === 'edit'">Editar</h1>
-<form [formGroup]="form">
-  <div class="row gx-4">
-    <mat-form-field class="col-6">
-      <mat-label class="">Correo electrónico</mat-label>
-      <input
-        type="email"
-        matInput
-        formControlName="email"
-        [errorStateMatcher]="matcher"
-        placeholder=""
-      />
-      <mat-error
-        *ngIf="
-          form.get('email').hasError('email') &&
-          !form.get('email').hasError('email')
-        "
-      >
-        *Por favor, introduce una dirección de correo electrónico válida
-      </mat-error>
-      <mat-error *ngIf="form.get('email').hasError('required')">
-        *El campo es requerido
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="col-6">
-      <mat-label class="">Nombre</mat-label>
-      <input
-        type="name"
-        matInput
-        formControlName="name"
-        [errorStateMatcher]="matcher"
-        placeholder=""
-      />
-      <mat-error
-        *ngIf="
-          form.get('name').hasError('name') &&
-          !form.get('name').hasError('required')
-        "
-      >
-        *Por favor, introduce una nombre válido
-      </mat-error>
-      <mat-error *ngIf="form.get('name').hasError('required')">
-        *El campo es requerido
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="col-6">
-      <mat-label>Perfil</mat-label>
-      <mat-error *ngIf="form.get('name').hasError('required')">
-        *El campo es requerido
-      </mat-error>
-      <mat-select formControlName="options">
-        <mat-option *ngFor="let op of opciones" [value]="op.id"
-          >{{ op.name }} {{ op.description }}</mat-option
-        >
-      </mat-select>
-    </mat-form-field>
+<div class="form">
+  <div class="encabezado mb-2">
+    <h1 *ngIf="mode === 'add'">Agregar</h1>
+    <h1 *ngIf="mode === 'edit'">Editar</h1>
+    <i
+      *ngIf="mode === 'edit'"
+      class="bi bi-power"
+      [ngClass]="{ green: statusUser === true }"
+      (click)="status()"
+    ></i>
   </div>
-  <button
-    class="btn btn-primary button"
-    [disabled]="form.invalid"
-    (click)="addUserFunction()"
-  >
-    Guardar
-  </button>
-</form>
+  <form [formGroup]="form">
+    <div class="row gx-4">
+      <mat-form-field class="col-6">
+        <mat-label class="">Correo electrónico</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          [errorStateMatcher]="matcher"
+          placeholder=""
+        />
+        <mat-error
+          *ngIf="
+            form.get('email').hasError('email') &&
+            !form.get('email').hasError('email')
+          "
+        >
+          *Por favor, introduce una dirección de correo electrónico válida
+        </mat-error>
+        <mat-error *ngIf="form.get('email').hasError('required')">
+          *El campo es requerido
+        </mat-error>
+      </mat-form-field>
 
+      <mat-form-field class="col-6">
+        <mat-label class="">Nombre</mat-label>
+        <input
+          type="name"
+          matInput
+          formControlName="name"
+          [errorStateMatcher]="matcher"
+          placeholder=""
+        />
+        <mat-error
+          *ngIf="
+            form.get('name').hasError('name') &&
+            !form.get('name').hasError('required')
+          "
+        >
+          *Por favor, introduce una nombre válido
+        </mat-error>
+        <mat-error *ngIf="form.get('name').hasError('required')">
+          *El campo es requerido
+        </mat-error>
+      </mat-form-field>
 
+      <mat-form-field class="col-6">
+        <mat-label>Perfil</mat-label>
+        <mat-error *ngIf="form.get('name').hasError('required')">
+          *El campo es requerido
+        </mat-error>
+        <mat-select formControlName="options" [(value)]="options.name">
+          <mat-option *ngFor="let op of options" [value]="op.id"
+            >{{ op.name }} {{ op.description }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="buttons">
+      <button
+        class="btn btn-primary button"
+        [disabled]="form.invalid"
+        (click)="action()"
+      >
+        Guardar
+      </button>
+      <button
+        type="button"
+        *ngIf="mode === 'edit'"
+        class="btn-secondary"
+        (click)="changeMode()"
+      >
+        +
+      </button>
+    </div>
+  </form>
+</div>
