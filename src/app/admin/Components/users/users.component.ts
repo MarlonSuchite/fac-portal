@@ -28,6 +28,9 @@ export class UsersComponent implements OnInit {
   users: UserApi[] = [];
   user!: any;
   mode: any = 'add';
+  page = 0;
+  search = '';
+  searchValue = new FormControl('');
 
   constructor(
     private router: Router,
@@ -37,19 +40,43 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.activedRouter.queryParams.subscribe(params => {
-      const email = params['email'];
-      this.user = this._userService.getUser(email);
-      console.log(this.user);
+      if (params['email']) {
+        const email = params['email'];
+        this.user = this._userService.getUser(email);
+        console.log(this.user);
+      }
+
+      if (params['page']) {
+        (this.page = params['page']), (this.search = params['search']);
+        /* 
+          Servicio...
+        */
+      }
     });
     this.users = this._userService.getUsers();
   }
 
+  //Obtener solo un usuario
   clickUser(valor: string): void {
     this.router.navigate(['/admin/users'], { queryParams: { email: valor } });
     this.changeModeEdit();
   }
 
-  //Agregar usuario
+  //Obtener el numero de pagina
+  getPage(event: any) {
+    this.router.navigate(['/admin/users'], {
+      queryParams: { page: event.pageIndex, search: this.search }
+    });
+  }
+
+  //Obtener el parametro de busqueda
+  searchParams() {
+    this.router.navigate(['/admin/users'], {
+      queryParams: { page: 0, search: this.searchValue.value }
+    });
+  }
+
+  //Agregar usuario o editar
   receiveAction(value: any) {
     if (this.mode === 'add') {
       this._userService.addNewUser(value);
@@ -58,10 +85,12 @@ export class UsersComponent implements OnInit {
     }
   }
 
+  //Cambiar a modo agregar
   changeModeAdd(value: any) {
     this.mode = value;
   }
 
+  //Modo editar
   changeModeEdit() {
     this.mode = 'edit';
   }

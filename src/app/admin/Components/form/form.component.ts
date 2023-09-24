@@ -34,7 +34,7 @@ export class FormComponent implements OnChanges {
     name: 'Eliezer Coronado',
     status: true,
     profile: {
-      id: 59,
+      id: 1,
       name: 'QA-Proveedor',
       description: 'QA Perfil proveedor',
       providerProfile: false,
@@ -56,15 +56,16 @@ export class FormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.mode === 'edit') {
-      this.form.patchValue({
+      this.form.setValue({
         email: this.user.email,
-        name: this.user.name
+        name: this.user.name,
+        options: this.user.profile.id
       });
     } else {
-      this.form.patchValue({
+      this.form.setValue({
         email: '',
         name: '',
-        option: ''
+        options: ''
       });
     }
   }
@@ -89,6 +90,7 @@ export class FormComponent implements OnChanges {
       this.form.reset();
     } else {
       const params = {
+        id: this.user.id,
         email: this.form.get('email').value,
         name: this.form.get('name').value,
         option: this.form.get('options').value,
@@ -97,6 +99,7 @@ export class FormComponent implements OnChanges {
       this.userActions.emit(params);
       this.form.reset();
     }
+    alert('MULA');
   }
 
   changeMode() {
@@ -106,6 +109,7 @@ export class FormComponent implements OnChanges {
   status() {
     this.statusUser = !this.statusUser;
     const params = {
+      id: this.user.id,
       email: this.form.get('email').value,
       name: this.form.get('name').value,
       option: this.form.get('options').value,
