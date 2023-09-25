@@ -1,14 +1,13 @@
-<!-- <div>
+<div>
   <app-nav-bar></app-nav-bar>
 </div>
- -->
 
 <div class="container mt-5">
   <form action="">
     <div class="row gx-5">
       <div class="col-3">
         <mat-form-field>
-          <mat-label>Start Date</mat-label>
+          <mat-label>Fecha Inicio</mat-label>
           <input matInput [matDatepicker]="picker" [formControl]="starDate" />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
@@ -20,7 +19,7 @@
       </div>
       <div class="col-3">
         <mat-form-field>
-          <mat-label>End date</mat-label>
+          <mat-label>Fecha Fin</mat-label>
           <input matInput [matDatepicker]="date" [formControl]="endDate" />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
@@ -33,10 +32,10 @@
 
       <div class="col-3">
         <mat-form-field>
-          <mat-label>Operacion</mat-label>
+          <mat-label>Operación</mat-label>
           <mat-select [(ngModel)]="operation" name="selection">
-            <mat-option value="one">Operacion 1</mat-option>
-            <mat-option value="two">Operacion 2</mat-option>
+            <mat-option value="one">Operación 1</mat-option>
+            <mat-option value="two">Operación 2</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

@@ -10,7 +10,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     control: FormControl | null,
     form: FormGroupDirective | NgForm | null
   ): boolean {
-
     const isSubmitted = form && form.submitted;
     return !!(
       control &&
@@ -24,45 +23,78 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
-
 })
-
 export class UsersComponent implements OnInit {
   users: UserApi[] = [];
   user!: any;
-  modeUser: any = 'add'
+  mode: any = 'add';
+  page = 0;
+  search = '';
+  searchValue = new FormControl('');
 
   constructor(
     private router: Router,
     private activedRouter: ActivatedRoute,
     private _userService: UserService
-  ) { }
-
-
+  ) {}
 
   ngOnInit(): void {
     this.activedRouter.queryParams.subscribe(params => {
-      const email = params['email'];
-      this.user = this._userService.getUser(email);
-      console.log(this.user);
+      if (params['email']) {
+        const email = params['email'];
+        this.user = this._userService.getUser(email);
+        console.log(this.user);
+      }
+
+      if (params['page']) {
+        (this.page = params['page']), (this.search = params['search']);
+        /* 
+          Servicio...
+        */
+      }
     });
     this.users = this._userService.getUsers();
   }
 
-
-
+  //Obtener solo un usuario
   clickUser(valor: string): void {
     this.router.navigate(['/admin/users'], { queryParams: { email: valor } });
-    this.modeUser = 'edit'
+    this.changeModeEdit();
+  }
+
+  //Obtener el numero de pagina
+  getPage(event: any) {
+    this.router.navigate(['/admin/users'], {
+      queryParams: { page: event.pageIndex, search: this.search }
+    });
+  }
+
+  //Obtener el parametro de busqueda
+  searchParams() {
+    this.router.navigate(['/admin/users'], {
+      queryParams: { page: 0, search: this.searchValue.value }
+    });
+  }
+
+  //Agregar usuario o editar
+  receiveAction(value: any) {
+    if (this.mode === 'add') {
+      this._userService.addNewUser(value);
+    } else {
+      this._userService.updateUser(value);
+    }
+  }
+
+  //Cambiar a modo agregar
+  changeModeAdd(value: any) {
+    this.mode = value;
+  }
+
+  //Modo editar
+  changeModeEdit() {
+    this.mode = 'edit';
   }
 
   pageSize = 7;
   pageSizeOptions = [7];
-
-
-
-  //Agregar usuario
-  addUser(value: any) {
-    this._userService.addNewUser(value);
-  }
 }
