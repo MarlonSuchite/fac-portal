@@ -99,7 +99,6 @@ export class FormComponent implements OnChanges {
       this.userActions.emit(params);
       this.form.reset();
     }
-    alert('MULA');
   }
 
   changeMode() {
