@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'Local'
+  apiUrl: 'Local',
+  refTranslate: './assest/i18n/'
 };

@@ -7,9 +7,9 @@
     <div class="row gx-5">
       <div class="col-3">
         <mat-form-field>
-          <mat-label>Fecha Inicio</mat-label>
+          <mat-label>{{'audit.startdate' | translate}}</mat-label>
           <input matInput [matDatepicker]="picker" [formControl]="starDate" />
-          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-hint>{{'audit.date' | translate}}</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
             [for]="picker"
@@ -19,9 +19,9 @@
       </div>
       <div class="col-3">
         <mat-form-field>
-          <mat-label>Fecha Fin</mat-label>
+          <mat-label>{{'audit.enddate' | translate}}</mat-label>
           <input matInput [matDatepicker]="date" [formControl]="endDate" />
-          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-hint>{{'audit.date' | translate}}</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
             [for]="date"
@@ -32,19 +32,19 @@
 
       <div class="col-3">
         <mat-form-field>
-          <mat-label>Operación</mat-label>
+          <mat-label>{{'audit.operation' | translate}}</mat-label>
           <mat-select [(ngModel)]="operation" name="selection">
-            <mat-option value="one">Operación 1</mat-option>
-            <mat-option value="two">Operación 2</mat-option>
+            <mat-option value="one">{{'audit.operation1' | translate}}</mat-option>
+            <mat-option value="two">{{'audit.operation2' | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="col-2">
         <mat-form-field>
-          <mat-label>Entidad</mat-label>
+          <mat-label>{{'audit.entity' | translate}}</mat-label>
           <mat-select [(ngModel)]="entity" name="selection">
-            <mat-option value="one">Entidad 1</mat-option>
-            <mat-option value="two">Entidad 2</mat-option>
+            <mat-option value="one">{{'audit.entity1' | translate}}</mat-option>
+            <mat-option value="two">{{'audit.entity2' | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

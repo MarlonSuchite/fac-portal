@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [AuditComponent, MostrarComponent, TableComponent],
@@ -39,6 +40,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatSortModule,
     MatPaginatorModule,
     MatSelectModule,
+    TranslateModule
   ]
 })
 export class QueryModule {}

@@ -15,6 +15,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { UsersComponent } from './Components/users/users.component';
 import { ProfilesComponent } from './Components/profiles/profiles.component';
 import { FormProfileComponent } from './Components/form-profile/form-profile.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [FormComponent, UsersComponent, ProfilesComponent, FormProfileComponent],
@@ -32,7 +33,8 @@ import { FormProfileComponent } from './Components/form-profile/form-profile.com
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    TranslateModule
   ]
 })
 export class AdminModule {}

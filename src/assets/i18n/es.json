@@ -1,0 +1,46 @@
+{
+    "navbar":{
+        "user": "Usuario",
+        "audit": "Auditoria",
+        "profiles": "Perfiles"
+    },
+    "users":{
+        "user": "Usuarios"
+    },
+    "form":{
+        "add": "Agregar",
+        "edit": "Editar",
+        "email": "Correo electrónico",
+        "name": "Nombre",
+        "profile": "Perfil",
+        "save": "Guardar",
+        "plus": "+"
+    },
+    "audit": {
+        "startdate": "Fecha Inicio",
+        "date": "MM/DD/YYYY",
+        "enddate": "Fecha Fin",
+        "operation": "Operación",
+        "operation1": "Operación 1",
+        "operation2": "Operación 2",
+        "entity": "Entidad",
+        "entity1": "Entidad 1",
+        "entity2": "Entidad 2"
+    },
+    "table": {
+        "identifier": "Identificador",
+        "date": "Fecha",
+        "entity": "Entidad",
+        "user": "Usuario",
+        "operation": "Operación",
+        "profiles": "Perfiles"
+    },
+    "profiles":{
+        "profiles": "Perfiles"
+    },
+    "formprofile": {
+        "add": "Agregar",
+        "name": "Nombre",
+        "description": "Descripción"
+    }
+}
