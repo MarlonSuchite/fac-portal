@@ -13,9 +13,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { UsersComponent } from './Components/users/users.component';
+import { ProfilesComponent } from './Components/profiles/profiles.component';
+import { FormProfileComponent } from './Components/form-profile/form-profile.component';
 
 @NgModule({
-  declarations: [FormComponent, UsersComponent],
+  declarations: [FormComponent, UsersComponent, ProfilesComponent, FormProfileComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -30,7 +32,7 @@ import { UsersComponent } from './Components/users/users.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatSelectModule,
+    MatSelectModule
   ]
 })
 export class AdminModule {}

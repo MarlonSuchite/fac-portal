@@ -9,7 +9,7 @@ export class ListComponent {
   @Input() params: any;
   @Output() clickParam = new EventEmitter<any>();
 
-  clickParamEvent(value: string) {
+  clickParamEvent(value: any) {
     this.clickParam.emit(value);
   }
 }

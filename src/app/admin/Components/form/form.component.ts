@@ -3,13 +3,11 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
   SimpleChanges
 } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators
 } from '@angular/forms';
@@ -99,7 +97,6 @@ export class FormComponent implements OnChanges {
       this.userActions.emit(params);
       this.form.reset();
     }
-    alert('MULA');
   }
 
   changeMode() {
