@@ -2,39 +2,54 @@
   <app-nav-bar></app-nav-bar>
 </div>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row gx-5 gy-2">
     <section class="col-12 mt-3">
       <h1>Perfiles</h1>
     </section>
 
     <!-- Listado de Usuarios -->
-    <section class="col-md-4">
+    <section class="col-md-3">
       <div class="p-3">
-        <div class="search row gb-white shadow-lg">
+        <div class="search row bg-white shadow-lg">
           <div class="col-10">
-            <!-- Input -->
+            <input
+              type="text"
+              placeholder="Bucar..."
+              [formControl]="searchValue"
+            />
+          </div>
 
-            <div class="col-2 mt-3 search-icon">
-              <!-- Icono angular material -->
-            </div>
+          <div class="col-2 mt-3 search-icon">
+            <mat-icon matSuffix>search</mat-icon>
           </div>
         </div>
-
         <div class="mt-3 listado">
           <ul class="list-group">
-            <!-- Componente hijo de lista -->
+            <app-list
+              *ngFor="let profile of profiles"
+              [params]="profile"
+              (clickParam)="clickProfile($event)"
+            ></app-list>
           </ul>
         </div>
-        <!-- Paginador -->
+        <mat-paginator
+          [length]="profiles.length"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          aria-label="Select page"
+        >
+        </mat-paginator>
+      
       </div>
     </section>
 
-    <!--Panel  -->
-    <section class="col-md-8 mt-4">
-      <div class="border p-3 panel shadow-lg bg-white p-5">
-        <!-- Formulario -->
-      </div>
-    </section>
-  </div>
+  <!--Panel  -->
+  <section class="col-md-9 mt-4">
+    <div class="border p-3 panel shadow-lg bg-white p-5">
+      <!-- Formulario -->
+      <app-form-profile></app-form-profile>
+    </div>
+  </section>
+</div>
 </div>

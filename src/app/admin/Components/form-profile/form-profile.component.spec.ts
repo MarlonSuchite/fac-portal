@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableComponent } from './table.component';
+import { FormProfileComponent } from './form-profile.component';
 
-xdescribe('TableComponent', () => {
-  let component: TableComponent;
-  let fixture: ComponentFixture<TableComponent>;
+describe('FormProfileComponent', () => {
+  let component: FormProfileComponent;
+  let fixture: ComponentFixture<FormProfileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableComponent ]
+      declarations: [ FormProfileComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TableComponent);
+    fixture = TestBed.createComponent(FormProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

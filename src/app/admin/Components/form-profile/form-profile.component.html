@@ -1,0 +1,31 @@
+<div>
+    <div class="encabezado mb-2">
+        <h1>Agregar</h1>
+    </div>
+    
+    <form >
+        <div class="row gx-4">
+            <mat-form-field class="col-6">
+                <mat-label class="">Nombre * </mat-label>
+                <input
+                  type="text"
+                  matInput
+                  [errorStateMatcher]="matcher"
+                  placeholder=""
+                />
+               
+              </mat-form-field>   
+
+              <mat-form-field class="col-6">
+                <mat-label class="">Descripcion* </mat-label>
+                <input
+                  type="text"
+                  matInput
+                  [errorStateMatcher]="matcher"
+                  placeholder=""
+                />
+               
+              </mat-form-field>   
+        </div>
+    </form>
+</div>

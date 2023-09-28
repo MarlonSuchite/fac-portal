@@ -40,9 +40,9 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.activedRouter.queryParams.subscribe(params => {
-      if (params['email']) {
-        const email = params['email'];
-        this.user = this._userService.getUser(email);
+      if (params['id']) {
+        const id = params['id'];
+        this.user = this._userService.getUser(id);
         console.log(this.user);
       }
 
@@ -57,8 +57,8 @@ export class UsersComponent implements OnInit {
   }
 
   //Obtener solo un usuario
-  clickUser(valor: string): void {
-    this.router.navigate(['/admin/users'], { queryParams: { email: valor } });
+  clickUser(valor: any): void {
+    this.router.navigate(['/admin/users'], { queryParams: { id: valor } });
     this.changeModeEdit();
   }
 

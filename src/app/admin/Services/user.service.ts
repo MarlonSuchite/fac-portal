@@ -135,8 +135,8 @@ export class UserService {
     return this.users[0].content;
   }
 
-  getUser(email: string) {
-    return this.users[0].content.filter(m => m.email === email);
+  getUser(id: any) {
+    return this.users[0].content.filter(m => m.id == id);
   }
 
   addNewUser(value: any) {

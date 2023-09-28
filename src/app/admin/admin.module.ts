@@ -14,9 +14,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { UsersComponent } from './Components/users/users.component';
 import { ProfilesComponent } from './Components/profiles/profiles.component';
+import { FormProfileComponent } from './Components/form-profile/form-profile.component';
 
 @NgModule({
-  declarations: [FormComponent, UsersComponent, ProfilesComponent],
+  declarations: [FormComponent, UsersComponent, ProfilesComponent, FormProfileComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
