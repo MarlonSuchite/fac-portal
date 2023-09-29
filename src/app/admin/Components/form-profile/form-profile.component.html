@@ -6,13 +6,13 @@
     <form>
       <div class="row gx-4">
         <mat-form-field class="col-6">
-          <mat-label class="">Nombre * </mat-label>
+          <mat-label class="">{{'formprofile.name' | translate}} </mat-label>
           <input type="text" matInput [errorStateMatcher]="matcher" placeholder="" />
   
         </mat-form-field>
   
         <mat-form-field class="col-6">
-          <mat-label class="">Descripcion* </mat-label>
+          <mat-label class="">{{'formprofile.description' | translate}} </mat-label>
           <input type="text" matInput [errorStateMatcher]="matcher" placeholder="" />
   
         </mat-form-field>
@@ -20,7 +20,7 @@
         <div class="col-12">
           <h3>
             <mat-slide-toggle></mat-slide-toggle>
-            Perfil de proveedor
+            {{'formprofile.providerprofile' | translate}}
           </h3>
         </div>
         <div *ngFor="let rol of roles" class="mb-3">
