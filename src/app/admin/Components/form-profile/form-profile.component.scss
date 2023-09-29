@@ -3,3 +3,29 @@
     justify-content: space-between;
     align-items: center;
 }
+
+ 
+mat-expansion-panel{
+    border-radius: 2rem !important;
+}
+
+.items{
+    border-radius: 1.5rem;
+}
+
+h1,
+h2,
+h3{
+    color: rgb(4, 44, 84);
+    font-weight: 500;
+}
+
+h2{
+    border-radius: 2rem;
+    min-width: 160px;
+    max-width: 250px;
+    position: relative;
+    top: -40px;
+    left: 10px;
+    margin-bottom: -20px;
+}

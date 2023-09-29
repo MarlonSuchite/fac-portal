@@ -16,6 +16,8 @@ import { UsersComponent } from './Components/users/users.component';
 import { ProfilesComponent } from './Components/profiles/profiles.component';
 import { FormProfileComponent } from './Components/form-profile/form-profile.component';
 import { TranslateModule } from '@ngx-translate/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [FormComponent, UsersComponent, ProfilesComponent, FormProfileComponent],
@@ -34,7 +36,9 @@ import { TranslateModule } from '@ngx-translate/core';
     MatSortModule,
     MatPaginatorModule,
     MatSelectModule,
-    TranslateModule
+    TranslateModule,
+    MatSlideToggleModule,
+    MatExpansionModule
   ]
 })
 export class AdminModule {}
