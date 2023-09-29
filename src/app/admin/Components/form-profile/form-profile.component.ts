@@ -43,7 +43,23 @@ export class FormProfileComponent {
     {id: 12, name: 'Coments'}
   ]
 
-  toogle(event: any){
+  toogle(event: any, id){
+  this.roles.forEach(element => {
+  console.log(element)
+ if(element.id === id){
+  element.selected = event.checked;
+  element.items.forEach(items => {
+    console.log(items)
+    items.selected = event.checked
+  if(items?.itemChild){
+    items.itemChild.forEach(child => {
+      console.log(child)
+      child.selected = event.checked
+    });
+  }  
+  });
+ } 
+});   
     console.log(event)
   }
 
