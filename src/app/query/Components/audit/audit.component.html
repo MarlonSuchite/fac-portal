@@ -2,57 +2,87 @@
   <app-nav-bar></app-nav-bar>
 </div>
 
-<div class="container mt-5">
-  <form action="">
-    <div class="row gx-5">
-      <div class="col-3">
-        <mat-form-field>
-          <mat-label>{{'audit.startdate' | translate}}</mat-label>
-          <input matInput [matDatepicker]="picker" [formControl]="starDate" />
-          <mat-hint>{{'audit.date' | translate}}</mat-hint>
+<div class="container-fluid mt-5">
+  <form [formGroup]="form">
+    <div class="encabezado">
+      <!-- fecha 1 -->
+      <section>
+        <mat-form-field class="date">
+          <mat-label>{{ 'audit.startdate' | translate }}</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="startDate"
+          />
+          <mat-hint>{{ 'audit.date' | translate }}</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
             [for]="picker"
           ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-      </div>
-      <div class="col-3">
-        <mat-form-field>
-          <mat-label>{{'audit.enddate' | translate}}</mat-label>
-          <input matInput [matDatepicker]="date" [formControl]="endDate" />
-          <mat-hint>{{'audit.date' | translate}}</mat-hint>
+      </section>
+
+      <!-- fecha 2 -->
+      <section>
+        <mat-form-field class="date">
+          <mat-label>{{ 'audit.enddate' | translate }}</mat-label>
+          <input matInput [matDatepicker]="date" formControlName="endDate" />
+          <mat-hint>{{ 'audit.date' | translate }}</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
             [for]="date"
           ></mat-datepicker-toggle>
           <mat-datepicker #date></mat-datepicker>
         </mat-form-field>
-      </div>
+      </section>
 
-      <div class="col-3">
-        <mat-form-field>
-          <mat-label>{{'audit.operation' | translate}}</mat-label>
-          <mat-select [(ngModel)]="operation" name="selection">
-            <mat-option value="one">{{'audit.operation1' | translate}}</mat-option>
-            <mat-option value="two">{{'audit.operation2' | translate}}</mat-option>
+      <!-- Entidad -->
+      <section>
+        <mat-form-field class="select">
+          <mat-label>{{ 'audit.entity' | translate }}</mat-label>
+          <mat-select formControlName="entity" name="selection">
+            <mat-option value="one">{{
+              'audit.entity1' | translate
+            }}</mat-option>
+            <mat-option value="two">{{
+              'audit.entity2' | translate
+            }}</mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
-      <div class="col-2">
-        <mat-form-field>
-          <mat-label>{{'audit.entity' | translate}}</mat-label>
-          <mat-select [(ngModel)]="entity" name="selection">
-            <mat-option value="one">{{'audit.entity1' | translate}}</mat-option>
-            <mat-option value="two">{{'audit.entity2' | translate}}</mat-option>
+      </section>
+
+      <!-- Operacion -->
+      <section>
+        <mat-form-field class="select">
+          <mat-label>{{ 'audit.operation' | translate }}</mat-label>
+          <mat-select formControlName="operation" name="selection">
+            <mat-option value="one">{{
+              'audit.operation1' | translate
+            }}</mat-option>
+            <mat-option value="two">{{
+              'audit.operation2' | translate
+            }}</mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
+      </section>
 
-      <div class="col-1 mt-2 buttons">
-        <i class="bi bi-search button" (click)="searchParams()"></i>
+      <!-- Usuario -->
+      <section>
+        <mat-form-field class="user">
+          <mat-label>Usuario</mat-label>
+          <input matInput type="text" formControlName="user" />
+        </mat-form-field>
+      </section>
+
+      <!-- Buscar -->
+      <button (click)="searchParams()" [disabled]="form.invalid">
+        <i class="bi bi-search button"></i>
+      </button>
+
+      <section class="">
         <i class="bi bi-trash button mt-2" (click)="clearParams()"></i>
-      </div>
+      </section>
     </div>
   </form>
 

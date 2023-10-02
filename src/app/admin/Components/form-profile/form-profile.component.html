@@ -1,76 +1,117 @@
 <div>
-    <div class="encabezado mb-2">
-        <h1>{{'formprofile.add' | translate}}</h1>
-    </div>
-    
-    <form>
-      <div class="row gx-4">
-        <mat-form-field class="col-6">
-          <mat-label class="">{{'formprofile.name' | translate}} </mat-label>
-          <input type="text" matInput [errorStateMatcher]="matcher" placeholder="" />
-  
-        </mat-form-field>
-  
-        <mat-form-field class="col-6">
-          <mat-label class="">{{'formprofile.description' | translate}} </mat-label>
-          <input type="text" matInput [errorStateMatcher]="matcher" placeholder="" />
-  
-        </mat-form-field>
-  
-        <div class="col-12">
-          <h3>
-            <mat-slide-toggle></mat-slide-toggle>
-            {{'formprofile.providerprofile' | translate}}
-          </h3>
-        </div>
-        <div *ngFor="let rol of roles" class="mb-3">
-          <mat-accordion multi>
-            <mat-expansion-panel class="border border-1">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <h1>
-                    <mat-slide-toggle [id]="rol.id" (change)="toogle($event, rol.id)" [checked]="rol.selected" ></mat-slide-toggle>
-                    {{rol.name}}
-                  </h1>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-  
-              <!-- Items de cada modulo -->
-            <section *ngFor="let item of rol.items" >
-  
+  <div class="encabezado mb-2">
+    <h1>{{ 'formprofile.add' | translate }}</h1>
+  </div>
+
+  <form [formGroup]="form">
+    <div class="row gx-4 gy-2">
+      <mat-form-field class="col-6">
+        <mat-label class="">{{ 'formprofile.name' | translate }} </mat-label>
+        <input
+          type="text"
+          matInput
+          [errorStateMatcher]="matcher"
+          placeholder=""
+          formControlName="name"
+        />
+
+        <mat-error *ngIf="form.get('name')?.hasError('required')">
+          Este campo es requerido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-6">
+        <mat-label class=""
+          >{{ 'formprofile.description' | translate }}
+        </mat-label>
+        <input
+          type="text"
+          matInput
+          [errorStateMatcher]="matcher"
+          placeholder=""
+          formControlName="description"
+        />
+
+        <mat-error *ngIf="form.get('description')?.hasError('required')">
+          Este campo es requerido
+        </mat-error>
+      </mat-form-field>
+
+      <div class="col-12">
+        <h3>
+          <mat-slide-toggle></mat-slide-toggle>
+          {{ 'formprofile.providerprofile' | translate }}
+        </h3>
+      </div>
+      <div *ngFor="let rol of roles" class="mb-3">
+        <mat-accordion multi>
+          <mat-expansion-panel class="border border-1">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h1>
+                  <mat-slide-toggle
+                    [id]="rol.id"
+                    (change)="toogle($event, rol.id)"
+                    [checked]="rol.selected"
+                  ></mat-slide-toggle>
+                  {{ rol.name }}
+                </h1>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <!-- Items de cada modulo -->
+            <section *ngFor="let item of rol.items">
               <!-- Items solo con itemChild -->
-                <div *ngIf="item?.itemChild" class="mx-2 mt-4 p-3 border border-2 items">
+              <div
+                *ngIf="item?.itemChild"
+                class="mx-2 mt-4 p-3 border border-2 items"
+              >
+                <div>
+                  <h2 class="border border-2 p-2 bg-white">
+                    <mat-slide-toggle
+                      [id]="item.id"
+                      (change)="toogle2($event, item.id)"
+                      [checked]="item.selected"
+                    ></mat-slide-toggle>
+                    {{ item.name }}
+                  </h2>
+
+                  <!-- Sub items -->
                   <div>
-                      <h2  class="border border-2 p-2 bg-white">
-                        <mat-slide-toggle [checked]="item.selected"></mat-slide-toggle>
-                        {{item.name}}
-                      </h2>
-  
-                    <!-- Sub items -->
-                    <div>
-                      <section class="row gx-2 mx-3">
-                        <div *ngFor="let itemChil of item?.itemChild" class="col-2">
-                          <h3>
-                            <mat-slide-toggle [checked]="itemChil.selected"></mat-slide-toggle>
-                            {{itemChil.name}}
-                          </h3>
-                        </div>
-                      </section>
-                    </div>
+                    <section class="row gx-2 mx-3">
+                      <div
+                        *ngFor="let itemChil of item?.itemChild"
+                        class="col-2"
+                      >
+                        <h3>
+                          <mat-slide-toggle
+                            [checked]="itemChil.selected"
+                          ></mat-slide-toggle>
+                          {{ itemChil.name }}
+                        </h3>
+                      </div>
+                    </section>
                   </div>
                 </div>
-  
-                <!-- Items sin itemChild -->
-                <div *ngIf="!item?.itemChild" class="mx-2">
-                    <h3>
-                      <mat-slide-toggle [checked]="item.selected"></mat-slide-toggle>
-                      {{item.name}}
-                    </h3>
-                </div>
-              </section>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
+              </div>
+
+              <!-- Items sin itemChild -->
+              <div *ngIf="!item?.itemChild" class="mx-2">
+                <h3>
+                  <mat-slide-toggle
+                    [checked]="item.selected"
+                  ></mat-slide-toggle>
+                  {{ item.name }}
+                </h3>
+              </div>
+            </section>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
-    </form>
+    </div>
+
+    <div class="button">
+      <button class="btn btn-primary" [disabled]="form.invalid">Guardar</button>
+    </div>
+  </form>
 </div>

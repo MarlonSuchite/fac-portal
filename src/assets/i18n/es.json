@@ -40,8 +40,8 @@
     },
     "formprofile": {
         "add": "Agregar",
-        "name": "Nombre *",
-        "description": "Descripción *",
+        "name": "Nombre",
+        "description": "Descripción",
         "providerprofile": "Perfil de proveedor"
     }
 }

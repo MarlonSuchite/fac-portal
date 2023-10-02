@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminModule } from './admin/admin.module';
 import { SecurityModule } from './security/security.module';
 import { QueryModule } from './query/query.module';
 
@@ -21,11 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes),
-    SecurityModule,
-    QueryModule
-  ],
+  imports: [RouterModule.forRoot(routes), SecurityModule, QueryModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

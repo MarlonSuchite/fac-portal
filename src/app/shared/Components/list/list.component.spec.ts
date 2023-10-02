@@ -19,4 +19,13 @@ xdescribe('ListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('hola', () => {
+    const valor = 1;
+    const event = spyOn(component.clickParam, 'emit');
+
+    component.clickParamEvent(valor);
+
+    expect(event).toHaveBeenCalledWith(valor);
+  });
 });
