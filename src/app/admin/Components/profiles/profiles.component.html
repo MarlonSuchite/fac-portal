@@ -5,7 +5,7 @@
 <div class="container-fluid">
   <div class="row gx-5 gy-2">
     <section class="col-12 mt-3">
-      <h1>{{'profiles.profiles' | translate}}</h1>
+      <h1>{{ 'profiles.profiles' | translate }}</h1>
     </section>
 
     <!-- Listado de Usuarios -->
@@ -21,7 +21,7 @@
           </div>
 
           <div class="col-2 mt-3 search-icon">
-            <mat-icon matSuffix>search</mat-icon>
+            <mat-icon matSuffix (click)="searchParams()">search</mat-icon>
           </div>
         </div>
         <div class="mt-3 listado">
@@ -37,19 +37,19 @@
           [length]="profiles.length"
           [pageSize]="pageSize"
           [pageSizeOptions]="pageSizeOptions"
+          (page)="getPage($event)"
           aria-label="Select page"
         >
         </mat-paginator>
-      
       </div>
     </section>
 
-  <!--Panel  -->
-  <section class="col-md-9 mt-4">
-    <div class="border p-3 panel shadow-lg bg-white p-5">
-      <!-- Formulario -->
-      <app-form-profile></app-form-profile>
-    </div>
-  </section>
-</div>
+    <!--Panel  -->
+    <section class="col-md-9 mt-4">
+      <div class="border p-3 panel shadow-lg bg-white p-5">
+        <!-- Formulario -->
+        <app-form-profile></app-form-profile>
+      </div>
+    </section>
+  </div>
 </div>

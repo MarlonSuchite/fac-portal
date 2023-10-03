@@ -47,7 +47,8 @@ export class UsersComponent implements OnInit {
       }
 
       if (params['page']) {
-        (this.page = params['page']), (this.search = params['search']);
+        this.page = params['page'];
+        this.search = params['search'];
         /* 
           Servicio...
         */
@@ -63,14 +64,14 @@ export class UsersComponent implements OnInit {
   }
 
   //Obtener el numero de pagina
-  getPage(event: any) {
+  getPage(event: any): void {
     this.router.navigate(['/admin/users'], {
       queryParams: { page: event.pageIndex, search: this.search }
     });
   }
 
   //Obtener el parametro de busqueda
-  searchParams() {
+  searchParams(): void {
     this.router.navigate(['/admin/users'], {
       queryParams: { page: 0, search: this.searchValue.value }
     });
