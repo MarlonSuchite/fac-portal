@@ -16,7 +16,7 @@
         />
 
         <mat-error *ngIf="form.get('name')?.hasError('required')">
-          {{'formProfile.required' | translate}}
+          {{ 'formProfile.required' | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -33,7 +33,7 @@
         />
 
         <mat-error *ngIf="form.get('description')?.hasError('required')">
-          {{'formProfile.required' | translate}}
+          {{ 'formProfile.required' | translate }}
         </mat-error>
       </mat-form-field>
 

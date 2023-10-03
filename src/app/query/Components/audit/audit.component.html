@@ -14,12 +14,16 @@
             [matDatepicker]="picker"
             formControlName="startDate"
           />
+
           <mat-hint>{{ 'audit.date' | translate }}</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
             [for]="picker"
           ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get('startDate')?.hasError('required')">
+            {{ 'audit.required' | translate }}
+          </mat-error>
         </mat-form-field>
       </section>
 
@@ -34,6 +38,9 @@
             [for]="date"
           ></mat-datepicker-toggle>
           <mat-datepicker #date></mat-datepicker>
+          <mat-error *ngIf="form.get('endDate')?.hasError('required')">
+            {{ 'audit.required' | translate }}
+          </mat-error>
         </mat-form-field>
       </section>
 
@@ -49,6 +56,9 @@
               'audit.entity2' | translate
             }}</mat-option>
           </mat-select>
+          <mat-error *ngIf="form.get('entity')?.hasError('required')">
+            {{ 'audit.required' | translate }}
+          </mat-error>
         </mat-form-field>
       </section>
 
@@ -64,6 +74,9 @@
               'audit.operation2' | translate
             }}</mat-option>
           </mat-select>
+          <mat-error *ngIf="form.get('operation')?.hasError('required')">
+            {{ 'audit.required' | translate }}
+          </mat-error>
         </mat-form-field>
       </section>
 

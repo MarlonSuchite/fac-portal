@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row gx-5 gy-2">
     <section class="col-12 mt-3">
-      <h1>{{'users.user' | translate}}</h1>
+      <h1>{{ 'users.user' | translate }}</h1>
     </section>
 
     <!-- Listado usuarios -->
@@ -15,7 +15,7 @@
           <div class="col-10">
             <input
               type="text"
-              placeholder="{{'placeholder' | translate}}"
+              placeholder="{{ 'placeholder' | translate }}"
               [formControl]="searchValue"
             />
           </div>

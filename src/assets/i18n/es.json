@@ -27,7 +27,8 @@
         "operation2": "Operación 2",
         "entity": "Entidad",
         "entity1": "Entidad 1",
-        "entity2": "Entidad 2"
+        "entity2": "Entidad 2",
+        "required": "*Este campo es requerido"
     },
     "table": {
         "identifier": "Identificador",

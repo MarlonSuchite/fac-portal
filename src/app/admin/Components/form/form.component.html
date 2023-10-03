@@ -1,7 +1,7 @@
 <div class="">
   <div class="encabezado mb-2">
-    <h1 *ngIf="mode === 'add'">{{'form.add' | translate}}</h1>
-    <h1 *ngIf="mode === 'edit'">{{'form.edit' | translate}}</h1>
+    <h1 *ngIf="mode === 'add'">{{ 'form.add' | translate }}</h1>
+    <h1 *ngIf="mode === 'edit'">{{ 'form.edit' | translate }}</h1>
     <i
       *ngIf="mode === 'edit'"
       class="bi bi-power"
@@ -12,7 +12,7 @@
   <form [formGroup]="form">
     <div class="row gx-4">
       <mat-form-field class="col-6">
-        <mat-label class="">{{'form.email' | translate}}</mat-label>
+        <mat-label class="">{{ 'form.email' | translate }}</mat-label>
         <input
           type="email"
           matInput
@@ -26,15 +26,15 @@
             !form.get('email').hasError('email')
           "
         >
-          {{'form.errorEmail' | translate}}
+          {{ 'form.errorEmail' | translate }}
         </mat-error>
         <mat-error *ngIf="form.get('email').hasError('required')">
-          {{'form.required' | translate}}
+          {{ 'form.required' | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field class="col-6">
-        <mat-label class="">{{'form.name' | translate}}</mat-label>
+        <mat-label class="">{{ 'form.name' | translate }}</mat-label>
         <input
           type="name"
           matInput
@@ -51,14 +51,14 @@
           
         </mat-error>
         <mat-error *ngIf="form.get('name').hasError('required')">
-          {{'form.required' | translate}}
+          {{ 'form.required' | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field class="col-6">
         <mat-label>{{'form.profile' | translate}}</mat-label>
         <mat-error *ngIf="form.get('name').hasError('required')">
-          {{'form.required' | translate}}
+          {{ 'form.required' | translate }}
         </mat-error>
         <mat-select formControlName="options" [(value)]="options.name">
           <mat-option *ngFor="let op of options" [value]="op.id"
@@ -73,7 +73,7 @@
         [disabled]="form.invalid"
         (click)="action()"
       >
-      {{'form.save' | translate}}
+      {{ 'form.save' | translate }}
       </button>
       <button
         type="button"
@@ -81,7 +81,7 @@
         class="btn-secondary"
         (click)="changeMode()"
       >
-      {{'form.plus' | translate}}
+      {{ 'form.plus' | translate }}
       </button>
     </div>
   </form>
