@@ -26,10 +26,10 @@
             !form.get('email').hasError('email')
           "
         >
-          *Por favor, introduce una dirección de correo electrónico válida
+          {{'form.errorEmail' | translate}}
         </mat-error>
         <mat-error *ngIf="form.get('email').hasError('required')">
-          *El campo es requerido
+          {{'form.required' | translate}}
         </mat-error>
       </mat-form-field>
 
@@ -48,17 +48,17 @@
             !form.get('name').hasError('required')
           "
         >
-          *Por favor, introduce una nombre válido
+          
         </mat-error>
         <mat-error *ngIf="form.get('name').hasError('required')">
-          *El campo es requerido
+          {{'form.required' | translate}}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field class="col-6">
         <mat-label>{{'form.profile' | translate}}</mat-label>
         <mat-error *ngIf="form.get('name').hasError('required')">
-          *El campo es requerido
+          {{'form.required' | translate}}
         </mat-error>
         <mat-select formControlName="options" [(value)]="options.name">
           <mat-option *ngFor="let op of options" [value]="op.id"

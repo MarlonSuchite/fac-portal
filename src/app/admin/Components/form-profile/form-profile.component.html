@@ -1,12 +1,12 @@
 <div>
   <div class="encabezado mb-2">
-    <h1>{{ 'formprofile.add' | translate }}</h1>
+    <h1>{{ 'formProfile.add' | translate }}</h1>
   </div>
 
   <form [formGroup]="form">
     <div class="row gx-4 gy-2">
       <mat-form-field class="col-6">
-        <mat-label class="">{{ 'formprofile.name' | translate }} </mat-label>
+        <mat-label class="">{{ 'formProfile.name' | translate }} </mat-label>
         <input
           type="text"
           matInput
@@ -16,13 +16,13 @@
         />
 
         <mat-error *ngIf="form.get('name')?.hasError('required')">
-          Este campo es requerido
+          {{'formProfile.required' | translate}}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field class="col-6">
         <mat-label class=""
-          >{{ 'formprofile.description' | translate }}
+          >{{ 'formProfile.description' | translate }}
         </mat-label>
         <input
           type="text"
@@ -33,14 +33,14 @@
         />
 
         <mat-error *ngIf="form.get('description')?.hasError('required')">
-          Este campo es requerido
+          {{'formProfile.required' | translate}}
         </mat-error>
       </mat-form-field>
 
       <div class="col-12">
         <h3>
           <mat-slide-toggle></mat-slide-toggle>
-          {{ 'formprofile.providerprofile' | translate }}
+          {{ 'formProfile.providerProfile' | translate }}
         </h3>
       </div>
       <div *ngFor="let rol of roles" class="mb-3">

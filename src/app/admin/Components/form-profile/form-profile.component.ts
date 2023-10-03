@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MyErrorStateMatcher } from '../profiles/profiles.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form-profile',
@@ -14,27 +15,27 @@ export class FormProfileComponent {
   roles: any[] = [
     {
       id: 1,
-      name: 'Configuración',
+      name: this.translate.instant('roles.configuration.configuration'),
       selected: false,
       items: [
         {
           id: 2,
-          name: 'Seguridad',
+          name: this.translate.instant('roles.configuration.security'),
           role: '',
           selected: false,
           itemChild: [
-            { id: 3, name: 'Perfiles', role: 'ROLE_PROFILES', selected: false },
-            { id: 4, name: 'Usuarios', role: 'ROLE_USERS', selected: false }
+            { id: 3, name: this.translate.instant('roles.configuration.profiles'), role: 'ROLE_PROFILES', selected: false },
+            { id: 4, name: this.translate.instant('roles.configuration.users'), role: 'ROLE_USERS', selected: false }
           ]
         }
       ]
     },
     {
       id: 21,
-      name: 'Consultas',
+      name: this.translate.instant('roles.queries.queries'),
       selected: false,
       items: [
-        { id: 22, name: 'Auditoría', role: 'ROLE_AUDIT', selected: false }
+        { id: 22, name: this.translate.instant('roles.queries.audit'), role: 'ROLE_AUDIT', selected: false }
       ]
     }
   ];
@@ -43,11 +44,15 @@ export class FormProfileComponent {
     { id: 21, name: 'Coments' }
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor
+  (
+    private fb: FormBuilder,
+    private translate: TranslateService
+    ) {
     this.buildForm();
   }
 
-  //Fromulario
+  //Formulario
   buildForm() {
     this.form = this.fb.group({
       name: ['', Validators.required],

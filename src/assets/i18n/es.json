@@ -14,7 +14,9 @@
         "name": "Nombre",
         "profile": "Perfil",
         "save": "Guardar",
-        "plus": "+"
+        "plus": "+",
+        "errorEmail": "*Por favor, introduce una dirección de correo electrónico válida",
+        "required": "*El campo es requerido"
     },
     "audit": {
         "startdate": "Fecha Inicio",
@@ -38,10 +40,24 @@
     "profiles":{
         "profiles": "Perfiles"
     },
-    "formprofile": {
+    "formProfile": {
         "add": "Agregar",
         "name": "Nombre",
         "description": "Descripción",
-        "providerprofile": "Perfil de proveedor"
-    }
+        "providerProfile": "Perfil de proveedor",
+        "required": "*Este campo es requerido"
+    },
+    "roles":{
+        "configuration": {
+            "configuration": "Configuracion",
+            "security": "Seguridad",
+            "profiles": "Perfiles",
+            "users": "Usuarios"
+        },
+        "queries": {    
+            "queries": "Consultas",
+            "audit": "Auditoria"
+        }
+    },
+    "placeholder": "Buscar..."
 }
