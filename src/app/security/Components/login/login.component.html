@@ -1,0 +1,18 @@
+<div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Nombre de Usuario</label>
+        <input type="text" id="username" name="username" [(ngModel)]="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required>
+      </div>
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+    <div class="password mt-3">
+            <p>¿Olvidó su contraseña? Haga clic</p>
+            <p class="mx-1"><a href="#">Aquí.</a></p>
+    </div>
+  </div>
