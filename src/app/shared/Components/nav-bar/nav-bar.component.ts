@@ -5,4 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBarComponent {}
+export class NavBarComponent {
+  changePassword = true;
+
+  clickChangePassword() {
+    this.changePassword = true;
+  }
+
+  receiveChange(event: boolean) {
+    this.changePassword = event;
+  }
+}

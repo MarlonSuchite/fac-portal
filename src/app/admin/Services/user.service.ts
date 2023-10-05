@@ -124,6 +124,19 @@ export class UserService {
             providerProfile: false,
             status: true
           }
+        },
+        {
+          id: 5,
+          email: 'esramirez@diunsa.hn',
+          name: 'Estuardo Ramirez',
+          status: true,
+          profile: {
+            id: 1,
+            name: 'PRF - Administrador General',
+            description: 'Perfil para administradores',
+            providerProfile: false,
+            status: true
+          }
         }
       ],
       totalElements: 20,

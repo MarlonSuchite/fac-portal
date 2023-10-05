@@ -9,5 +9,15 @@
     <li>
       <a routerLink="/admin/profiles">{{ 'navbar.profiles' | translate }}</a>
     </li>
+    <li>
+      <button class="btn btn-danger" (click)="clickChangePassword()">
+        Cambiar contraseña
+      </button>
+    </li>
   </ul>
 </nav>
+<app-change-password
+  *ngIf="changePassword"
+  [changePassword]="changePassword"
+  (clickButton)="receiveChange($event)"
+></app-change-password>

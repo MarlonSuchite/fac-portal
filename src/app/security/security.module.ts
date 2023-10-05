@@ -11,9 +11,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { ChangePasswordComponent } from './Components/change-password/change-password.component';
 
 @NgModule({
-  declarations: [LoginComponent, ForgotPasswordComponent],
+  declarations: [
+    LoginComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent
+  ],
   imports: [
     CommonModule,
     SecurityRoutingModule,
@@ -25,6 +30,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatStepperModule,
     ReactiveFormsModule,
     TranslateModule
-  ]
+  ],
+  exports: [ChangePasswordComponent]
 })
 export class SecurityModule {}

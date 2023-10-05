@@ -96,6 +96,6 @@ export class UsersComponent implements OnInit {
     this.mode = 'edit';
   }
 
-  pageSize = 7;
-  pageSizeOptions = [7];
+  pageSize = 10;
+  pageSizeOptions = [10];
 }
