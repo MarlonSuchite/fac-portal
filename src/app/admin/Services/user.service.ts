@@ -131,12 +131,26 @@ export class UserService {
     }
   ];
 
+  user: UserApi = {
+    id: 29,
+    email: 'ecoronado@is4tech.com',
+    name: 'Eliezer Coronado',
+    status: true,
+    profile: {
+      id: 1,
+      name: 'QA-Proveedor',
+      description: 'QA Perfil proveedor',
+      providerProfile: false,
+      status: true
+    }
+  };
+
   getUsers(): UserApi[] {
     return this.users[0].content;
   }
 
-  getUser(id: any) {
-    return this.users[0].content.filter(m => m.id == id);
+  getUser(id: any): UserApi {
+    return this.user;
   }
 
   addNewUser(value: any) {

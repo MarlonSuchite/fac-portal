@@ -6,11 +6,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from '../users/users.component';
 import { UserApi } from '../../Interfaces/user-api';
 
@@ -21,24 +17,15 @@ import { UserApi } from '../../Interfaces/user-api';
 })
 export class FormComponent implements OnChanges {
   @Input() mode: 'add' | 'edit';
+  @Input() user!: UserApi;
   @Output() userActions = new EventEmitter<any>();
   @Output() changeModeParent = new EventEmitter<any>();
 
   form!: FormGroup;
   matcher = new MyErrorStateMatcher();
-  user: UserApi = {
-    id: 29,
-    email: 'ecoronado@is4tech.com',
-    name: 'Eliezer Coronado',
-    status: true,
-    profile: {
-      id: 1,
-      name: 'QA-Proveedor',
-      description: 'QA Perfil proveedor',
-      providerProfile: false,
-      status: true
-    }
-  };
+  copyUser: UserApi[] = [];
+  buttonStatus = false;
+
   options: any = [
     { id: 1, name: 'QA - Proveedor' },
     { id: 2, name: 'PRF - Administrador General' },
@@ -46,7 +33,7 @@ export class FormComponent implements OnChanges {
     { id: 4, name: 'Test Role' }
   ];
 
-  statusUser = this.user.status;
+  statusUser = this.user?.status;
 
   constructor(private fb: FormBuilder) {
     this.buildForm();
@@ -59,13 +46,11 @@ export class FormComponent implements OnChanges {
         name: this.user.name,
         options: this.user.profile.id
       });
+      this.buttonStatus = true;
     } else {
-      this.form.setValue({
-        email: '',
-        name: '',
-        options: ''
-      });
+      this.form.reset();
     }
+    this.copyUser.push(this.user);
   }
 
   buildForm() {
@@ -74,6 +59,7 @@ export class FormComponent implements OnChanges {
       name: ['', Validators.required],
       options: ['', Validators.required]
     });
+    this.changesObject();
   }
 
   action() {
@@ -101,6 +87,7 @@ export class FormComponent implements OnChanges {
 
   changeMode() {
     this.changeModeParent.emit('add');
+    this.buttonStatus = false;
   }
 
   status() {
@@ -113,5 +100,24 @@ export class FormComponent implements OnChanges {
       status: this.statusUser
     };
     this.userActions.emit(params);
+  }
+
+  //Cambios en el objeto
+  changesObject() {
+    this.form.valueChanges.subscribe(res => {
+      if (this.mode === 'edit') {
+        this.copyUser.forEach(element => {
+          if (
+            element.email === res.email &&
+            element.name === res.name &&
+            element.profile.id === res.options
+          ) {
+            this.buttonStatus = true;
+          } else {
+            this.buttonStatus = false;
+          }
+        });
+      }
+    });
   }
 }
