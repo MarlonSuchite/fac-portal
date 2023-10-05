@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormValidations } from 'src/app/utils/form-validations';
+import { NewPassword } from '../../Interfaces/new-password';
+import { LoginService } from '../../Services/login.service';
 
 @Component({
   selector: 'app-change-password',
@@ -15,16 +18,46 @@ export class ChangePasswordComponent {
   confirmNewPassword = true;
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private _loginService: LoginService
+  ) {
     this.buildForm();
   }
 
   buildForm() {
     this.form = this.fb.group({
       currentPassword: ['', [Validators.required]],
-      newPassword: [''],
-      confirmNewPassword: ['']
+      newPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          FormValidations.correctPassword
+        ]
+      ],
+      confirmNewPassword: ['', [Validators.required, Validators.minLength(8)]]
     });
+    this.setValidator();
+  }
+
+  setValidator() {
+    this.form.get('newPassword').valueChanges.subscribe(res => {
+      this.form.controls['confirmNewPassword'].setValidators([
+        Validators.required,
+        Validators.minLength(8),
+        FormValidations.passwordEquality(res)
+      ]);
+    });
+  }
+
+  sendNewPassword() {
+    const password: NewPassword = {
+      currentPassword: this.form.get('currentPassword').value,
+      password: this.form.get('newPassword').value,
+      passwordCondirmation: this.form.get('confirmNewPassword').value
+    };
+    this._loginService.sendNewPassword(password);
   }
 
   sendEvent() {

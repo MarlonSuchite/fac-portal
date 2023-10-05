@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
-  changePassword = true;
+  changePassword = false;
 
   clickChangePassword() {
     this.changePassword = true;
