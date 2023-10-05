@@ -1,4 +1,36 @@
-.login-container {
+.container{
+  width: 400px;
+  height: 500px;
+  margin-top: 5rem;
+  padding: 0;
+
+  form{
+    padding: 1rem;
+    .login{
+      display: flex ;
+      justify-content: center;
+    }
+  }
+
+  .btn-login{
+    width: 80%;
+    margin: auto;
+
+    .btn-dark{
+      width: 100%;
+      padding: .5rem;
+    }
+  }
+
+  .password{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+
+/* .login-container {
     width: 300px;
     margin: 0 auto;
     text-align: center;
@@ -39,4 +71,4 @@
     display: flex;
     justify-content: center;
   }
-  
+   */

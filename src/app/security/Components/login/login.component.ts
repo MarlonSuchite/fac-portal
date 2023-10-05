@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +8,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  remember: boolean = false;
+  hide = true;
+  loginForm!: FormGroup;
 
-  onSubmit() {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+  ) {
+    this.buildForm();
+  }
+
+  buildForm() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
+
+  logIn(): void {
+    this.router.navigate(['/admin/users']);
   }
 }

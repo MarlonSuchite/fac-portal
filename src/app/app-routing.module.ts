@@ -6,7 +6,7 @@ import { QueryModule } from './query/query.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/query/search',
+    redirectTo: '/security/login',
     pathMatch: 'full'
   },
   {
@@ -19,9 +19,9 @@ const routes: Routes = [
   },
   {
     path: 'security',
-    loadChildren: () => import('./security/security.module').then(m => m.SecurityModule)
+    loadChildren: () =>
+      import('./security/security.module').then(m => m.SecurityModule)
   }
-  
 ];
 
 @NgModule({

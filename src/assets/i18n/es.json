@@ -60,5 +60,35 @@
             "audit": "Auditoria"
         }
     },
+    "login": {
+        "email": {
+            "enterEmail": "Ingresa tu correo"
+        },
+        "password": {
+            "enterPassword": "Ingresa tu contraseña",
+            "forgotPassword": "¿Olvidó su contraseña? Haga click",
+            "here":"Aquí"
+        }
+    },
+    "forgotPassword":{
+        "step-1": {
+            "email": "Email",
+            "goBack": "Regresar",
+            "following": "Siguiente"
+        },
+        "step-2":{
+            "recoverPassword": "Recuperar contraseña",
+            "changePassword": "Cambio de contraseña",
+            "email": "Email",
+            "verificationCode": "Código verificación",
+            "enterPassword": "Ingresa tu contraseña",
+            "goBack": "Regresar",
+            "following": "Siguiente",
+            "required": "*Este campo es requerido",
+            "minLength": "*omo mínimo son 8 caracteres",
+            "passwordEquality": "*Deben de coincidir las contraseñas",
+            "passwordInstructions": " -1 carácter especial como mínimo -1 número como mínimo -1 mayúscula y minuscula como mínimo"
+        }
+    },
     "placeholder": "Buscar..."
 }
