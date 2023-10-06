@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserApi } from '../Interfaces/user-api';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,138 +8,7 @@ import { UserApi } from '../Interfaces/user-api';
 export class UserService {
   users = [
     {
-      content: [
-        {
-          id: 17,
-          email: 'advasquez@diunsa.hn',
-          name: 'Ada Vasquez',
-          status: true,
-          profile: {
-            id: 57,
-            name: 'QA-Proveedor',
-            description: 'QA Perfil proveedor',
-            providerProfile: true,
-            status: true
-          }
-        },
-        {
-          id: 3,
-          email: 'apitrade@diunsa.hn',
-          name: 'Api Trade',
-          status: true,
-          profile: {
-            id: 1,
-            name: 'PRF - Administrador General',
-            description: 'Perfil para administradores',
-            providerProfile: false,
-            status: true
-          }
-        },
-        {
-          id: 18,
-          email: 'hernandez@is4tech.com',
-          name: 'Ariz Hernandez e',
-          status: true,
-          profile: {
-            id: 1,
-            name: 'PRF - Administrador General',
-            description: 'Perfil para administradores',
-            providerProfile: false,
-            status: true
-          }
-        },
-        {
-          id: 26,
-          email: 'csagastume@diunsa.hn',
-          name: 'Carlos Edgardo Sagastume Chavez',
-          status: true,
-          profile: {
-            id: 1,
-            name: 'PRF - Administrador General',
-            description: 'Perfil para administradores',
-            providerProfile: false,
-            status: true
-          }
-        },
-        {
-          id: 20,
-          email: 'cherrera@diunsa.hn',
-          name: 'Christopher Herrera',
-          status: true,
-          profile: {
-            id: 1,
-            name: 'PRF - Administrador General',
-            description: 'Perfil para administradores',
-            providerProfile: false,
-            status: true
-          }
-        },
-        {
-          id: 15,
-          email: 'drosales@diunsa.hn',
-          name: 'Denis Rosales',
-          status: true,
-          profile: {
-            id: 40,
-            name: 'PRF - Proveedores',
-            description: 'Perfil para usuarios de proveedor',
-            providerProfile: true,
-            status: true
-          }
-        },
-        {
-          id: 9,
-          email: 'esabillon@coffeelandhn.com',
-          name: 'Edwin Sabillon',
-          status: true,
-          profile: {
-            id: 40,
-            name: 'PRF - Proveedores',
-            description: 'Perfil para usuarios de proveedor',
-            providerProfile: true,
-            status: true
-          }
-        },
-        {
-          id: 29,
-          email: 'ecoronado@is4tech.com',
-          name: 'Eliezer Coronado',
-          status: false,
-          profile: {
-            id: 59,
-            name: 'Test Role',
-            description: 'Desc',
-            providerProfile: false,
-            status: true
-          }
-        },
-        {
-          id: 5,
-          email: 'esramirez@diunsa.hn',
-          name: 'Estuardo Ramirez',
-          status: true,
-          profile: {
-            id: 1,
-            name: 'PRF - Administrador General',
-            description: 'Perfil para administradores',
-            providerProfile: false,
-            status: true
-          }
-        },
-        {
-          id: 5,
-          email: 'esramirez@diunsa.hn',
-          name: 'Estuardo Ramirez',
-          status: true,
-          profile: {
-            id: 1,
-            name: 'PRF - Administrador General',
-            description: 'Perfil para administradores',
-            providerProfile: false,
-            status: true
-          }
-        }
-      ],
+      content: [],
       totalElements: 20,
       totalPages: 2
     }
@@ -158,16 +28,27 @@ export class UserService {
     }
   };
 
-  getUsers(): UserApi[] {
-    return this.users[0].content;
+  constructor(private http: HttpClient) {}
+
+  getUsers(params: any) {
+    const param = new HttpParams()
+      .append('page', params.page - 1)
+      .append('sort', params.sort)
+      .append('size', params.size);
+    console.log('Pagina desde el servicio', params.page - 1);
+    return this.http.get(
+      `http://localhost:8085/fac-services/api/user?${param}`
+    );
   }
 
   getUser(id: any): UserApi {
     return this.user;
   }
 
+  //Agregar usario
   addNewUser(value: any) {
     console.log(value);
+    return this.http.post('http://localhost:8085/fac-services/api/user', value);
   }
 
   updateUser(value: any) {

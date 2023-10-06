@@ -67,7 +67,7 @@ export class FormComponent implements OnChanges {
       const params = {
         email: this.form.get('email').value,
         name: this.form.get('name').value,
-        option: this.form.get('options').value,
+        profileId: this.form.get('options').value,
         status: true
       };
       this.userActions.emit(params);
@@ -77,7 +77,7 @@ export class FormComponent implements OnChanges {
         id: this.user.id,
         email: this.form.get('email').value,
         name: this.form.get('name').value,
-        option: this.form.get('options').value,
+        profileId: this.form.get('options').value,
         status: true
       };
       this.userActions.emit(params);
@@ -96,7 +96,7 @@ export class FormComponent implements OnChanges {
       id: this.user.id,
       email: this.form.get('email').value,
       name: this.form.get('name').value,
-      option: this.form.get('options').value,
+      profileId: this.form.get('options').value,
       status: this.statusUser
     };
     this.userActions.emit(params);

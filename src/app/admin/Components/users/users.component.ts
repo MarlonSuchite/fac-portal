@@ -28,9 +28,20 @@ export class UsersComponent implements OnInit {
   users: UserApi[] = [];
   user!: any;
   mode: any = 'add';
-  page = 0;
+  page = 1;
   search = '';
+  sort = '';
+  size = 10;
+  content: any;
+  pageSize = 10;
+  pageSizeOptions = [10];
+  totalElements = 0;
   searchValue = new FormControl('');
+  param = {
+    page: this.page,
+    size: this.size,
+    sort: this.sort
+  };
 
   constructor(
     private router: Router,
@@ -48,13 +59,21 @@ export class UsersComponent implements OnInit {
 
       if (params['page']) {
         this.page = params['page'];
-        this.search = params['search'];
-        /* 
-          Servicio...
-        */
+        //this.search = params['search'];
+        this._userService.getUsers(params).subscribe((res: any) => {
+          this.users = res.content;
+        });
       }
     });
-    this.users = this._userService.getUsers();
+    this.firstCall();
+  }
+
+  //Mandar parametros en blanco y hacer las asignacines
+  firstCall() {
+    this._userService.getUsers(this.param).subscribe((res: any) => {
+      this.totalElements = res.totalElements;
+      this.users = res.content;
+    });
   }
 
   //Obtener solo un usuario
@@ -66,7 +85,12 @@ export class UsersComponent implements OnInit {
   //Obtener el numero de pagina
   getPage(event: any): void {
     this.router.navigate(['/admin/users'], {
-      queryParams: { page: event.pageIndex, search: this.search }
+      queryParams: {
+        page: event.pageIndex + 1,
+        search: this.search,
+        size: 10,
+        sort: this.sort
+      }
     });
   }
 
@@ -80,7 +104,9 @@ export class UsersComponent implements OnInit {
   //Agregar usuario o editar
   receiveAction(value: any) {
     if (this.mode === 'add') {
-      this._userService.addNewUser(value);
+      this._userService.addNewUser(value).subscribe(res => {
+        this.firstCall();
+      });
     } else {
       this._userService.updateUser(value);
     }
@@ -96,6 +122,15 @@ export class UsersComponent implements OnInit {
     this.mode = 'edit';
   }
 
-  pageSize = 10;
-  pageSizeOptions = [10];
+  removeQueryParams() {
+    this.router.navigate(['/admin/users'], {
+      queryParams: {
+        page: null,
+        search: null,
+        sort: null,
+        size: null
+      },
+      queryParamsHandling: 'merge'
+    });
+  }
 }

@@ -16,11 +16,17 @@ import { UsersComponent } from './Components/users/users.component';
 import { ProfilesComponent } from './Components/profiles/profiles.component';
 import { FormProfileComponent } from './Components/form-profile/form-profile.component';
 import { TranslateModule } from '@ngx-translate/core';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [FormComponent, UsersComponent, ProfilesComponent, FormProfileComponent],
+  declarations: [
+    FormComponent,
+    UsersComponent,
+    ProfilesComponent,
+    FormProfileComponent
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -38,7 +44,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatSelectModule,
     TranslateModule,
     MatSlideToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule
   ]
 })
 export class AdminModule {}
