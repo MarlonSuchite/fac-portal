@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { ProfilesService } from '../../Services/profiles.service';
+import { ProfilesService } from '../../Services/profile/profiles.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 

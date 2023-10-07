@@ -1,13 +1,7 @@
 export interface UserApi {
-  id: number;
+  userId?: number;
   email: string;
   name: string;
-  status: boolean;
-  profile: {
-    id: number;
-    name: string;
-    description: string;
-    providerProfile: boolean;
-    status: boolean;
-  };
+  profileId: number;
+  status?: boolean;
 }

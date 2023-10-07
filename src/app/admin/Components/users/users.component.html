@@ -47,13 +47,7 @@
     <!-- Panel usuarios -->
     <section class="col-md-8 mt-4">
       <div class="border p-3 panel shadow-lg bg-white p-5">
-        <app-form
-          (userActions)="receiveAction($event)"
-          [mode]="mode"
-          [user]="user"
-          (changeModeParent)="changeModeAdd($event)"
-        ></app-form>
-        <!--<app-edit-user></app-edit-user>-->
+        <app-form (addEvent)="firstCall()"></app-form>
       </div>
     </section>
   </div>

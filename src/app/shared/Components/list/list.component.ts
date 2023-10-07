@@ -10,6 +10,7 @@ export class ListComponent {
   @Output() clickParam = new EventEmitter<any>();
 
   clickParamEvent(value: any) {
+    console.log('Emitiendo desde lista', value);
     this.clickParam.emit(value);
   }
 }

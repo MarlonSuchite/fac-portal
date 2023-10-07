@@ -1,30 +1,25 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from '../users/users.component';
 import { UserApi } from '../../Interfaces/user-api';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../../Services/user/user.service';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnChanges {
-  @Input() mode: 'add' | 'edit';
-  @Input() user!: UserApi;
-  @Output() userActions = new EventEmitter<any>();
-  @Output() changeModeParent = new EventEmitter<any>();
+export class FormComponent implements OnInit {
+  @Output() addEvent = new EventEmitter<string>();
 
+  mode: 'add' | 'edit';
   form!: FormGroup;
   matcher = new MyErrorStateMatcher();
   copyUser: UserApi[] = [];
+  user: UserApi;
   buttonStatus = false;
+  statusUser: boolean;
 
   options: any = [
     { id: 1, name: 'QA - Proveedor' },
@@ -33,24 +28,42 @@ export class FormComponent implements OnChanges {
     { id: 4, name: 'Test Role' }
   ];
 
-  statusUser = this.user?.status;
-
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private activRouter: ActivatedRoute,
+    private _userService: UserService,
+    private router: Router
+  ) {
     this.buildForm();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.mode === 'edit') {
-      this.form.setValue({
-        email: this.user.email,
-        name: this.user.name,
-        options: this.user.profile.id
-      });
-      this.buttonStatus = true;
-    } else {
-      this.form.reset();
-    }
-    this.copyUser.push(this.user);
+  ngOnInit(): void {
+    this.mode = 'add';
+    this.params();
+  }
+
+  params() {
+    this.activRouter.queryParams.subscribe(params => {
+      if (params['id']) {
+        this.mode = 'edit';
+        this._userService.getUser(params).subscribe({
+          next: (res: UserApi) => {
+            this.form.setValue({
+              email: res.email,
+              name: res.name,
+              options: res.profileId
+            });
+            this.form.get('email').disable();
+            this.user = res;
+            this.copyUser.push(res);
+            this.statusUser = res.status;
+            this.buttonStatus = true;
+          }
+        });
+      } else {
+        this.form.reset();
+      }
+    });
   }
 
   buildForm() {
@@ -64,42 +77,47 @@ export class FormComponent implements OnChanges {
 
   action() {
     if (this.mode === 'add') {
-      const params = {
+      const params: UserApi = {
         email: this.form.get('email').value,
         name: this.form.get('name').value,
         profileId: this.form.get('options').value,
         status: true
       };
-      this.userActions.emit(params);
+      this._userService
+        .addNewUser(params)
+        .subscribe(() => this.addEvent.emit('d'));
       this.form.reset();
     } else {
-      const params = {
-        id: this.user.id,
+      const params: UserApi = {
+        userId: this.user.userId,
         email: this.form.get('email').value,
         name: this.form.get('name').value,
         profileId: this.form.get('options').value,
-        status: true
+        status: this.user.status
       };
-      this.userActions.emit(params);
+      this._userService.updateUser(params).subscribe(() => this.params());
       this.form.reset();
     }
   }
 
-  changeMode() {
-    this.changeModeParent.emit('add');
-    this.buttonStatus = false;
-  }
-
   status() {
     this.statusUser = !this.statusUser;
-    const params = {
-      id: this.user.id,
+    const params: UserApi = {
+      userId: this.user.userId,
       email: this.form.get('email').value,
       name: this.form.get('name').value,
       profileId: this.form.get('options').value,
       status: this.statusUser
     };
-    this.userActions.emit(params);
+    this._userService.updateUser(params).subscribe(() => this.params());
+  }
+
+  //Cambiar modo add
+  changeMode() {
+    this.mode = 'add';
+    this.router.navigate(['/admin/users'], { queryParams: {} });
+    this.buttonStatus = false;
+    this.form.get('email').enable();
   }
 
   //Cambios en el objeto
@@ -110,7 +128,7 @@ export class FormComponent implements OnChanges {
           if (
             element.email === res.email &&
             element.name === res.name &&
-            element.profile.id === res.options
+            element.profileId === res.options
           ) {
             this.buttonStatus = true;
           } else {
