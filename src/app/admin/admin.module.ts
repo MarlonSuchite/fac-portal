@@ -19,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     TranslateModule,
     MatSlideToggleModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ]
 })
 export class AdminModule {}

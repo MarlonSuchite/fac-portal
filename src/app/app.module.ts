@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment.dev';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { BlockUIModule } from 'ng-block-ui';
+import { BlockUIHttpModule } from 'ng-block-ui/http';
 
 export const httpTranslateLoader = (http: HttpClient): TranslateHttpLoader =>
   new TranslateHttpLoader(http, environment.refTranslate, '.json');
@@ -27,7 +29,13 @@ export const httpTranslateLoader = (http: HttpClient): TranslateHttpLoader =>
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    BlockUIModule.forRoot({
+      message: 'Procesando',
+      delayStart: 150,
+      delayStop: 150
+    }),
+    BlockUIHttpModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

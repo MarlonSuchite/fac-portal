@@ -6,7 +6,7 @@
       *ngIf="mode === 'edit'"
       class="bi bi-power"
       [ngClass]="{ green: statusUser === true }"
-      (click)="status()"
+      (click)="openDialog()"
     ></i>
   </div>
   <form [formGroup]="form">

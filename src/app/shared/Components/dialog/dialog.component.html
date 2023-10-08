@@ -1,0 +1,8 @@
+<div mat-dialog-title>Cambiar status</div>
+<div mat-dialog-content>Seguro de cambiar el status del usuario</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">
+    Cambiar
+  </button>
+</div>

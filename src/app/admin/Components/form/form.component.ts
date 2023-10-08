@@ -4,6 +4,8 @@ import { MyErrorStateMatcher } from '../users/users.component';
 import { UserApi } from '../../Interfaces/user-api';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../Services/user/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/Components/dialog/dialog.component';
 
 @Component({
   selector: 'app-form',
@@ -32,7 +34,8 @@ export class FormComponent implements OnInit {
     private fb: FormBuilder,
     private activRouter: ActivatedRoute,
     private _userService: UserService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.buildForm();
   }
@@ -135,6 +138,18 @@ export class FormComponent implements OnInit {
             this.buttonStatus = false;
           }
         });
+      }
+    });
+  }
+
+  //Abrir dialogo
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, { width: '300px' });
+    dialogRef.afterClosed().subscribe({
+      next: res => {
+        if (res) {
+          this.status();
+        }
       }
     });
   }
