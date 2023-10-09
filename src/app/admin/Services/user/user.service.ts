@@ -18,7 +18,7 @@ export class UserService {
       .append('page', params.page - 1)
       .append('sort', params.sort)
       .append('size', params.size);
-    return this.http.get<ContentApi>(`${this.api}?${param}`);
+    return this.http.get(`${this.api}?${param}`);
   }
 
   //Obtener un solo usuario

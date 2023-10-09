@@ -55,7 +55,6 @@ export class UsersComponent implements OnInit {
   //Mandar parametros en blanco y hacer las asignacines
   firstCall() {
     this._userService.getUsers(this.param).subscribe((res: ContentApi) => {
-      console.log(res);
       this.totalElements = res.totalElements;
       this.users = res.content;
     });
