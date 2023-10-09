@@ -1,18 +1,57 @@
-<nav>
+<nav class="shadow-lg">
   <ul>
     <li>
-      <a routerLink="/admin/users">{{ 'navbar.user' | translate }}</a>
+      <a> logo </a>
     </li>
-    <li>
-      <a routerLink="/query/search">{{ 'navbar.audit' | translate }}</a>
+    <li class="li">
+      <a routerLink="/admin/users">
+        <i class="fas bi bi-person-fill"></i>
+        <span class="nav-item">
+          {{ 'navbar.user' | translate }}
+        </span>
+      </a>
     </li>
-    <li>
-      <a routerLink="/admin/profiles">{{ 'navbar.profiles' | translate }}</a>
+    <li class="li">
+      <a routerLink="/query/search">
+        <i class="fas bi bi-list-nested"></i>
+        <span class="nav-item">
+          {{ 'navbar.audit' | translate }}
+        </span>
+      </a>
     </li>
-    <li>
-      <button class="btn btn-danger" (click)="clickChangePassword()">
-        Cambiar contraseña
-      </button>
+    <li class="li">
+      <a routerLink="/admin/profiles">
+        <i class="fas bi bi-people-fill"></i>
+        <span class="nav-item">
+          {{ 'navbar.profiles' | translate }}
+        </span>
+      </a>
+    </li>
+
+    <!-- Ajustes -->
+    <li class="li settings">
+      <a>
+        <i class="fas bi bi-gear-fill"></i>
+        <span class="nav-item">
+          {{ 'navbar.settings' | translate }}
+        </span>
+      </a>
+
+      <div class="password">
+        <section>
+          <a (click)="logOut()">
+            <i class="fas bi bi-arrow-left-square-fill"></i>
+            <span class="nav-item">
+              {{ 'navbar.exit' | translate }}
+            </span>
+          </a>
+        </section>
+        <section>
+          <button class="btn btn-danger" (click)="clickChangePassword()">
+            Cambiar contraseña
+          </button>
+        </section>
+      </div>
     </li>
   </ul>
 </nav>

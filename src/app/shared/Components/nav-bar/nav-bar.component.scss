@@ -1,34 +1,103 @@
-$background-color-nav: F1C40F;
+$background-color-nav: #ffffff;
+$color-balck: black;
+$color-red: #e95b5b;
 
 
-nav{
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 60px;
     background-color: $background-color-nav;
-    height: 50px;
+    overflow: hidden;
+    transition: 300ms;
+    z-index: 100;
 
-    ul{
+    &:hover {
+        width: 200px;
+    }
+
+    &:hover ul .li a .nav-item {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    ul {
         list-style: none;
-        display: flex;
-        justify-content: center;
         line-height: 50px;
-        
-        li{
+        margin-left: 1rem;
+
+        .li {
             margin-left: 1rem;
             font-style: none;
 
-            a{
+            a {
+                position: relative;
+                left: -3.5rem;
+                color: $color-balck;
+                width: 300px;
                 font-size: 20px;
                 font-weight: bold;
-                color: black;
-                text-transform: uppercase;
+                display: table;
                 text-decoration: none;
+                overflow: hidden;
                 transition: 300ms;
                 cursor: pointer;
+            
 
-                &:hover{
-                    color: rgb(19, 18, 18, 0.5);
+                &:hover .fas{
+                    color: $color-balck;
                 }
+
+                .fas {
+                    position: relative;
+                    font-size: 30px;
+                    color: $color-red;
+                    transition: 300ms;
+                }
+
+                .nav-item {
+                    position: relative;
+                    margin-left: 35px;
+                    transition: 1300ms;
+                    display: inline-block;
+                    transform: translateX(200px);
+                }
+            }
+
+        }
+
+        .settings {
+
+            .password {
+                position: absolute;
+                visibility: hidden;
+                width: 100px;
+                min-height: 100px;
+                transform: translateX(200px);
+                transition: 300ms;
+                z-index: 100;
+
+
+                a {
+                    margin-left: 1.5rem;
+
+                    .fas {
+                        font-size: 20px;
+                    }
+
+                    .nav-item {
+                        font-size: 20px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+            &:hover .password {
+                visibility: visible;
+                transform: translateX(0);
             }
         }
     }
 }
-

@@ -2,7 +2,9 @@
     "navbar":{
         "user": "Usuario",
         "audit": "Auditoria",
-        "profiles": "Perfiles"
+        "profiles": "Perfiles",
+        "settings": "Ajustes",
+        "exit": "Salir"
     },
     "users":{
         "user": "Usuarios"

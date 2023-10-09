@@ -106,5 +106,5 @@ export class ProfilesComponent implements OnInit {
   }
 
   pageSize = 10;
-  pageSizeOptions = [7];
+  pageSizeOptions = [10];
 }
