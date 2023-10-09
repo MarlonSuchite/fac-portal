@@ -12,10 +12,10 @@ nav {
     background-color: $background-color-nav;
     overflow: hidden;
     transition: 300ms;
-    z-index: 100;
+    z-index: 80;
 
     &:hover {
-        width: 200px;
+        width: 250px;
     }
 
     &:hover ul .li a .nav-item {
@@ -71,13 +71,15 @@ nav {
         .settings {
 
             .password {
-                position: absolute;
-                visibility: hidden;
+                position: relative;
+                left: 30px;
                 width: 100px;
                 min-height: 100px;
                 transform: translateX(200px);
                 transition: 300ms;
                 z-index: 100;
+                overflow: visible;
+
 
 
                 a {

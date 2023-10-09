@@ -18,7 +18,7 @@
         "save": "Guardar",
         "plus": "+",
         "errorEmail": "*Por favor, introduce una dirección de correo electrónico válida",
-        "required": "*El campo es requerido"
+        "required": "*Este campo es requerido"
     },
     "audit": {
         "startdate": "Fecha Inicio",
@@ -87,10 +87,21 @@
             "goBack": "Regresar",
             "following": "Siguiente",
             "required": "*Este campo es requerido",
-            "minLength": "*omo mínimo son 8 caracteres",
+            "minLength": "*Como mínimo son 8 caracteres",
             "passwordEquality": "*Deben de coincidir las contraseñas",
             "passwordInstructions": " -1 carácter especial como mínimo -1 número como mínimo -1 mayúscula y minuscula como mínimo"
         }
+    },
+    "changePassword": {
+        "changePassword": "Cambio de contraseña",
+        "currentPassword": "Contraseña Actual" ,
+        "newPassword": "Nueva contraseña",
+        "confirmNewPassword": "Confirmar contraseña",
+        "confirm": "Confirmar",
+        "required": "*Este campo es requerido",
+        "minLength": "*Como mínimo son 8 caracteres",
+        "passwordEquality": "*Deben de coincidir las contraseñas",
+        "passwordInstructions": " -1 carácter especial como mínimo -1 número como mínimo -1 mayúscula y minuscula como mínimo"
     },
     "placeholder": "Buscar..."
 }
