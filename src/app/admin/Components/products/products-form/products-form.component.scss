@@ -1,0 +1,51 @@
+$background-color-btn: #ffc003;
+$color-button: white;
+$background-color-btn-hover: #efbd3d;
+$color-power-true: #58D68D;
+$color-power-false: #E74C3C;
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .bi {
+        font-size: 3rem;
+        font-weight: bold;
+        color: $color-power-false;
+        cursor: pointer;
+    }
+
+    .green {
+        color: $color-power-true;
+    }
+
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25rem;
+    height: 100px;
+
+    .button{
+        height: 50px;
+    }
+
+    .btn-secondary {
+        height: 70px;
+        width: 70px;
+        font-size: 2em;
+        border-radius: 50%;
+        background-color: $background-color-btn;
+        color: $color-button;
+        border: none;
+        transition: 300ms;
+
+        &:hover {
+            background-color: $background-color-btn-hover;
+        }
+    }
+
+}

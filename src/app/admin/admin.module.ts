@@ -20,13 +20,17 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { ProductsComponent } from './components/products/products.component';
+import { MatCardModule } from '@angular/material/card';
+import { ProductsFormComponent } from './components/products/products-form/products-form.component';
 @NgModule({
   declarations: [
     FormComponent,
     UsersComponent,
     ProfilesComponent,
-    FormProfileComponent
+    FormProfileComponent,
+    ProductsComponent,
+    ProductsFormComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +51,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSlideToggleModule,
     MatExpansionModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule
   ]
 })
 export class AdminModule {}
