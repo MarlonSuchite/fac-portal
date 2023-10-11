@@ -2,8 +2,16 @@
   class="mb-2 list-group-item rounded-3 li"
   (click)="clickParamEvent(params.userId || params.id)"
 >
-  {{ params.name }}
-  <div>
-    {{ params.email }}
+  <div *ngIf="params.code">
+    {{params.code}}
+    <div>
+      {{params.description}}
+    </div>
+  </div>
+  <div *ngIf="params.name">
+    {{params.name}}
+    <div>
+      {{params.email}}
+    </div>
   </div>
 </li>

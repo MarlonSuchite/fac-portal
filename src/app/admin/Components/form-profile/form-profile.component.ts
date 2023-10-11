@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MyErrorStateMatcher } from '../profiles/profiles.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,6 +12,8 @@ import { ProfilesService } from '../../Services/profile/profiles.service';
   styleUrls: ['./form-profile.component.scss']
 })
 export class FormProfileComponent implements OnInit {
+  @Output() addEvent = new EventEmitter<string>()
+
   matcher = new MyErrorStateMatcher();
   form!: FormGroup;
   mode: 'add' | 'edit';
@@ -221,17 +223,28 @@ export class FormProfileComponent implements OnInit {
   }
 
   //Agregar
-  addProfile(): void {
-    const profile = {
-      resources: this.rolesApi,
-      id: null,
-      description: this.form.get('description').value,
-      name: this.form.get('name').value,
-      status: 1
-    };
-    console.log(profile);
-    this.form.reset();
-    this.desactivar(false);
-    this.rolesApi = [];
-  }
+  action(): void {
+    if(this.mode === 'add'){
+      const profile = {
+        resources: this.rolesApi,
+        id: null,
+        description: this.form.get('description').value,
+        code: this.form.get('name').value,
+        status: 1
+      };
+      this.form.reset();
+      this.desactivar(false);
+      this.rolesApi = [];
+      this._profileService.addProfile(profile).subscribe({
+        next: res => {
+          this.addEvent.emit('Perfil agregado')
+        }
+      })
+    }else {
+      /* 
+        Hacer el archivo de constantes
+      */
+    }
+
+    }
 }

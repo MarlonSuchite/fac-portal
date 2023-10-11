@@ -36,12 +36,16 @@ $background-color: aliceblue;
         cursor: pointer;
     }
 
+    .listado {
+        height: 670px;
+    }
+
     mat-paginator {
         background-color: transparent !important;
     }
 
     .panel {
-        min-height: 660px;
+        min-height: 780px;
         border-radius: 1rem;
     }
 

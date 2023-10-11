@@ -36,7 +36,7 @@
               </ul>
             </div>
             <mat-paginator
-              [length]="profiles.length"
+              [length]="totalElements"
               [pageSize]="pageSize"
               [pageSizeOptions]="pageSizeOptions"
               (page)="getPage($event)"
@@ -50,7 +50,7 @@
         <section class="col-md-9 mt-4">
           <div class="border p-3 panel shadow-lg bg-white p-5">
             <!-- Formulario -->
-            <app-form-profile></app-form-profile>
+            <app-form-profile (addEvent)="firstCall()"></app-form-profile>
           </div>
         </section>
       </div>

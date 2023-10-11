@@ -25,53 +25,53 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class ProfilesComponent implements OnInit {
   searchValue = new FormControl('');
-  profiles: any = [];
-  profile!: any;
-  page = 0;
+  profiles: any[] = [];
+  page = 1;
   search = '';
+  sort = ''
+  size = 10
+  pageSize = 10
+  pageSizeOptions = [10];
+  totalElements = 0;
+  param = {
+    page: this.page,
+    size: this.size,
+    sort: this.sort
+  };
 
-  roles: any = [
-    {
-      id: 1,
-      name: 'Configuración',
-      selected: false,
-      items: [
-        {
-          id: 2,
-          name: 'Seguridad',
-          role: '',
-          selected: false,
-          itemChild: [
-            { id: 3, name: 'Perfiles', role: 'ROLE_PROFILES', selected: false },
-            { id: 4, name: 'Usuarios', role: 'ROLE_USERS', selected: false }
-          ]
-        }
-      ]
-    },
-    {
-      id: 21,
-      name: 'Consultas',
-      selected: false,
-      items: [
-        { id: 22, name: 'Auditoría', role: 'ROLE_AUDIT', selected: false }
-      ]
-    }
-  ];
 
   constructor(
     private _profileService: ProfilesService,
     private router: Router,
     private activatedRouter: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
+    this.firstCall()
+    this.params()
+  }
+
+  firstCall() {
+    this._profileService.getProfiles(this.param).subscribe({
+      next: (res: any) => {
+        this.totalElements = res.totalElements
+        this.profiles = res.content
+      }
+    })
+  }
+
+  params() {
     this.activatedRouter.queryParams.subscribe(params => {
-      if (params['page'] || params['search']) {
+      if (params['page']) {
         this.page = params['page'];
-        this.search = params['search'];
+        // this.search = params['search'];
+        this._profileService.getProfiles(params).subscribe({
+          next: (res: any) => {
+            this.profiles = res.content
+          }
+        })
       }
     });
-    this.profiles = this._profileService.getProfiles();
   }
 
   //Obtener un perfil
@@ -83,8 +83,10 @@ export class ProfilesComponent implements OnInit {
   getPage(event: any): void {
     this.router.navigate(['/admin/profiles'], {
       queryParams: {
-        page: event.pageIndex,
-        search: this.search
+        page: event.pageIndex + 1,
+        search: this.search,
+        size: this.size,
+        sort: this.sort
       }
     });
   }
@@ -99,6 +101,5 @@ export class ProfilesComponent implements OnInit {
     });
   }
 
-  pageSize = 10;
-  pageSizeOptions = [10];
+
 }
