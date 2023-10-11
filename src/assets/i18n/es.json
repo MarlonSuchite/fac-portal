@@ -45,6 +45,7 @@
     },
     "formProfile": {
         "add": "Agregar",
+        "edit": "Editar",
         "name": "Nombre",
         "description": "Descripción",
         "providerProfile": "Perfil de proveedor",

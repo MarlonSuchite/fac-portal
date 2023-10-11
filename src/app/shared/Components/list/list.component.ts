@@ -6,11 +6,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  @Input() params: any;
+  @Input() params?: any;
   @Output() clickParam = new EventEmitter<any>();
 
   clickParamEvent(value: any) {
-    console.log('Emitiendo desde lista', value);
     this.clickParam.emit(value);
   }
 }

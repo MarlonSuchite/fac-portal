@@ -1,6 +1,7 @@
 <div>
   <div class="encabezado mb-2">
-    <h1>{{ 'formProfile.add' | translate }}</h1>
+    <h1 *ngIf="mode === 'add'">{{ 'formProfile.add' | translate }}</h1>
+    <h1 *ngIf="mode === 'edit'">{{ 'formProfile.edit' | translate }}</h1>
   </div>
 
   <form [formGroup]="form">
@@ -37,21 +38,20 @@
         </mat-error>
       </mat-form-field>
 
-      <div class="col-12">
-        <h3>
-          <mat-slide-toggle></mat-slide-toggle>
-          {{ 'formProfile.providerProfile' | translate }}
-        </h3>
-      </div>
+      <!--  -->
       <div *ngFor="let rol of roles" class="mb-3">
         <mat-accordion multi>
-          <mat-expansion-panel class="border border-1">
+          <mat-expansion-panel
+            [expanded]="open"
+            [disabled]="true"
+            class="border border-1"
+          >
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <h1>
                   <mat-slide-toggle
                     [id]="rol.id"
-                    (change)="toogle($event, rol.id)"
+                    (change)="toggle($event, rol.id)"
                     [checked]="rol.selected"
                   ></mat-slide-toggle>
                   {{ rol.name }}
@@ -70,7 +70,7 @@
                   <h2 class="border border-2 p-2 bg-white">
                     <mat-slide-toggle
                       [id]="item.id"
-                      (change)="toogle2($event, item.id)"
+                      (change)="toggle($event, item.id)"
                       [checked]="item.selected"
                     ></mat-slide-toggle>
                     {{ item.name }}
@@ -85,6 +85,8 @@
                       >
                         <h3>
                           <mat-slide-toggle
+                            [id]="itemChil.id"
+                            (change)="toggleChild($event, itemChil.id)"
                             [checked]="itemChil.selected"
                           ></mat-slide-toggle>
                           {{ itemChil.name }}
@@ -99,6 +101,8 @@
               <div *ngIf="!item?.itemChild" class="mx-2">
                 <h3>
                   <mat-slide-toggle
+                    [id]="item.id"
+                    (change)="toggleChild($event, item.id)"
                     [checked]="item.selected"
                   ></mat-slide-toggle>
                   {{ item.name }}
@@ -111,7 +115,13 @@
     </div>
 
     <div class="button">
-      <button class="btn btn-primary" [disabled]="form.invalid">Guardar</button>
+      <button
+        class="btn btn-primary"
+        [disabled]="form.invalid"
+        (click)="addProfile()"
+      >
+        Guardar
+      </button>
     </div>
   </form>
 </div>

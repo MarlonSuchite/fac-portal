@@ -66,12 +66,6 @@ export class ProfilesComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRouter.queryParams.subscribe(params => {
-      if (params['id']) {
-        const id = params['id'];
-        this.profile = this._profileService.getProfile(id);
-        console.log(this.profile);
-      }
-
       if (params['page'] || params['search']) {
         this.page = params['page'];
         this.search = params['search'];
