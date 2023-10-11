@@ -4,7 +4,8 @@
         "audit": "Auditoria",
         "profiles": "Perfiles",
         "settings": "Ajustes",
-        "exit": "Salir"
+        "exit": "Salir",
+        "products": "Productos"
     },
     "users":{
         "user": "Usuarios"
@@ -104,5 +105,18 @@
         "passwordEquality": "*Deben de coincidir las contraseñas",
         "passwordInstructions": " -1 carácter especial como mínimo -1 número como mínimo -1 mayúscula y minuscula como mínimo"
     },
-    "placeholder": "Buscar..."
+    "placeholder": "Buscar...",
+    
+    "products": {
+        "title": "Productos",
+        "code": "Código",
+        "name": "Nombre",
+        "sendDates": "Tiempo de entrega",
+        "codeBar": "Código de barras",
+        "description": "Descripción",
+        "company": "Empresa",
+        "avaibality": "Cantidad disponible",
+        "status": "Estado",
+        "required": "*Este campo es requerido"
+    }
 }
