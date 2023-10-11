@@ -5,6 +5,14 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { UserApi } from '../../../admin/Interfaces/user-api';
 import { ContentApi } from '../../Interfaces/content';
+import {
+  PAGE,
+  SIZE,
+  SORT,
+  PAGE_SIZE,
+  PAGE_SIZE_OPTIONS,
+  ROUTES_ADMIN_USERS
+} from 'src/app/utils/enums';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -27,12 +35,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class UsersComponent implements OnInit {
   users: UserApi[] = [];
-  page = 1;
+  page = PAGE;
   search = '';
-  sort = '';
-  size = 10;
-  pageSize = 10;
-  pageSizeOptions = [10];
+  sort = SORT;
+  size = SIZE;
+  pageSize = PAGE_SIZE;
+  pageSizeOptions = PAGE_SIZE_OPTIONS;
   totalElements = 0;
   searchValue = new FormControl('');
   param = {
@@ -48,6 +56,7 @@ export class UsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.page);
     this.params();
     this.firstCall();
   }
@@ -75,12 +84,14 @@ export class UsersComponent implements OnInit {
 
   //Obtener solo un usuario
   clickUser(valor: any): void {
-    this.router.navigate(['/admin/users'], { queryParams: { id: valor } });
+    this.router.navigate([`${ROUTES_ADMIN_USERS}`], {
+      queryParams: { id: valor }
+    });
   }
 
   //Obtener el numero de pagina
   getPage(event: any): void {
-    this.router.navigate(['/admin/users'], {
+    this.router.navigate([`${ROUTES_ADMIN_USERS}`], {
       queryParams: {
         page: event.pageIndex + 1,
         search: this.search,
@@ -92,7 +103,7 @@ export class UsersComponent implements OnInit {
 
   //Obtener el parametro de busqueda
   searchParams(): void {
-    this.router.navigate(['/admin/users'], {
+    this.router.navigate([`${ROUTES_ADMIN_USERS}`], {
       queryParams: { page: 0, search: this.searchValue.value }
     });
   }

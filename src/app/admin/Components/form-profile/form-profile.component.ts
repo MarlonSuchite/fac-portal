@@ -2,9 +2,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MyErrorStateMatcher } from '../profiles/profiles.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
-import { elementAt } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfilesService } from '../../Services/profile/profiles.service';
+import { ProfileApi } from '../../Interfaces/profile-api';
+import { ProfileContent } from '../../Interfaces/profile-content';
 
 @Component({
   selector: 'app-form-profile',
@@ -12,11 +13,13 @@ import { ProfilesService } from '../../Services/profile/profiles.service';
   styleUrls: ['./form-profile.component.scss']
 })
 export class FormProfileComponent implements OnInit {
-  @Output() addEvent = new EventEmitter<string>()
+  @Output() addEvent = new EventEmitter<string>();
 
   matcher = new MyErrorStateMatcher();
   form!: FormGroup;
   mode: 'add' | 'edit';
+  profiles: ProfileApi;
+  copyProfile: ProfileApi[] = [];
   open = true;
   rolesApi: any[] = [];
   roles: any[] = [
@@ -70,7 +73,8 @@ export class FormProfileComponent implements OnInit {
     private fb: FormBuilder,
     private translate: TranslateService,
     private activatedRoute: ActivatedRoute,
-    private _profileService: ProfilesService
+    private _profileService: ProfilesService,
+    private router: Router
   ) {
     this.buildForm();
   }
@@ -83,13 +87,18 @@ export class FormProfileComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       if (params['id']) {
         this.mode = 'edit';
-        const profile = this._profileService.getProfile(params);
-        this.rolesApi = profile.resources;
-        this.form.setValue({
-          name: profile.code,
-          description: profile.description
+        this.desactivar(false);
+        this._profileService.getProfile(params).subscribe({
+          next: (res: ProfileApi) => {
+            this.form.setValue({
+              name: res.code,
+              description: res.description
+            });
+            this.rolesApi = res.resources;
+            this.profiles = res;
+            this.setearToggle(this.roles, res.resources);
+          }
         });
-        this.recursiveSelect(this.roles, profile.resources);
       } else {
         this.form.reset();
         this.desactivar(false);
@@ -97,8 +106,8 @@ export class FormProfileComponent implements OnInit {
     });
   }
 
-  recursiveSelect(elements: any[], resources: string[]): void {
-    for (const element of elements) {
+  setearToggle(elements: any[], resources: string[]): void {
+    elements.forEach(element => {
       element.items.forEach(item => {
         //Verificar si el rol existe la respuesta
         if (resources.includes(item.role)) {
@@ -113,7 +122,7 @@ export class FormProfileComponent implements OnInit {
           });
         }
       });
-    }
+    });
   }
 
   //Formulario
@@ -134,7 +143,7 @@ export class FormProfileComponent implements OnInit {
   }
 
   toggleChild(event: any, id: number) {
-    for (const rol of this.roles) {
+    this.roles.forEach(rol => {
       rol.items.forEach(items => {
         if (items.id === id && event.checked) {
           items.selected = event.checked;
@@ -155,24 +164,25 @@ export class FormProfileComponent implements OnInit {
           });
         }
       });
-    }
+    });
   }
 
   recorrerElemento(elements: any[], id: string): any {
-    for (const element of elements) {
+    elements.forEach(element => {
       if (element.id === id) {
         return element;
       } else if (element.items && element.items[0].id === id) {
         const item = this.recorrerElemento(element.items, id);
         if (item) return item;
       }
-    }
+    });
+
     return null;
   }
 
   activar(event: boolean, element: any) {
     if (element.items) {
-      for (const item of element.items) {
+      element.items.forEach(item => {
         item.selected = event;
         if (item.role && event) {
           this.agregarRoles(item.role);
@@ -180,17 +190,17 @@ export class FormProfileComponent implements OnInit {
           this.aliminarRoles(item.role);
         }
         this.activar(event, item);
-      }
+      });
     }
     if (element.itemChild) {
-      for (const itemChild of element.itemChild) {
+      element.itemChild.forEach(itemChild => {
         itemChild.selected = event;
         if (event) {
           this.agregarRoles(itemChild.role);
         } else if (!event) {
           this.aliminarRoles(itemChild.role);
         }
-      }
+      });
     }
   }
 
@@ -224,10 +234,10 @@ export class FormProfileComponent implements OnInit {
 
   //Agregar
   action(): void {
-    if(this.mode === 'add'){
-      const profile = {
+    if (this.mode === 'add') {
+      const profile: ProfileApi = {
         resources: this.rolesApi,
-        id: null,
+        profileId: null,
         description: this.form.get('description').value,
         code: this.form.get('name').value,
         status: 1
@@ -237,14 +247,29 @@ export class FormProfileComponent implements OnInit {
       this.rolesApi = [];
       this._profileService.addProfile(profile).subscribe({
         next: res => {
-          this.addEvent.emit('Perfil agregado')
+          this.addEvent.emit('Perfil agregado');
         }
-      })
-    }else {
-      /* 
-        Hacer el archivo de constantes
-      */
+      });
+    } else {
+      const profile: ProfileApi = {
+        profileId: this.profiles.profileId,
+        code: this.form.get('name').value,
+        description: this.form.get('description').value,
+        resources: this.rolesApi,
+        status: 1
+      };
+      this._profileService.updateProfile(profile).subscribe({
+        next: () => {
+          this.params();
+          this.addEvent.emit('Perfil editado');
+        }
+      });
+      this.form.reset();
     }
+  }
 
-    }
+  changeMode() {
+    this.mode = 'add';
+    this.router.navigate(['/admin/profiles'], { queryParams: {} });
+  }
 }

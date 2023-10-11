@@ -1,3 +1,7 @@
+$background-color-btn: #ffc003;
+$color-button: white;
+$background-color-btn-hover: #efbd3d;
+
 .encabezado {
     display: flex;
     justify-content: space-between;
@@ -28,4 +32,30 @@ h2{
     top: -40px;
     left: 10px;
     margin-bottom: -20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+
+    .button{
+        height: 50px;
+    }
+
+    .btn-secondary {
+        height: 70px;
+        width: 70px;
+        font-size: 2em;
+        border-radius: 50%;
+        background-color: $background-color-btn;
+        color: $color-button;
+        border: none;
+        transition: 300ms;
+
+        &:hover {
+            background-color: $background-color-btn-hover;
+        }
+    }
 }

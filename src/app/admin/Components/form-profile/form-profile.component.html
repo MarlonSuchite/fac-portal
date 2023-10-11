@@ -114,13 +114,21 @@
       </div>
     </div>
 
-    <div class="button">
+    <div class="buttons">
       <button
         class="btn btn-primary"
         [disabled]="form.invalid"
         (click)="action()"
       >
         Guardar
+      </button>
+      <button
+        type="button"
+        *ngIf="mode === 'edit'"
+        class="btn-secondary"
+        (click)="changeMode()"
+      >
+        +
       </button>
     </div>
   </form>
