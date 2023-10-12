@@ -10,7 +10,7 @@ import {
   PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
   ROUTES_ADMIN_PROFILES
-} from 'src/app/utils/enums';
+} from 'src/app/utils/constants';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(

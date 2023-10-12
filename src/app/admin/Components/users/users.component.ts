@@ -12,7 +12,7 @@ import {
   PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
   ROUTES_ADMIN_USERS
-} from 'src/app/utils/enums';
+} from 'src/app/utils/constants';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -34,15 +34,15 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  searchValue = new FormControl('');
   users: UserApi[] = [];
+  totalElements = 0;
   page = PAGE;
   search = '';
   sort = SORT;
   size = SIZE;
   pageSize = PAGE_SIZE;
   pageSizeOptions = PAGE_SIZE_OPTIONS;
-  totalElements = 0;
-  searchValue = new FormControl('');
   param = {
     page: this.page,
     size: this.size,
@@ -56,7 +56,6 @@ export class UsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.page);
     this.params();
     this.firstCall();
   }

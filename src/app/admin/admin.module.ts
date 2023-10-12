@@ -20,9 +20,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ProductsComponent } from './components/products/products.component';
+import { ProductsComponent } from './Components/products/products.component';
 import { MatCardModule } from '@angular/material/card';
-import { ProductsFormComponent } from './components/products/products-form/products-form.component';
+import { ProductsFormComponent } from './Components/products/products-form/products-form.component';
+import { CustomersComponent } from './Components/customers/customers.component';
+import { FormCustomerComponent } from './Components/form-customer/form-customer.component';
+
 @NgModule({
   declarations: [
     FormComponent,
@@ -30,7 +33,9 @@ import { ProductsFormComponent } from './components/products/products-form/produ
     ProfilesComponent,
     FormProfileComponent,
     ProductsComponent,
-    ProductsFormComponent
+    ProductsFormComponent,
+    CustomersComponent,
+    FormCustomerComponent
   ],
   imports: [
     CommonModule,

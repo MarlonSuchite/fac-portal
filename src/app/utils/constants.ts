@@ -5,3 +5,4 @@ export const PAGE_SIZE = 10;
 export const PAGE_SIZE_OPTIONS: number[] = [10];
 export const ROUTES_ADMIN_USERS = '/admin/users';
 export const ROUTES_ADMIN_PROFILES = '/admin/profiles';
+export const ROUTES_ADMIN_CUSTOMERS = '/admin/customers';

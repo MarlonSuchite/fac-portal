@@ -5,7 +5,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfilesService } from '../../Services/profile/profiles.service';
 import { ProfileApi } from '../../Interfaces/profile-api';
-import { ProfileContent } from '../../Interfaces/profile-content';
 
 @Component({
   selector: 'app-form-profile',
@@ -20,6 +19,7 @@ export class FormProfileComponent implements OnInit {
   mode: 'add' | 'edit';
   profiles: ProfileApi;
   copyProfile: ProfileApi[] = [];
+  buttonStatus = true;
   open = true;
   rolesApi: any[] = [];
   roles: any[] = [
@@ -96,6 +96,7 @@ export class FormProfileComponent implements OnInit {
             });
             this.rolesApi = res.resources;
             this.profiles = res;
+            this.copyProfile.push(res);
             this.setearToggle(this.roles, res.resources);
           }
         });
@@ -271,5 +272,24 @@ export class FormProfileComponent implements OnInit {
   changeMode() {
     this.mode = 'add';
     this.router.navigate(['/admin/profiles'], { queryParams: {} });
+  }
+
+  changesObject(): void {
+    this.form.valueChanges.subscribe(res => {
+      if (this.mode === 'edit') {
+        console.log('cambie');
+        this.copyProfile.forEach(element => {
+          if (
+            element.code === res.name &&
+            element.description === res.description &&
+            element.resources.length === this.rolesApi.length
+          ) {
+            this.buttonStatus = true;
+          } else {
+            this.buttonStatus = false;
+          }
+        });
+      }
+    });
   }
 }
