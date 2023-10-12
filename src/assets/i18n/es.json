@@ -118,5 +118,17 @@
         "avaibality": "Cantidad disponible",
         "status": "Estado",
         "required": "*Este campo es requerido"
+    },
+    "customers": {
+        "add": "Agregar",
+        "edit": "Editar",
+        "name": "Nombre",
+        "DPI": "DPI",
+        "NIT":"NIT",
+        "passport": "Pasaporte",
+        "direction": "Dirección",
+        "save": "Guardar",
+        "plus": "+",
+        "required": "*Este campo es requerido"
     }
 }

@@ -19,4 +19,21 @@ export class FormValidations {
       return null;
     };
   }
+
+  static Nit(control: AbstractControl) {
+    const value = control.value;
+    if (!/^[\d]{10}$/.test(value)) {
+      return { Nit: true };
+    }
+
+    return null;
+  }
+
+  static Passport(control: AbstractControl) {
+    const value = control.value;
+    if (!/^[A-Z]{2}\d{6}[A-Z]$/.test(value)) {
+      return { Passport: true };
+    }
+    return null;
+  }
 }

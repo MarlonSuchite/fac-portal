@@ -1,1 +1,98 @@
-<p>form-customer works!</p>
+<div>
+  <!-- Encabezado -->
+  <div class="encabezado mb-2">
+    <h1 *ngIf="mode === 'add'">{{ 'customers.add' | translate }}</h1>
+    <h1 *ngIf="mode === 'edit'">{{ 'customers.edit' | translate }}</h1>
+  </div>
+
+  <!-- Formulario -->
+  <form [formGroup]="form">
+    <div class="row gx-4 gy-3">
+      <mat-form-field class="col-6">
+        <mat-label>{{ 'customers.name' | translate }}</mat-label>
+        <input matInput type="text" formControlName="name" />
+
+        <!-- Mensajes de error -->
+        <mat-error *ngIf="form.get('name')?.hasError('required')">
+          {{ 'customers.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-3">
+        <mat-label>{{ 'customers.DPI' | translate }}</mat-label>
+        <input matInput type="text" formControlName="DPI" maxlength="13" />
+
+        <!-- Mensajes de error -->
+        <mat-hint
+          *ngIf="
+            form.get('DPI')?.hasError('minlength') && form.get('DPI').dirty
+          "
+        >
+          {{ form.get('DPI').value.length }}/13
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="col-3">
+        <mat-label>{{ 'customers.NIT' | translate }}</mat-label>
+        <input matInput type="text" formControlName="NIT" maxlength="10" />
+
+        <!-- Mensajes de error -->
+        <mat-hint
+          *ngIf="
+            form.get('NIT')?.hasError('minlength') && form.get('NIT').dirty
+          "
+        >
+          {{ form.get('NIT').value.length }}/10
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="col-3">
+        <mat-label>{{ 'customers.passport' | translate }}</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="passport"
+          maxlength="9"
+          placeholder="AA000000A"
+        />
+
+        <!-- Mensajes de error -->
+        <!-- <mat-hint *ngIf="form.get('passport')?.hasError('Passport') && form.get('passport').dirty">
+                    Formato: AA000000A {{form.get('passport').value.length}}/9
+                </mat-hint>
+                <mat-error *ngIf="form.get('passport')?.hasError('Passport') && form.get('passport').touched">
+                    *Pasaporte no valido
+                </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field class="col-9">
+        <mat-label>{{ 'customers.direction' | translate }}</mat-label>
+        <input matInput type="text" formControlName="address" />
+
+        <!-- Mensajes de errores -->
+        <mat-error *ngIf="form.get('address')?.hasError('required')">
+          {{ 'customers.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="buttons">
+      <button
+        type="button"
+        class="btn btn-primary button"
+        [disabled]="form.invalid || buttonStatus"
+        (click)="action()"
+      >
+        {{ 'customers.save' | translate }}
+      </button>
+      <button
+        type="button"
+        *ngIf="mode === 'edit'"
+        class="btn-secondary"
+        (click)="changeMode()"
+      >
+        {{ 'customers.plus' | translate }}
+      </button>
+    </div>
+  </form>
+</div>
