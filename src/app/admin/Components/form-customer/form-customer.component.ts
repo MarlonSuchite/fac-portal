@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomersService } from '../../Services/customers/customers.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormValidations } from 'src/app/utils/form-validations';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from 'src/app/shared/Services/alert.service';
 
 @Component({
   selector: 'app-form-customer',
@@ -20,7 +20,8 @@ export class FormCustomerComponent implements OnInit {
     private _customerService: CustomersService,
     private fb: FormBuilder,
     private activatedRouter: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alerta: AlertService
   ) {
     this.buildForm();
   }
@@ -79,6 +80,7 @@ export class FormCustomerComponent implements OnInit {
       };
       this._customerService.addCustomer(customer);
       this.form.reset();
+      this.alerta.mostrarAlerta('success', '200 Agregado');
     } else {
       const customer = {
         customerId: this.customer.customerId,
