@@ -34,12 +34,12 @@ export class ProfilesService {
 
   //Agregar perfil
   addProfile(value: ProfileApi) {
-    return this.http.post(this.apiProfile, value);
+    return this.http.post(this.apiProfile, value, {observe: 'response'});
   }
 
   //Editar perfial
   updateProfile(value: ProfileApi) {
     const params = new HttpParams().append('id', value.profileId);
-    return this.http.put(`${this.apiProfile}/{id}?${params}`, value);
+    return this.http.put(`${this.apiProfile}/{id}?${params}`, value, {observe: 'response'});
   }
 }

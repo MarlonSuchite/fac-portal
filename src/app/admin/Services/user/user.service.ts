@@ -28,12 +28,12 @@ export class UserService {
 
   //Agregar usario
   addNewUser(value: UserApi) {
-    return this.http.post(this.api, value);
+    return this.http.post(this.api, value, {observe: 'response'});
   }
 
   //Mdificar usuario
   updateUser(value: UserApi) {
     const param = new HttpParams().append('id', value.userId);
-    return this.http.put(`${this.api}/{id}?${param}`, value);
+    return this.http.put(`${this.api}/{id}?${param}`, value,  {observe: 'response'});
   }
 }

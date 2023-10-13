@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfilesService } from '../../Services/profile/profiles.service';
 import { ProfileApi } from '../../Interfaces/profile-api';
+import { AlertService } from 'src/app/shared/Services/alert.service';
 
 @Component({
   selector: 'app-form-profile',
@@ -19,7 +20,7 @@ export class FormProfileComponent implements OnInit {
   mode: 'add' | 'edit';
   profiles: ProfileApi;
   copyProfile: ProfileApi[] = [];
-  buttonStatus = true;
+  buttonStatus: boolean;
   open = true;
   rolesApi: any[] = [];
   roles: any[] = [
@@ -74,7 +75,8 @@ export class FormProfileComponent implements OnInit {
     private translate: TranslateService,
     private activatedRoute: ActivatedRoute,
     private _profileService: ProfilesService,
-    private router: Router
+    private router: Router,
+    private _alertService: AlertService
   ) {
     this.buildForm();
   }
@@ -97,6 +99,7 @@ export class FormProfileComponent implements OnInit {
             this.rolesApi = res.resources;
             this.profiles = res;
             this.copyProfile.push(res);
+            this.buttonStatus = true
             this.setearToggle(this.roles, res.resources);
           }
         });
@@ -132,6 +135,7 @@ export class FormProfileComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required]
     });
+    this.changesObject()
   }
 
   toggle(event: any, id: string) {
@@ -247,8 +251,12 @@ export class FormProfileComponent implements OnInit {
       this.desactivar(false);
       this.rolesApi = [];
       this._profileService.addProfile(profile).subscribe({
-        next: res => {
+        next: (res: any) => {
           this.addEvent.emit('Perfil agregado');
+          this._alertService.mostrarAlerta('success', `${res.status} Se agrego correctamente` )
+        },
+        error: (err: any) => {
+          this._alertService.mostrarAlerta('error',`${err.status} Hubo un problema`)
         }
       });
     } else {
@@ -260,32 +268,38 @@ export class FormProfileComponent implements OnInit {
         status: 1
       };
       this._profileService.updateProfile(profile).subscribe({
-        next: () => {
+        next: (res: any) => {
           this.params();
+          console.log('Bueno', res)
+          this._alertService.mostrarAlerta('success', `${res.status} Usuario editado`)
           this.addEvent.emit('Perfil editado');
+          this.form.reset();
+        },
+        error: (err: any) => {
+          this._alertService.mostrarAlerta('error', `${err.status} Hubo un problema`)
         }
       });
-      this.form.reset();
     }
   }
 
   changeMode() {
     this.mode = 'add';
     this.router.navigate(['/admin/profiles'], { queryParams: {} });
+    this.buttonStatus = false
   }
 
   changesObject(): void {
     this.form.valueChanges.subscribe(res => {
       if (this.mode === 'edit') {
-        console.log('cambie');
         this.copyProfile.forEach(element => {
           if (
             element.code === res.name &&
-            element.description === res.description &&
-            element.resources.length === this.rolesApi.length
+            element.description === res.description  &&
+            element.resources.length === this.rolesApi.length 
           ) {
             this.buttonStatus = true;
           } else {
+            console.log('entre false')
             this.buttonStatus = false;
           }
         });

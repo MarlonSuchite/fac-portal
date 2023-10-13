@@ -10,7 +10,7 @@ export class AlertService {
       toast: true, //Color de fondo
       position: 'top-end',
       showConfirmButton: false,
-      timer: 5000,
+      timer: 5000,//tiempo
       timerProgressBar: true,
       didOpen: toast => {
         toast.addEventListener('mouseenter', Swal.stopTimer);

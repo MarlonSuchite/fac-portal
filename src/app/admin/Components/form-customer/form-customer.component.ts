@@ -14,7 +14,7 @@ export class FormCustomerComponent implements OnInit {
   mode: 'add' | 'edit';
   customer: any;
   copyCustomer: any[] = [];
-  buttonStatus: boolean;
+  buttonStatus = false;
 
   constructor(
     private _customerService: CustomersService,
@@ -44,6 +44,7 @@ export class FormCustomerComponent implements OnInit {
           passport: parametros.passport,
           address: parametros.address
         });
+        this.buttonStatus = true
         this.copyCustomer.push(parametros);
       } else {
         this.form.reset();
@@ -101,6 +102,7 @@ export class FormCustomerComponent implements OnInit {
   changeMode() {
     this.mode = 'add';
     this.router.navigate(['/admin/customers'], { queryParams: {} });
+    this.buttonStatus = false
   }
 
   changesObject() {
