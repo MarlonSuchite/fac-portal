@@ -26,6 +26,11 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
     import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'query',
+    loadChildren: () =>
+    import('./query/query.module').then(m =>m.QueryModule)
   }
 ];
 

@@ -5,7 +5,9 @@
         "profiles": "Perfiles",
         "settings": "Ajustes",
         "exit": "Salir",
-        "products": "Productos"
+        "products": "Productos",
+        "customers": "Clientes",
+        "report": "Reporte"
     },
     "users":{
         "user": "Usuarios"
@@ -130,5 +132,25 @@
         "save": "Guardar",
         "plus": "+",
         "required": "*Este campo es requerido"
+    },
+    "report": {
+        "startdate": "Fecha Ingreso",
+        "enddate": "Fecha Salida",
+        "date": "MM/DD/YYYY",
+        "required": "*Este campo es requerido",
+        "orderNumber": "No. Pedido",
+        "customer": "Cliente",
+        "amount": "Monto"  
+    },
+    "tableReport": {
+        "startDate": "Fecha Inicio",
+        "endDate": "Fecha Salida",
+        "order": "No. Pedido",
+        "customer": "Cliente",
+        "amount": "Monto",
+        "taxes": "Impuestos",
+        "total": "Total"
     }
+
+    
 }

@@ -1,0 +1,120 @@
+<div class="row contenedor">
+    <section class="col-1">
+      <app-nav-bar></app-nav-bar>
+    </section>
+  
+    <section class="col-11">
+      <div class="container-fluid mt-5">
+        <form [formGroup]="form">
+        <div class="row">
+          <div class="encabezado row col-11">
+            <!-- fecha 1 -->
+     
+              <mat-form-field class="col-3">
+                <mat-label>{{ 'report.startdate' | translate }}</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  formControlName="startDate"
+                />
+  
+                <mat-hint>{{ 'report.date' | translate }}</mat-hint>
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.get('startDate')?.hasError('required')">
+                  {{ 'report.required' | translate }}
+                </mat-error>
+              </mat-form-field>
+        
+  
+            <!-- fecha 2 -->
+              <mat-form-field class="col-3">
+                <mat-label>{{ 'report.enddate' | translate }}</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="date"
+                  formControlName="endDate"
+                />
+                <mat-hint>{{ 'report.date' | translate }}</mat-hint>
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="date"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #date></mat-datepicker>
+                <mat-error *ngIf="form.get('endDate')?.hasError('required')">
+                  {{ 'report.required' | translate }}
+                </mat-error>
+              </mat-form-field>
+  
+            <!-- No. Pedido -->
+                <mat-form-field class="col-2">
+                  <mat-label>{{ 'report.orderNumber' | translate }}</mat-label>
+                  <input
+                    matInput
+                    formControlName="order"
+                  />
+                  <mat-error *ngIf="form.get('order')?.hasError('required')">
+                    {{ 'report.required' | translate }}
+                  </mat-error>
+                </mat-form-field>
+  
+            <!-- Operacion -->
+                <mat-form-field class="col-2">
+                  <mat-label>Cliente</mat-label>
+                  <input matInput type="text" formControlName="customer" />
+                  <mat-error *ngIf="form.get('customer')?.hasError('required')">
+                    {{ 'report.required' | translate }}
+                  </mat-error>
+                </mat-form-field>
+  
+            <!-- Usuario -->
+              <mat-form-field class="col-2">
+                <mat-label>Monto</mat-label>
+                <input matInput type="text" formControlName="amount" />
+                <mat-error *ngIf="form.get('amount')?.hasError('required')">
+                  {{ 'report.required' | translate }}
+                </mat-error>
+              </mat-form-field>
+
+            <!-- Usuario -->
+            <mat-form-field class="col-2">
+                <mat-label>Impuesto</mat-label>
+                <input matInput type="text" formControlName="taxes" />
+                <mat-error *ngIf="form.get('taxes')?.hasError('required')">
+                  {{ 'report.required' | translate }}
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Usuario -->
+            <mat-form-field class="col-2">
+                <mat-label>Total</mat-label>
+                <input matInput type="text" formControlName="total" />
+                <mat-error *ngIf="form.get('total')?.hasError('required')">
+                  {{ 'report.required' | translate }}
+                </mat-error>
+            </mat-form-field>
+
+  
+            <!-- Buscar -->
+            
+          </div>
+          <div class="col-1 row">
+            <button class="col-6 searchButton" (click)="searchParams()" [disabled]="form.invalid">
+              <i class="bi bi-search button"></i>
+            </button>
+  
+            <section class="col-6 searchButton">
+              <i class="bi bi-trash button mt-2" (click)="clearParams()"></i>
+            </section>
+            </div>
+          </div>
+        </form>
+  
+        <app-table-report [dataSource]="data"></app-table-report>
+      </div>
+    </section>
+  </div>
+  

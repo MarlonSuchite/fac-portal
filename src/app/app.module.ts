@@ -24,6 +24,7 @@ export const httpTranslateLoader = (http: HttpClient): TranslateHttpLoader =>
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    MatTableModule,
     TranslateModule.forRoot({
       defaultLanguage: 'es',
       loader: {

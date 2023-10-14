@@ -40,7 +40,18 @@
     <li class="li">
       <a routerLink="/admin/customers">
         <i class="fas bi bi-people-fill"></i>
-        <span class="nav-item"> Clientes </span>
+        <span class="nav-item"> 
+          {{ 'navbar.customers' | translate }}  
+        </span>
+      </a>
+    </li>
+
+    <li class="li">
+      <a routerLink="/query/report">
+        <i class=" fas bi bi-file-text-fill"></i>
+        <span class="nav-item">
+          {{ 'navbar.report' | translate }}
+        </span>
       </a>
     </li>
 
