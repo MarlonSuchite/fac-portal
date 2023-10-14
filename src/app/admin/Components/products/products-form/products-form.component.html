@@ -1,200 +1,163 @@
 <div class="">
-    <div class="encabezado mb-2">
-      <h1 *ngIf="mode === 'add'">{{ 'form.add' | translate }}</h1>
-      <h1 *ngIf="mode === 'edit'">{{ 'form.edit' | translate }}</h1>
-      <i
-        *ngIf="mode === 'edit'"
-        class="bi bi-power"
-        [ngClass]="{ green: statusUser === true }"
-        (click)="openDialog()"
-      ></i>
-    </div>
-    <form [formGroup]="form">
-      <div class="row gx-4">
-        <mat-form-field class="col-6">
-          <mat-label class="">{{ 'products.code' | translate }}</mat-label>
-          <input
-            type="text"
-            matInput
-            formControlName="code"
-            [errorStateMatcher]="matcher"
-            placeholder=""
-          />
-          <mat-error
-            *ngIf="
-              form.get('code').hasError('code') &&
-              !form.get('code').hasError('code')
-            "
-          >
-            {{ 'form.errorEmail' | translate }}
-          </mat-error>
-          <mat-error *ngIf="form.get('code').hasError('required')">
-            {{ 'form.required' | translate }}
-          </mat-error>
-        </mat-form-field>
-  
-        <mat-form-field class="col-6">
-          <mat-label class="">{{ 'form.name' | translate }}</mat-label>
-          <input
-            type="text"
-            matInput
-            formControlName="name"
-            [errorStateMatcher]="matcher"
-            placeholder=""
-          />
-          <mat-error
-            *ngIf="
-              form.get('name').hasError('name') &&
-              !form.get('name').hasError('required')
-            "
-          >
-          </mat-error>
-          <mat-error *ngIf="form.get('name').hasError('required')">
-            {{ 'form.required' | translate }}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="col-6">
-            <mat-label class="">{{ 'products.sendDates' | translate }}</mat-label>
-            <input
-              type="text"
-              matInput
-              formControlName="sendDates"
-              [errorStateMatcher]="matcher"
-              placeholder=""
-            />
-            <mat-error
-              *ngIf="
-                form.get('sendDates').hasError('sendDates') &&
-                !form.get('sendDates').hasError('required')
-              "
-            >
-            </mat-error>
-            <mat-error *ngIf="form.get('sendDates').hasError('required')">
-              {{ 'form.required' | translate }}
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="col-6">
-            <mat-label class="">{{ 'products.codeBar' | translate }}</mat-label>
-            <input
-              type="text"
-              matInput
-              formControlName="codeBar"
-              [errorStateMatcher]="matcher"
-              placeholder=""
-            />
-            <mat-error
-              *ngIf="
-                form.get('codeBar').hasError('codeBar') &&
-                !form.get('codeBar').hasError('required')
-              "
-            >
-            </mat-error>
-            <mat-error *ngIf="form.get('codeBar').hasError('required')">
-              {{ 'form.required' | translate }}
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="col-6">
-            <mat-label class="">{{ 'products.description' | translate }}</mat-label>
-            <input
-              type="text"
-              matInput
-              formControlName="description"
-              [errorStateMatcher]="matcher"
-              placeholder=""
-            />
-            <mat-error
-              *ngIf="
-                form.get('description').hasError('description') &&
-                !form.get('description').hasError('required')
-              "
-            >
-            </mat-error>
-            <mat-error *ngIf="form.get('description').hasError('required')">
-              {{ 'form.required' | translate }}
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="col-6">
-            <mat-label class="">{{ 'products.company' | translate }}</mat-label>
-            <input
-              type="text"
-              matInput
-              formControlName="company"
-              [errorStateMatcher]="matcher"
-              placeholder=""
-            />
-            <mat-error
-              *ngIf="
-                form.get('company').hasError('company') &&
-                !form.get('company').hasError('required')
-              "
-            >
-            </mat-error>
-            <mat-error *ngIf="form.get('company').hasError('required')">
-              {{ 'form.required' | translate }}
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="col-6">
-            <mat-label class="">{{ 'products.avaibality' | translate }}</mat-label>
-            <input
-              type="text"
-              matInput
-              formControlName="avaibality"
-              [errorStateMatcher]="matcher"
-              placeholder=""
-            />
-            <mat-error
-              *ngIf="
-                form.get('avaibality').hasError('avaibality') &&
-                !form.get('avaibality').hasError('required')
-              "
-            >
-            </mat-error>
-            <mat-error *ngIf="form.get('avaibality').hasError('required')">
-              {{ 'form.required' | translate }}
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="col-6">
-            <mat-label class="">{{ 'products.status' | translate }}</mat-label>
-            <mat-error
-              *ngIf="
-                form.get('status').hasError('status') &&
-                !form.get('status').hasError('required')
-              "
-            >
-            </mat-error>
-            <mat-error *ngIf="form.get('status').hasError('required')">
-              {{ 'form.required' | translate }}
-            </mat-error>
-            <mat-select formControlName="options" [(value)]="options.name">
-                <mat-option *ngFor="let op of options" [value]="op.id"
-                  >{{ op.name }} {{ op.description }}</mat-option
-                >
-              </mat-select>
-          </mat-form-field>
-      </div>
-      <div class="buttons">
-        <button
-          class="btn btn-primary button"
-          [disabled]="form.invalid || buttonStatus"
-          (click)="action()"
-        >
-          {{ 'form.save' | translate }}
-        </button>
-        <button
-          type="button"
-          *ngIf="mode === 'edit'"
-          class="btn-secondary"
-          (click)="changeMode()"
-        >
-          {{ 'form.plus' | translate }}
-        </button>
-      </div>
-    </form>
+  <div class="encabezado mb-2">
+    <h1 *ngIf="mode === 'add'">{{ 'form.add' | translate }}</h1>
+    <h1 *ngIf="mode === 'edit'">{{ 'form.edit' | translate }}</h1>
+    <i
+      *ngIf="mode === 'edit'"
+      class="bi bi-power"
+      [ngClass]="{ green: statusUser === true }"
+      (click)="openDialog()"
+    ></i>
   </div>
-  
+
+  <!-- Formulario -->
+  <form [formGroup]="form">
+    <div class="row gx-4">
+      <!--Nombre producto  -->
+      <mat-form-field class="col-5">
+        <mat-label class="">{{ 'form.name' | translate }}</mat-label>
+        <input type="text" matInput formControlName="name" placeholder="" />
+        <mat-error
+          *ngIf="
+            form.get('name').hasError('name') &&
+            !form.get('name').hasError('required')
+          "
+        >
+        </mat-error>
+        <mat-error *ngIf="form.get('name').hasError('required')">
+          {{ 'form.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Codigo -->
+      <mat-form-field class="col-2">
+        <mat-label class="">{{ 'products.code' | translate }}</mat-label>
+        <input type="text" matInput formControlName="code" placeholder="" />
+        <mat-error
+          *ngIf="
+            form.get('code').hasError('code') &&
+            !form.get('code').hasError('code')
+          "
+        >
+          {{ 'form.errorEmail' | translate }}
+        </mat-error>
+        <mat-error *ngIf="form.get('code').hasError('required')">
+          {{ 'form.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Codigo de barras -->
+
+      <mat-form-field class="col-3">
+        <mat-label class="">{{ 'products.codeBar' | translate }}</mat-label>
+        <input type="text" matInput formControlName="codeBar" placeholder="" />
+        <mat-error
+          *ngIf="
+            form.get('codeBar').hasError('codeBar') &&
+            !form.get('codeBar').hasError('required')
+          "
+        >
+        </mat-error>
+        <mat-error *ngIf="form.get('codeBar').hasError('required')">
+          {{ 'form.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Tiempo de entrega -->
+      <mat-form-field class="col-2">
+        <mat-label class="">{{ 'products.sendDates' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="sendDates"
+          placeholder=""
+        />
+        <mat-error
+          *ngIf="
+            form.get('sendDates').hasError('sendDates') &&
+            !form.get('sendDates').hasError('required')
+          "
+        >
+        </mat-error>
+        <mat-error *ngIf="form.get('sendDates').hasError('required')">
+          {{ 'form.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <!--Descripcion  -->
+      <mat-form-field class="col-6">
+        <mat-label class="">{{ 'products.description' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="description"
+          placeholder=""
+        />
+        <mat-error
+          *ngIf="
+            form.get('description').hasError('description') &&
+            !form.get('description').hasError('required')
+          "
+        >
+        </mat-error>
+        <mat-error *ngIf="form.get('description').hasError('required')">
+          {{ 'form.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Empresa -->
+      <mat-form-field class="col-6">
+        <mat-label class="">{{ 'products.company' | translate }}</mat-label>
+        <input type="text" matInput formControlName="company" placeholder="" />
+        <mat-error
+          *ngIf="
+            form.get('company').hasError('company') &&
+            !form.get('company').hasError('required')
+          "
+        >
+        </mat-error>
+        <mat-error *ngIf="form.get('company').hasError('required')">
+          {{ 'form.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Disponibilidad del producto -->
+      <mat-form-field class="col-3">
+        <mat-label class="">{{ 'products.avaibality' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="avaibality"
+          placeholder=""
+        />
+        <mat-error
+          *ngIf="
+            form.get('avaibality').hasError('avaibality') &&
+            !form.get('avaibality').hasError('required')
+          "
+        >
+        </mat-error>
+        <mat-error *ngIf="form.get('avaibality').hasError('required')">
+          {{ 'form.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="buttons">
+      <button
+        class="btn btn-primary button"
+        [disabled]="form.invalid || buttonStatus"
+        (click)="action()"
+      >
+        {{ 'form.save' | translate }}
+      </button>
+      <button
+        type="button"
+        *ngIf="mode === 'edit'"
+        class="btn-secondary"
+        (click)="changeMode()"
+      >
+        {{ 'form.plus' | translate }}
+      </button>
+    </div>
+  </form>
+</div>
