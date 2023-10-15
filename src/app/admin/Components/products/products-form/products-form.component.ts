@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/Components/dialog/dialog.component';
-import { ProductsApi } from 'src/app/admin/Interfaces/user-api';
+import { ProductsService } from 'src/app/admin/Services/products/products.service';
+import { AlertService } from 'src/app/shared/Services/alert.service';
 
 @Component({
   selector: 'app-products-form',
@@ -15,10 +16,9 @@ export class ProductsFormComponent implements OnInit {
 
   mode: 'add' | 'edit';
   form!: FormGroup;
-  copyUser: ProductsApi[] = [];
-  product: ProductsApi;
+  product;
+  copyProducts: any[] = [];
   buttonStatus = false;
-  statusUser: boolean;
 
   options: any = [
     { id: 1, name: 'Activó' },
@@ -26,8 +26,10 @@ export class ProductsFormComponent implements OnInit {
   ];
 
   constructor(
+    private _productService: ProductsService,
+    private activatedRouter: ActivatedRoute,
+    private _alertService: AlertService,
     private fb: FormBuilder,
-    private activRouter: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog
   ) {
@@ -40,7 +42,26 @@ export class ProductsFormComponent implements OnInit {
   }
 
   params() {
-    //Params
+    this.activatedRouter.queryParams.subscribe(params => {
+      if (params['id']) {
+        this.mode = 'edit';
+        const parametros = this._productService.getProduct(params);
+        this.form.setValue({
+          name: parametros.name,
+          code: parametros.code,
+          codeBar: parametros.codeBar,
+          sendDates: parametros.time,
+          description: parametros.description,
+          company: parametros.company,
+          avaibality: parametros.stock
+        });
+        this.buttonStatus = true;
+        this.product = parametros;
+        this.copyProducts.push(parametros);
+      } else {
+        this.form.reset();
+      }
+    });
   }
 
   buildForm() {
@@ -53,10 +74,37 @@ export class ProductsFormComponent implements OnInit {
       company: [''],
       avaibality: ['']
     });
+    this.changesObject();
   }
 
   action() {
-    //Agregar Editar
+    if (this.mode === 'add') {
+      const product = {
+        name: this.form.get('name').value,
+        code: this.form.get('code').value,
+        codeBar: this.form.get('codeBar').value,
+        sendDates: this.form.get('sendDates').value,
+        description: this.form.get('description').value,
+        company: this.form.get('company').value,
+        avaibality: this.form.get('avaibality').value
+      };
+      this._productService.addProduct(product);
+      this.form.reset();
+      this._alertService.mostrarAlerta('success', '200 producto agregado');
+    } else {
+      const product = {
+        productId: this.product.productId,
+        name: this.form.get('name').value,
+        code: this.form.get('code').value,
+        codeBar: this.form.get('codeBar').value,
+        sendDates: this.form.get('sendDates').value,
+        description: this.form.get('description').value,
+        company: this.form.get('company').value,
+        avaibality: this.form.get('avaibality').value
+      };
+      this._productService.updatedProduct(product);
+      this._alertService.mostrarAlerta('success', '200 Producto editado');
+    }
   }
 
   status() {
@@ -75,11 +123,16 @@ export class ProductsFormComponent implements OnInit {
   changesObject() {
     this.form.valueChanges.subscribe(res => {
       if (this.mode === 'edit') {
-        this.copyUser.forEach(element => {
+        this.copyProducts.forEach(element => {
+          console.log(element.codeBar, res.codeBar);
           if (
             element.code === res.code &&
             element.name === res.name &&
-            element.productId === res.options
+            element.codeBar === res.codeBar &&
+            element.time === res.sendDates &&
+            element.description === res.description &&
+            element.company === res.company &&
+            element.stock === res.avaibality
           ) {
             this.buttonStatus = true;
           } else {

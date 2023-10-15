@@ -9,35 +9,35 @@ export class ProductsService {
     content: [
       {
         productId: 1,
-        code: 1,
+        code: '1',
         name: 'Cajas',
         time: '12',
-        barcode: '12345',
+        codeBar: '12345',
         description: 'Este es un muy buen producto',
         company: 'San Martin',
-        stock: 12,
+        stock: '12',
         status: 1
       },
       {
         productId: 2,
-        code: 2,
+        code: '2',
         name: 'Cajas',
         time: '12',
-        barcode: '12345',
+        codeBar: '12345',
         description: 'Este es un muy buen producto',
         company: 'San Martin',
-        stock: 12,
+        stock: '12',
         status: 1
       },
       {
         productId: 3,
-        code: 3,
+        code: '3',
         name: 'Cajas',
         time: '12',
-        barcode: '12345',
+        codeBar: '12345',
         description: 'Este es un muy buen producto',
         company: 'San Martin',
-        stock: 12,
+        stock: '12',
         status: 1
       }
     ],
@@ -48,13 +48,14 @@ export class ProductsService {
   };
 
   product = {
-    code: 1,
+    productId: 1,
+    code: '1',
     name: 'Cajas',
     time: '12',
-    barcode: '12345',
+    codeBar: '12345',
     description: 'Este es un muy buen producto',
     company: 'San Martin',
-    stock: 12,
+    stock: '12',
     status: 1
   };
 
