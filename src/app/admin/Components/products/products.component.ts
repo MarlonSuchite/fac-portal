@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../Services/user/user.service';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { UserApi } from '../../../admin/Interfaces/user-api';
-import { ContentApi } from '../../Interfaces/content';
+import {
+  PAGE,
+  SIZE,
+  SORT,
+  PAGE_SIZE,
+  PAGE_SIZE_OPTIONS,
+  ROUTES_ADMIN_PRODUCTS
+} from 'src/app/utils/constants';
+import { ProductsService } from '../../Services/products/products.service';
 
 @Component({
   selector: 'app-products',
@@ -11,14 +17,14 @@ import { ContentApi } from '../../Interfaces/content';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  products: any[] = [];
   searchValue = new FormControl('');
-  page = 1;
+  products: any[] = [];
+  page = PAGE;
   search = '';
-  sort = '';
-  size = 10;
-  pageSize = 10;
-  pageSizeOptions = [10];
+  sort = SORT;
+  size = SIZE;
+  pageSize = PAGE_SIZE;
+  pageSizeOptions = PAGE_SIZE_OPTIONS;
   totalElements = 0;
   param = {
     page: this.page,
@@ -27,6 +33,7 @@ export class ProductsComponent implements OnInit {
   };
 
   constructor(
+    private _productsService: ProductsService,
     private router: Router,
     private activedRouter: ActivatedRoute
   ) {}
@@ -37,22 +44,47 @@ export class ProductsComponent implements OnInit {
   }
 
   firstCall() {
-    //Primera llamada
+    /* Aca va la suscripcion */
+    const parametros = this._productsService.getProducts(this.param);
+    this.totalElements = parametros.totalElements;
+    this.products = parametros.content;
+    console.log(this.products);
   }
 
   params() {
-    //Parametros
+    this.activedRouter.queryParams.subscribe(params => {
+      if (params['page']) {
+        const parametros = this._productsService.getProducts(params);
+        this.products = parametros.content;
+      }
+    });
   }
 
-  clickProduct(valor: any): void {
-    //Al hacer click sobre un producto
+  clickProduct(value: any): void {
+    this.router.navigate([`${ROUTES_ADMIN_PRODUCTS}`], {
+      queryParams: { id: value }
+    });
   }
 
   getPage(event: any): void {
-    //Paginacion
+    this.router.navigate([`${ROUTES_ADMIN_PRODUCTS}`], {
+      queryParams: {
+        page: event.pageIndex + 1,
+        search: this.search,
+        size: this.size,
+        sort: this.sort
+      }
+    });
   }
 
   searchParams(): void {
-    //Buscar un parametro
+    this.router.navigate([`${ROUTES_ADMIN_PRODUCTS}`], {
+      queryParams: {
+        page: 1,
+        search: this.searchValue.value,
+        size: this.size,
+        sort: this.sort
+      }
+    });
   }
 }

@@ -40,11 +40,19 @@ export class ProductsFormComponent implements OnInit {
   }
 
   params() {
-    //Parametros
+    //Params
   }
 
   buildForm() {
-    //Formulario
+    this.form = this.fb.group({
+      name: [''],
+      code: [''],
+      codeBar: [''],
+      sendDates: [''],
+      description: [''],
+      company: [''],
+      avaibality: ['']
+    });
   }
 
   action() {

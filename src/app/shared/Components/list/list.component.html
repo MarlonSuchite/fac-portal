@@ -1,11 +1,13 @@
 <li
   class="mb-2 list-group-item rounded-3 li"
   (click)="
-    clickParamEvent(params.userId || params.profileId || params.customerId)
+    clickParamEvent(
+      params.userId || params.profileId || params.customerId || params.productId
+    )
   "
 >
   <!-- Solo usuarios -->
-  <div *ngIf="params.name && params.email">
+  <div *ngIf="params.userId">
     {{ params.name }}
     <div>
       {{ params.email }}
@@ -13,7 +15,7 @@
   </div>
 
   <!-- Solo perfiles -->
-  <div *ngIf="params.code && params.description">
+  <div *ngIf="params.profileId">
     {{ params.code }}
     <div>
       {{ params.description }}
@@ -21,10 +23,18 @@
   </div>
 
   <!-- Solo Clientes -->
-  <div *ngIf="params.name && params.address">
+  <div *ngIf="params.customerId">
     {{ params.name }}
     <div>
       {{ params.address }}
+    </div>
+  </div>
+
+  <!-- Solo productos -->
+  <div *ngIf="params.productId">
+    {{ params.name }}
+    <div>
+      {{ params.company }}
     </div>
   </div>
 </li>

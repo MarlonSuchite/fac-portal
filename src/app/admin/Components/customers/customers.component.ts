@@ -53,9 +53,7 @@ export class CustomersComponent implements OnInit {
   params(): void {
     this.activatedRouter.queryParams.subscribe(params => {
       if (params['page']) {
-        this.page = params['page'];
-        this.search = params['search'];
-        const parametros = this._customerService.getCustomers(this.param);
+        const parametros = this._customerService.getCustomers(params);
         this.customers = parametros.content;
       }
     });
