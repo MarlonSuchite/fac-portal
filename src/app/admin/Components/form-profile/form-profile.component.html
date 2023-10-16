@@ -1,12 +1,15 @@
-<div>
+<div class="container-form">
+  <!-- Encabezdo -->
   <div class="encabezado mb-2">
     <h1 *ngIf="mode === 'add'">{{ 'formProfile.add' | translate }}</h1>
     <h1 *ngIf="mode === 'edit'">{{ 'formProfile.edit' | translate }}</h1>
   </div>
 
+  <!-- Formulario -->
   <form [formGroup]="form">
     <div class="row gx-4 gy-2">
-      <mat-form-field class="col-6">
+      <!-- Nombre -->
+      <mat-form-field class="col-lg-6">
         <mat-label class="">{{ 'formProfile.name' | translate }} </mat-label>
         <input
           type="text"
@@ -21,7 +24,8 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="col-6">
+      <!-- Descripcion -->
+      <mat-form-field class="col-lg-6">
         <mat-label class=""
           >{{ 'formProfile.description' | translate }}
         </mat-label>
@@ -38,7 +42,7 @@
         </mat-error>
       </mat-form-field>
 
-      <!--  -->
+      <!-- Obeto -->
       <div *ngFor="let rol of roles" class="mb-3">
         <mat-accordion multi>
           <mat-expansion-panel
@@ -113,23 +117,24 @@
         </mat-accordion>
       </div>
     </div>
-
-    <div class="buttons">
-      <button
-        class="btn btn-primary"
-        [disabled]="form.invalid || buttonStatus"
-        (click)="action()"
-      >
-        Guardar
-      </button>
-      <button
-        type="button"
-        *ngIf="mode === 'edit'"
-        class="btn-secondary"
-        (click)="changeMode()"
-      >
-        +
-      </button>
-    </div>
   </form>
+
+  <!-- Botones -->
+  <div class="buttons mt-2">
+    <button
+      class="btn btn-danger button"
+      [disabled]="form.invalid || buttonStatus"
+      (click)="action()"
+    >
+      Guardar
+    </button>
+    <button
+      type="button"
+      *ngIf="mode === 'edit'"
+      class="btn-secondary"
+      (click)="changeMode()"
+    >
+      +
+    </button>
+  </div>
 </div>

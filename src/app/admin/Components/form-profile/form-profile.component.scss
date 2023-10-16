@@ -2,60 +2,69 @@ $background-color-btn: #ffc003;
 $color-button: white;
 $background-color-btn-hover: #efbd3d;
 
-.encabezado {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.container-form {
+    height: 100%;
 
- 
-mat-expansion-panel{
-    border-radius: 2rem !important;
-}
-
-.items{
-    border-radius: 1.5rem;
-}
-
-h1,
-h2,
-h3{
-    color: rgb(4, 44, 84);
-    font-weight: 500;
-}
-
-h2{
-    border-radius: 2rem;
-    min-width: 160px;
-    max-width: 250px;
-    position: relative;
-    top: -40px;
-    left: 10px;
-    margin-bottom: -20px;
-}
-
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px;
-
-    .button{
-        height: 50px;
+    .encabezado {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .btn-secondary {
-        height: 70px;
-        width: 70px;
-        font-size: 2em;
-        border-radius: 50%;
-        background-color: $background-color-btn;
-        color: $color-button;
-        border: none;
-        transition: 300ms;
 
-        &:hover {
-            background-color: $background-color-btn-hover;
+    mat-expansion-panel {
+        border-radius: 2rem !important;
+    }
+
+    .items {
+        border-radius: 1.5rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+        color: rgb(4, 44, 84);
+        font-weight: 500;
+    }
+
+    h2 {
+        border-radius: 2rem;
+        min-width: 160px;
+        max-width: 250px;
+        position: relative;
+        top: -40px;
+        left: 10px;
+        margin-bottom: -20px;
+    }
+
+    form{
+        height: 600px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 60px;
+        
+        .button {
+            height: 50px;
+        }
+
+        .btn-secondary {
+            height: 70px;
+            width: 70px;
+            font-size: 2em;
+            border-radius: 50%;
+            background-color: $background-color-btn;
+            color: $color-button;
+            border: none;
+            transition: 300ms;
+
+            &:hover {
+                background-color: $background-color-btn-hover;
+            }
         }
     }
+
 }

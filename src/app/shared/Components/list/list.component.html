@@ -8,32 +8,40 @@
 >
   <!-- Solo usuarios -->
   <div *ngIf="params.userId">
-    {{ params.name }}
-    <div>
+    <div class="principal">
+      {{ params.name }}
+    </div>
+    <div class="secundario">
       {{ params.email }}
     </div>
   </div>
 
   <!-- Solo perfiles -->
   <div *ngIf="params.profileId">
-    {{ params.code }}
-    <div>
+    <div class="principal">
+      {{ params.code }}
+    </div>
+    <div class="secundario">
       {{ params.description }}
     </div>
   </div>
 
   <!-- Solo Clientes -->
   <div *ngIf="params.customerId">
-    {{ params.name }}
-    <div>
+    <div class="principal">
+      {{ params.name }}
+    </div>
+    <div class="secundario">
       {{ params.address }}
     </div>
   </div>
 
   <!-- Solo productos -->
   <div *ngIf="params.productId">
-    {{ params.name }}
-    <div>
+    <div class="principal">
+      {{ params.name }}
+    </div>
+    <div class="secundario">
       {{ params.company }}
     </div>
   </div>

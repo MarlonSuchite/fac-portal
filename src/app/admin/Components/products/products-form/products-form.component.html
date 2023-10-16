@@ -1,4 +1,4 @@
-<div class="">
+<div class="container-form">
   <div class="encabezado mb-2">
     <h1 *ngIf="mode === 'add'">{{ 'form.add' | translate }}</h1>
     <h1 *ngIf="mode === 'edit'">{{ 'form.edit' | translate }}</h1>
@@ -8,7 +8,7 @@
   <form [formGroup]="form">
     <div class="row gx-4">
       <!--Nombre producto  -->
-      <mat-form-field class="col-5">
+      <mat-form-field class="col-xl-5 col-lg-6">
         <mat-label class="">{{ 'form.name' | translate }}</mat-label>
         <input matInput type="text" formControlName="name" />
 
@@ -19,7 +19,7 @@
       </mat-form-field>
 
       <!-- Codigo -->
-      <mat-form-field class="col-2">
+      <mat-form-field class="col-xl-2 col-lg-3 col-md-6">
         <mat-label class="">{{ 'products.code' | translate }}</mat-label>
         <input type="text" matInput formControlName="code" />
 
@@ -31,7 +31,7 @@
 
       <!-- Codigo de barras -->
 
-      <mat-form-field class="col-3">
+      <mat-form-field class="col-xl-2 col-lg-3 col-md-6">
         <mat-label class="">{{ 'products.codeBar' | translate }}</mat-label>
         <input matInput type="text" formControlName="codeBar" />
 
@@ -42,7 +42,7 @@
       </mat-form-field>
 
       <!-- Tiempo de entrega -->
-      <mat-form-field class="col-2">
+      <mat-form-field class="col-xl-2 col-lg-3">
         <mat-label class="">{{ 'products.sendDates' | translate }}</mat-label>
         <input matInput type="text" formControlName="sendDates" />
 
@@ -53,7 +53,7 @@
       </mat-form-field>
 
       <!--Descripcion  -->
-      <mat-form-field class="col-6">
+      <mat-form-field class="col-xl-7 col-lg-9">
         <mat-label class="">{{ 'products.description' | translate }}</mat-label>
         <input matInput type="text" formControlName="description" />
 
@@ -64,7 +64,7 @@
       </mat-form-field>
 
       <!-- Empresa -->
-      <mat-form-field class="col-6">
+      <mat-form-field class="col-xl-4 col-md-6">
         <mat-label class="">{{ 'products.company' | translate }}</mat-label>
         <input matInput type="text" formControlName="company" />
 
@@ -75,7 +75,7 @@
       </mat-form-field>
 
       <!-- Disponibilidad del producto -->
-      <mat-form-field class="col-3">
+      <mat-form-field class="col-xl-4 col-md-6">
         <mat-label class="">{{ 'products.avaibality' | translate }}</mat-label>
         <input type="text" matInput formControlName="avaibality" />
 
@@ -85,24 +85,23 @@
         </mat-error>
       </mat-form-field>
     </div>
-
-    <!-- Botones -->
-    <div class="buttons">
-      <button
-        class="btn btn-primary button"
-        [disabled]="form.invalid || buttonStatus"
-        (click)="action()"
-      >
-        {{ 'form.save' | translate }}
-      </button>
-      <button
-        type="button"
-        *ngIf="mode === 'edit'"
-        class="btn-secondary"
-        (click)="changeMode()"
-      >
-        {{ 'form.plus' | translate }}
-      </button>
-    </div>
   </form>
+  <!-- Botones -->
+  <div class="buttons">
+    <button
+      class="btn btn-primary button"
+      [disabled]="form.invalid || buttonStatus"
+      (click)="action()"
+    >
+      {{ 'form.save' | translate }}
+    </button>
+    <button
+      type="button"
+      *ngIf="mode === 'edit'"
+      class="btn-secondary"
+      (click)="changeMode()"
+    >
+      {{ 'form.plus' | translate }}
+    </button>
+  </div>
 </div>

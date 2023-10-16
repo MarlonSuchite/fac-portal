@@ -9,4 +9,13 @@ $background-color-hover: white;
     &:hover{
         background-color:$background-color-hover;
     }
+    
+    .principal{
+        font-weight: bold;
+    }
+    
+    /* 
+    .secundario{
+        font-weight: 900;
+    } */
 }

@@ -99,7 +99,7 @@ export class FormProfileComponent implements OnInit {
             this.rolesApi = res.resources;
             this.profiles = res;
             this.copyProfile.push(res);
-            this.buttonStatus = true
+            this.buttonStatus = true;
             this.setearToggle(this.roles, res.resources);
           }
         });
@@ -135,7 +135,7 @@ export class FormProfileComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required]
     });
-    this.changesObject()
+    this.changesObject();
   }
 
   toggle(event: any, id: string) {
@@ -170,17 +170,19 @@ export class FormProfileComponent implements OnInit {
         }
       });
     });
+    console.log(this.rolesApi);
   }
 
   recorrerElemento(elements: any[], id: string): any {
-    elements.forEach(element => {
+    for (const element of elements) {
       if (element.id === id) {
+        console.log(element);
         return element;
       } else if (element.items && element.items[0].id === id) {
         const item = this.recorrerElemento(element.items, id);
         if (item) return item;
       }
-    });
+    }
 
     return null;
   }
@@ -253,10 +255,16 @@ export class FormProfileComponent implements OnInit {
       this._profileService.addProfile(profile).subscribe({
         next: (res: any) => {
           this.addEvent.emit('Perfil agregado');
-          this._alertService.mostrarAlerta('success', `${res.status} Se agrego correctamente` )
+          this._alertService.mostrarAlerta(
+            'success',
+            `${res.status} Se agrego correctamente`
+          );
         },
         error: (err: any) => {
-          this._alertService.mostrarAlerta('error',`${err.status} Hubo un problema`)
+          this._alertService.mostrarAlerta(
+            'error',
+            `${err.status} Hubo un problema`
+          );
         }
       });
     } else {
@@ -270,13 +278,19 @@ export class FormProfileComponent implements OnInit {
       this._profileService.updateProfile(profile).subscribe({
         next: (res: any) => {
           this.params();
-          console.log('Bueno', res)
-          this._alertService.mostrarAlerta('success', `${res.status} Usuario editado`)
+          console.log('Bueno', res);
+          this._alertService.mostrarAlerta(
+            'success',
+            `${res.status} Usuario editado`
+          );
           this.addEvent.emit('Perfil editado');
           this.form.reset();
         },
         error: (err: any) => {
-          this._alertService.mostrarAlerta('error', `${err.status} Hubo un problema`)
+          this._alertService.mostrarAlerta(
+            'error',
+            `${err.status} Hubo un problema`
+          );
         }
       });
     }
@@ -285,7 +299,7 @@ export class FormProfileComponent implements OnInit {
   changeMode() {
     this.mode = 'add';
     this.router.navigate(['/admin/profiles'], { queryParams: {} });
-    this.buttonStatus = false
+    this.buttonStatus = false;
   }
 
   changesObject(): void {
@@ -294,12 +308,12 @@ export class FormProfileComponent implements OnInit {
         this.copyProfile.forEach(element => {
           if (
             element.code === res.name &&
-            element.description === res.description  &&
-            element.resources.length === this.rolesApi.length 
+            element.description === res.description &&
+            element.resources.length === this.rolesApi.length
           ) {
             this.buttonStatus = true;
           } else {
-            console.log('entre false')
+            console.log('entre false');
             this.buttonStatus = false;
           }
         });

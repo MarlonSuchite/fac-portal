@@ -1,5 +1,5 @@
-$background-color-nav: #ffffff;
-$color-balck: black;
+$background-color-nav: #000000;
+$color-balck: rgb(255, 255, 255);
 $color-red: #e95b5b;
 
 
@@ -71,8 +71,8 @@ nav {
         .settings {
 
             .password {
-                position: relative;
-                left: 30px;
+                position: absolute;
+                left: 80px;
                 width: 100px;
                 min-height: 100px;
                 transform: translateX(200px);
@@ -83,7 +83,7 @@ nav {
 
 
                 a {
-                    margin-left: 1.5rem;
+                    margin-left: 2.5rem;
 
                     .fas {
                         font-size: 20px;
