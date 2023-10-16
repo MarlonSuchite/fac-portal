@@ -116,7 +116,6 @@ export class ProductsFormComponent implements OnInit {
     this.mode = 'add';
     this.router.navigate(['/admin/products'], { queryParams: {} });
     this.buttonStatus = false;
-    this.form.get('code').enable();
   }
 
   //Cambios en el objeto

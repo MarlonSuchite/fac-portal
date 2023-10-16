@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../Services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
 
   constructor(
+    private _loginService: LoginService,
     private fb: FormBuilder,
     private router: Router
   ) {
@@ -26,6 +28,11 @@ export class LoginComponent {
   }
 
   logIn(): void {
+    const params = {
+      emai: this.loginForm.get('email').value,
+      password: this.loginForm.get('password').value
+    };
+    this._loginService.login(params);
     this.router.navigate(['/admin/users']);
   }
 }

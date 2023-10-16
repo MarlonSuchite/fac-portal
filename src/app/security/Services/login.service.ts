@@ -6,6 +6,10 @@ import { NewPassword } from '../Interfaces/new-password';
   providedIn: 'root'
 })
 export class LoginService {
+  login(value: any) {
+    return console.log(value);
+  }
+
   forgotPasswordEmail(value: string) {
     return console.log(value);
   }

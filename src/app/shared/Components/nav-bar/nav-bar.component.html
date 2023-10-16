@@ -1,7 +1,14 @@
 <nav class="shadow-lg">
   <ul>
-    <li>
-      <a> logo </a>
+    <li class="li">
+      <a routerLink="/admin/users">
+        <img
+          src="../../../../assets/galaxia.png"
+          alt="Icono"
+          width="40"
+          height="40"
+        />
+      </a>
     </li>
     <li class="li">
       <a routerLink="/admin/users">
@@ -40,15 +47,15 @@
     <li class="li">
       <a routerLink="/admin/customers">
         <i class="fas bi bi-people-fill"></i>
-        <span class="nav-item"> 
-          {{ 'navbar.customers' | translate }}  
+        <span class="nav-item">
+          {{ 'navbar.customers' | translate }}
         </span>
       </a>
     </li>
 
     <li class="li">
       <a routerLink="/query/report">
-        <i class=" fas bi bi-file-text-fill"></i>
+        <i class="fas bi bi-file-text-fill"></i>
         <span class="nav-item">
           {{ 'navbar.report' | translate }}
         </span>
