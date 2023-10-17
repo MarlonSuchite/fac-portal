@@ -15,8 +15,6 @@ import { Peticiones } from '../../interfaces/peticiones';
 })
 export class TableReportComponent implements OnChanges {
   displayedColumns: string[] = [
-    'startDate',
-    'endDate',
     'order',
     'customer',
     'amount',

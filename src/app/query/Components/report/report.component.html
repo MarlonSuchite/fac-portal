@@ -1,60 +1,63 @@
 <div class="row contenedor">
-    <section class="col-1">
-      <app-nav-bar></app-nav-bar>
-    </section>
-  
-    <section class="col-11">
-      <div class="container-fluid mt-5">
-        <form [formGroup]="form">
-        <div class="row">
-          <div class="encabezado row col-11">
-            <!-- fecha 1 -->
-     
-              <mat-form-field class="col-3">
-                <mat-label>{{ 'report.startdate' | translate }}</mat-label>
-                <input
-                  matInput
-                  [matDatepicker]="picker"
-                  formControlName="startDate"
-                />
-  
-                <mat-hint>{{ 'report.date' | translate }}</mat-hint>
-                <mat-datepicker-toggle
-                  matIconSuffix
-                  [for]="picker"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-error *ngIf="form.get('startDate')?.hasError('required')">
-                  {{ 'report.required' | translate }}
-                </mat-error>
-              </mat-form-field>
+  <section class="col-1">
+    <app-nav-bar></app-nav-bar>
+  </section>
 
-            <!-- Usuario -->
-            <mat-form-field class="col-3">
-                <mat-label>Usuario</mat-label>
-                <input matInput type="text" formControlName="user" />
-                <mat-error *ngIf="form.get('user')?.hasError('required')">
-                  {{ 'report.required' | translate }}
-                </mat-error>
-            </mat-form-field>
+  <section class="col-11">
+    <div class="container-fluid mt-5 p-2">
+      <div class="col-12">
+        <h1>Reporte</h1>
+      </div>
+      <form [formGroup]="form">
+        <div class="row gx-5 gy-4">
+          <!-- fecha 1 -->
 
-  
-            <!-- Buscar -->
-          </div>
-          <div class="col-1 row">
-            <button class="col-6 searchButton" (click)="searchParams()" [disabled]="form.invalid">
+          <mat-form-field class="col-md-4">
+            <mat-label>{{ 'report.startdate' | translate }}</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="startDate"
+            />
+
+            <mat-hint>{{ 'report.date' | translate }}</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="form.get('startDate')?.hasError('required')">
+              {{ 'report.required' | translate }}
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Usuario -->
+          <mat-form-field class="col-lg-4 col-md-6">
+            <mat-label>Usuario</mat-label>
+            <input matInput type="text" formControlName="user" />
+            <mat-error *ngIf="form.get('user')?.hasError('required')">
+              {{ 'report.required' | translate }}
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Buscar -->
+          <section class="col-md-2">
+            <button
+              class="searchButton"
+              (click)="searchParams()"
+              [disabled]="form.invalid"
+            >
               <i class="bi bi-search button"></i>
             </button>
-  
-            <section class="col-6 searchButton">
+          </section>
+
+          <!--  <section class="col-6 searchButton">
               <i class="bi bi-trash button mt-2" (click)="clearParams()"></i>
-            </section>
-            </div>
-          </div>
-        </form>
-  
-        <app-table-report [dataSource]="data"></app-table-report>
-      </div>
-    </section>
-  </div>
-  
+            </section> -->
+        </div>
+      </form>
+
+      <app-table-report [dataSource]="data"></app-table-report>
+    </div>
+  </section>
+</div>

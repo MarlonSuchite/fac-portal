@@ -4,104 +4,96 @@
   </section>
 
   <section class="col-11">
-    <div class="container-fluid mt-5">
-      <form [formGroup]="form">
-        <div class="encabezado">
-          <!-- fecha 1 -->
-          <section>
-            <mat-form-field class="date">
-              <mat-label>{{ 'audit.startdate' | translate }}</mat-label>
-              <input
-                matInput
-                [matDatepicker]="picker"
-                formControlName="startDate"
-              />
+    <div class="container-fluid mt-5 p-2">
+      <div class="col-12">
+        <h1>Auditoria</h1>
+      </div>
 
-              <mat-hint>{{ 'audit.date' | translate }}</mat-hint>
-              <mat-datepicker-toggle
-                matIconSuffix
-                [for]="picker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-              <mat-error *ngIf="form.get('startDate')?.hasError('required')">
-                {{ 'audit.required' | translate }}
-              </mat-error>
-            </mat-form-field>
-          </section>
+      <form [formGroup]="form">
+        <div class="row gy-3">
+          <!-- fecha 1 -->
+          <mat-form-field class="col-xl-2 col-lg-3 col-md-6">
+            <mat-label>{{ 'audit.startdate' | translate }}</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="startDate"
+            />
+
+            <mat-hint>{{ 'audit.date' | translate }}</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="form.get('startDate')?.hasError('required')">
+              {{ 'audit.required' | translate }}
+            </mat-error>
+          </mat-form-field>
 
           <!-- fecha 2 -->
-          <section>
-            <mat-form-field class="date">
-              <mat-label>{{ 'audit.enddate' | translate }}</mat-label>
-              <input
-                matInput
-                [matDatepicker]="date"
-                formControlName="endDate"
-              />
-              <mat-hint>{{ 'audit.date' | translate }}</mat-hint>
-              <mat-datepicker-toggle
-                matIconSuffix
-                [for]="date"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #date></mat-datepicker>
-              <mat-error *ngIf="form.get('endDate')?.hasError('required')">
-                {{ 'audit.required' | translate }}
-              </mat-error>
-            </mat-form-field>
-          </section>
+          <mat-form-field class="col-xl-2 col-lg-3 col-md-6">
+            <mat-label>{{ 'audit.enddate' | translate }}</mat-label>
+            <input matInput [matDatepicker]="date" formControlName="endDate" />
+            <mat-hint>{{ 'audit.date' | translate }}</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="date"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #date></mat-datepicker>
+            <mat-error *ngIf="form.get('endDate')?.hasError('required')">
+              {{ 'audit.required' | translate }}
+            </mat-error>
+          </mat-form-field>
 
           <!-- Entidad -->
-          <section>
-            <mat-form-field class="select">
-              <mat-label>{{ 'audit.entity' | translate }}</mat-label>
-              <mat-select formControlName="entity" name="selection">
-                <mat-option value="one">{{
-                  'audit.entity1' | translate
-                }}</mat-option>
-                <mat-option value="two">{{
-                  'audit.entity2' | translate
-                }}</mat-option>
-              </mat-select>
-              <mat-error *ngIf="form.get('entity')?.hasError('required')">
-                {{ 'audit.required' | translate }}
-              </mat-error>
-            </mat-form-field>
-          </section>
+          <mat-form-field class="col-xl-2 col-lg-3 col-md-6">
+            <mat-label>{{ 'audit.entity' | translate }}</mat-label>
+            <mat-select formControlName="entity" name="selection">
+              <mat-option value="one">{{
+                'audit.entity1' | translate
+              }}</mat-option>
+              <mat-option value="two">{{
+                'audit.entity2' | translate
+              }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('entity')?.hasError('required')">
+              {{ 'audit.required' | translate }}
+            </mat-error>
+          </mat-form-field>
 
           <!-- Operacion -->
-          <section>
-            <mat-form-field class="select">
-              <mat-label>{{ 'audit.operation' | translate }}</mat-label>
-              <mat-select formControlName="operation" name="selection">
-                <mat-option value="one">{{
-                  'audit.operation1' | translate
-                }}</mat-option>
-                <mat-option value="two">{{
-                  'audit.operation2' | translate
-                }}</mat-option>
-              </mat-select>
-              <mat-error *ngIf="form.get('operation')?.hasError('required')">
-                {{ 'audit.required' | translate }}
-              </mat-error>
-            </mat-form-field>
-          </section>
+          <mat-form-field class="col-xl-2 col-lg-3 col-md-6">
+            <mat-label>{{ 'audit.operation' | translate }}</mat-label>
+            <mat-select formControlName="operation" name="selection">
+              <mat-option value="one">{{
+                'audit.operation1' | translate
+              }}</mat-option>
+              <mat-option value="two">{{
+                'audit.operation2' | translate
+              }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('operation')?.hasError('required')">
+              {{ 'audit.required' | translate }}
+            </mat-error>
+          </mat-form-field>
 
           <!-- Usuario -->
-          <section>
-            <mat-form-field class="user">
-              <mat-label>Usuario</mat-label>
-              <input matInput type="text" formControlName="user" />
-            </mat-form-field>
-          </section>
+          <mat-form-field class="col-xl-3 col-lg-4">
+            <mat-label>Usuario</mat-label>
+            <input matInput type="text" formControlName="user" />
+          </mat-form-field>
 
           <!-- Buscar -->
-          <button (click)="searchParams()" [disabled]="form.invalid">
-            <i class="bi bi-search button"></i>
-          </button>
-
-          <section class="">
-            <i class="bi bi-trash button mt-2" (click)="clearParams()"></i>
+          <section class="col-xl-1 col-lg-1 mt-4">
+            <button (click)="searchParams()" [disabled]="form.invalid">
+              <i class="bi bi-search button"></i>
+            </button>
           </section>
+
+          <!-- <section class="">
+            <i class="bi bi-trash button mt-2" (click)="clearParams()"></i>
+          </section> -->
         </div>
       </form>
 

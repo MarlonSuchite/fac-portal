@@ -56,7 +56,11 @@ export class AuditComponent implements OnInit {
   searchParams() {
     const params = {
       //Formatear fechas
-      start: formatDate(this.form.get('starDate').value, 'yyyy-MM-dd', 'en-US'),
+      start: formatDate(
+        this.form.get('startDate').value,
+        'yyyy-MM-dd',
+        'en-US'
+      ),
       end: formatDate(this.form.get('endDate').value, 'yyyy-MM-dd', 'en-US'),
       operation: this.form.get('operation'),
       entity: this.form.get('entity'),

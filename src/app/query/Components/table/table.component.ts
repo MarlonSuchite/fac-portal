@@ -14,13 +14,7 @@ import { Peticiones } from '../../interfaces/peticiones';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnChanges {
-  displayedColumns: string[] = [
-    'identifier',
-    'date',
-    'entity',
-    'user',
-    'operation'
-  ];
+  displayedColumns: string[] = ['date', 'entity', 'user', 'operation'];
   @Input() dataSource: Peticiones[] = [];
   tableDataSource = new MatTableDataSource<Peticiones>(this.dataSource);
 
