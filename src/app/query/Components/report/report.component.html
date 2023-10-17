@@ -28,78 +28,18 @@
                   {{ 'report.required' | translate }}
                 </mat-error>
               </mat-form-field>
-        
-  
-            <!-- fecha 2 -->
-              <mat-form-field class="col-3">
-                <mat-label>{{ 'report.enddate' | translate }}</mat-label>
-                <input
-                  matInput
-                  [matDatepicker]="date"
-                  formControlName="endDate"
-                />
-                <mat-hint>{{ 'report.date' | translate }}</mat-hint>
-                <mat-datepicker-toggle
-                  matIconSuffix
-                  [for]="date"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #date></mat-datepicker>
-                <mat-error *ngIf="form.get('endDate')?.hasError('required')">
-                  {{ 'report.required' | translate }}
-                </mat-error>
-              </mat-form-field>
-  
-            <!-- No. Pedido -->
-                <mat-form-field class="col-2">
-                  <mat-label>{{ 'report.orderNumber' | translate }}</mat-label>
-                  <input
-                    matInput
-                    formControlName="order"
-                  />
-                  <mat-error *ngIf="form.get('order')?.hasError('required')">
-                    {{ 'report.required' | translate }}
-                  </mat-error>
-                </mat-form-field>
-  
-            <!-- Operacion -->
-                <mat-form-field class="col-2">
-                  <mat-label>Cliente</mat-label>
-                  <input matInput type="text" formControlName="customer" />
-                  <mat-error *ngIf="form.get('customer')?.hasError('required')">
-                    {{ 'report.required' | translate }}
-                  </mat-error>
-                </mat-form-field>
-  
-            <!-- Usuario -->
-              <mat-form-field class="col-2">
-                <mat-label>Monto</mat-label>
-                <input matInput type="text" formControlName="amount" />
-                <mat-error *ngIf="form.get('amount')?.hasError('required')">
-                  {{ 'report.required' | translate }}
-                </mat-error>
-              </mat-form-field>
 
             <!-- Usuario -->
-            <mat-form-field class="col-2">
-                <mat-label>Impuesto</mat-label>
-                <input matInput type="text" formControlName="taxes" />
-                <mat-error *ngIf="form.get('taxes')?.hasError('required')">
-                  {{ 'report.required' | translate }}
-                </mat-error>
-            </mat-form-field>
-
-            <!-- Usuario -->
-            <mat-form-field class="col-2">
-                <mat-label>Total</mat-label>
-                <input matInput type="text" formControlName="total" />
-                <mat-error *ngIf="form.get('total')?.hasError('required')">
+            <mat-form-field class="col-3">
+                <mat-label>Usuario</mat-label>
+                <input matInput type="text" formControlName="user" />
+                <mat-error *ngIf="form.get('user')?.hasError('required')">
                   {{ 'report.required' | translate }}
                 </mat-error>
             </mat-form-field>
 
   
             <!-- Buscar -->
-            
           </div>
           <div class="col-1 row">
             <button class="col-6 searchButton" (click)="searchParams()" [disabled]="form.invalid">

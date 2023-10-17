@@ -17,18 +17,13 @@ import { ReportService } from '../../Services/report/report.service';
   styleUrls: ['./report.component.scss']
 })
 export class ReportComponent implements OnInit {
-  data: Peticiones[] = [];
+  data = []
   form!: FormGroup;
 
   buildForm() {
     this.form = this.fb.group({
       startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      order: ['', Validators.required],
-      customer: ['', Validators.required],
-      amount: ['', Validators.required],
-      taxes: ['', Validators.required],
-      total: ['', Validators.required],
+      user: ['', Validators.required],
     });
   }
 
@@ -60,13 +55,8 @@ export class ReportComponent implements OnInit {
   searchParams() {
     const params = {
       //Formatear fechas
-      start: formatDate(this.form.get('starDate').value, 'yyyy-MM-dd', 'en-US'),
-      end: formatDate(this.form.get('endDate').value, 'yyyy-MM-dd', 'en-US'),
-      order: this.form.get('order').value,
-      customer: this.form.get('customer').value,
-      amount: this.form.get('amount').value,
-      taxes: this.form.get('taxes').value,
-      total: this.form.get('total').value,
+      start: formatDate(this.form.get('startDate').value, 'yyyy-MM-dd', 'en-US'),
+      user: this.form.get('user').value,
     };
 
     this.router.navigate(['query/report'], {
