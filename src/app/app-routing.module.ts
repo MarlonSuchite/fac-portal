@@ -10,10 +10,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'query',
-    loadChildren: () => import('./query/query.module').then(m => m.QueryModule)
-  },
-  {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
@@ -23,14 +19,8 @@ const routes: Routes = [
       import('./security/security.module').then(m => m.SecurityModule)
   },
   {
-    path: 'admin',
-    loadChildren: () =>
-    import('./admin/admin.module').then(m => m.AdminModule)
-  },
-  {
     path: 'query',
-    loadChildren: () =>
-    import('./query/query.module').then(m =>m.QueryModule)
+    loadChildren: () => import('./query/query.module').then(m => m.QueryModule)
   }
 ];
 

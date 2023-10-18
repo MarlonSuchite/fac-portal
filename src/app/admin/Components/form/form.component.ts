@@ -7,7 +7,7 @@ import { UserService } from '../../Services/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/Components/dialog/dialog.component';
 import { ProfilesService } from '../../Services/profile/profiles.service';
-import { AlertService } from 'src/app/shared/Services/alert.service';
+import { AlertService } from 'src/app/shared/Services/alert/alert.service';
 
 @Component({
   selector: 'app-form',
@@ -73,8 +73,6 @@ export class FormComponent implements OnInit {
     });
   }
 
- 
-
   buildForm() {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -92,17 +90,21 @@ export class FormComponent implements OnInit {
         profileId: this.form.get('options').value,
         status: true
       };
-      this._userService
-        .addNewUser(params)
-        .subscribe({
-          next: (res: any) => {
-            this.addEvent.emit('d')
-            this._alertService.mostrarAlerta('success', `${res.status} Se agrego correctamente`)
-          },
-          error: (err: any) => {
-            this._alertService.mostrarAlerta('error', `${err.status} Hubo un problema`)
-          }
-        });
+      this._userService.addNewUser(params).subscribe({
+        next: (res: any) => {
+          this.addEvent.emit('d');
+          this._alertService.mostrarAlerta(
+            'success',
+            `${res.status} Se agrego correctamente`
+          );
+        },
+        error: (err: any) => {
+          this._alertService.mostrarAlerta(
+            'error',
+            `${err.status} Hubo un problema`
+          );
+        }
+      });
       this.form.reset();
     } else {
       const params: UserApi = {
@@ -114,12 +116,18 @@ export class FormComponent implements OnInit {
       };
       this._userService.updateUser(params).subscribe({
         next: (res: any) => {
-          this.params()
-          console.log('Bueno',res)
-          this._alertService.mostrarAlerta('success', `${res.status} Usuario editado`)
+          this.params();
+          console.log('Bueno', res);
+          this._alertService.mostrarAlerta(
+            'success',
+            `${res.status} Usuario editado`
+          );
         },
         error: (err: any) => {
-          this._alertService.mostrarAlerta('error', `${err.status} Hubo un problema`)
+          this._alertService.mostrarAlerta(
+            'error',
+            `${err.status} Hubo un problema`
+          );
         }
       });
       this.form.reset();
@@ -137,12 +145,18 @@ export class FormComponent implements OnInit {
     };
     this._userService.updateUser(params).subscribe({
       next: (res: any) => {
-        this.params()
-        this._alertService.mostrarAlerta('success', `${res.status} Estaus cambiado`)
+        this.params();
+        this._alertService.mostrarAlerta(
+          'success',
+          `${res.status} Estaus cambiado`
+        );
       },
       error: (err: any) => {
-        this._alertService.mostrarAlerta('error', `${err.status} Hubo un problema`)
-      } 
+        this._alertService.mostrarAlerta(
+          'error',
+          `${err.status} Hubo un problema`
+        );
+      }
     });
   }
 

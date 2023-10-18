@@ -18,11 +18,16 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
-import { ReportComponent } from './components/report/report.component';
-import { TableReportComponent } from './components/table-report/table-report.component';
+import { ReportComponent } from './Components/report/report.component';
+import { TableReportComponent } from './Components/table-report/table-report.component';
 
 @NgModule({
-  declarations: [AuditComponent, TableComponent, ReportComponent, TableReportComponent],
+  declarations: [
+    AuditComponent,
+    TableComponent,
+    ReportComponent,
+    TableReportComponent
+  ],
   imports: [
     CommonModule,
     AuditRoutingModule,

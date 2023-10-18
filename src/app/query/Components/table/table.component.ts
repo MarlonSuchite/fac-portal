@@ -28,7 +28,6 @@ export class TableComponent implements OnChanges {
 
   ngAfterViewInit() {
     this.tableDataSource.paginator = this.paginator;
-    console.log(this.tableDataSource.paginator);
   }
 
   ngOnInit(): void {

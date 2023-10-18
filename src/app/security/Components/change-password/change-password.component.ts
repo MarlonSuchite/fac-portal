@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormValidations } from 'src/app/utils/form-validations';
 import { NewPassword } from '../../Interfaces/new-password';
-import { LoginService } from '../../Services/login.service';
+import { AuthService } from '../../Services/auth/auth.service';
 
 @Component({
   selector: 'app-change-password',
@@ -20,7 +20,7 @@ export class ChangePasswordComponent {
 
   constructor(
     private fb: FormBuilder,
-    private _loginService: LoginService
+    private _authService: AuthService
   ) {
     this.buildForm();
   }
@@ -57,7 +57,7 @@ export class ChangePasswordComponent {
       password: this.form.get('newPassword').value,
       passwordCondirmation: this.form.get('confirmNewPassword').value
     };
-    this._loginService.sendNewPassword(password);
+    this._authService.sendNewPassword(password);
   }
 
   sendEvent() {

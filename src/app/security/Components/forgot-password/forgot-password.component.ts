@@ -5,10 +5,10 @@ import {
   Validators,
   FormGroup
 } from '@angular/forms';
-import { LoginService } from '../../Services/login.service';
 import { Router } from '@angular/router';
 import { FormValidations } from 'src/app/utils/form-validations';
 import { ForgotPassword } from '../../Interfaces/forgotPassword';
+import { AuthService } from '../../Services/auth/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -21,7 +21,7 @@ export class ForgotPasswordComponent {
   hideNewPassword = true;
   hideConfirmPassword = true;
   constructor(
-    private _loginService: LoginService,
+    private _authService: AuthService,
     private fb: FormBuilder,
     private router: Router
   ) {
@@ -62,7 +62,7 @@ export class ForgotPasswordComponent {
   //Enviar email
   sendEmail(): void {
     if (this.email) {
-      this._loginService.forgotPasswordEmail(this.email.value);
+      this._authService.forgotPasswordEmail(this.email.value);
       this.form.get('email').setValue(this.email.value);
       this.form.get('email')?.disable();
     }
@@ -75,7 +75,7 @@ export class ForgotPasswordComponent {
       password: this.form.get('newPassword').value,
       username: this.form.get('email').value
     };
-    this._loginService.sendPassword(password);
+    this._authService.sendPassword(password);
   }
 
   //Regresar al login

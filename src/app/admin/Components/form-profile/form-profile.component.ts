@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfilesService } from '../../Services/profile/profiles.service';
 import { ProfileApi } from '../../Interfaces/profile-api';
-import { AlertService } from 'src/app/shared/Services/alert.service';
+import { AlertService } from 'src/app/shared/Services/alert/alert.service';
 
 @Component({
   selector: 'app-form-profile',

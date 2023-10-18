@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/Components/dialog/dialog.component';
 import { ProductsService } from 'src/app/admin/Services/products/products.service';
-import { AlertService } from 'src/app/shared/Services/alert.service';
+import { AlertService } from 'src/app/shared/Services/alert/alert.service';
 
 @Component({
   selector: 'app-products-form',

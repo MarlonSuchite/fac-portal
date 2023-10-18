@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomersService } from '../../Services/customers/customers.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertService } from 'src/app/shared/Services/alert.service';
+import { AlertService } from 'src/app/shared/Services/alert/alert.service';
 
 @Component({
   selector: 'app-form-customer',
@@ -44,7 +44,7 @@ export class FormCustomerComponent implements OnInit {
           passport: parametros.passport,
           address: parametros.address
         });
-        this.buttonStatus = true
+        this.buttonStatus = true;
         this.copyCustomer.push(parametros);
       } else {
         this.form.reset();
@@ -102,7 +102,7 @@ export class FormCustomerComponent implements OnInit {
   changeMode() {
     this.mode = 'add';
     this.router.navigate(['/admin/customers'], { queryParams: {} });
-    this.buttonStatus = false
+    this.buttonStatus = false;
   }
 
   changesObject() {
