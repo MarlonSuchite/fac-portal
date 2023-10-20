@@ -5,23 +5,36 @@ import { UsersComponent } from './Components/users/users.component';
 import { ProfilesComponent } from './Components/profiles/profiles.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { CustomersComponent } from './Components/customers/customers.component';
+import { guardianRoles } from '../shared/Guards/guardian-roles.guard';
+import { portectorGuard } from '../shared/Guards/protector.guard';
+import { ROLE_PROFILE, ROLE_USER } from '../utils/constants';
 
 const routes: Routes = [
   {
     path: 'users',
-    component: UsersComponent
+    component: UsersComponent,
+    canActivate: [portectorGuard, guardianRoles(ROLE_USER)]
   },
   {
     path: 'profiles',
-    component: ProfilesComponent
+    component: ProfilesComponent,
+    canActivate: [portectorGuard, guardianRoles(ROLE_PROFILE)]
   },
   {
     path: 'products',
     component: ProductsComponent
+    /*  canActivate: [
+      portectorGuard,
+      guardianRoles(['ROLE_PRODUCTS'])
+    ] */
   },
   {
     path: 'customers',
     component: CustomersComponent
+    /*   canActivate: [
+      portectorGuard,
+      guardianRoles(['ROLE_CUSTOMERS'])
+    ] */
   }
 ];
 

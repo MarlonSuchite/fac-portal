@@ -14,7 +14,7 @@ export class AuthService {
     token:
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzY29wZSI6WyJvcGVuaWQiXSwidXNlcl9uYW1lIjoicm9vdEBpczR0A',
     expiration: 1695319262343,
-    authorities: ['ROLE_USER', 'ROLE_PROFILE', 'ROLE_AUDIT']
+    authorities: ['ROLE_PROFILE', 'ROLE_USER']
   };
 
   login(value: any) {
