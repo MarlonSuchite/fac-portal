@@ -39,11 +39,8 @@ $color-power-false: #E74C3C;
             height: 50px;
         }
 
-        .btn-secondary {
-            height: 70px;
-            width: 70px;
+        .btn-warning {
             font-size: 2em;
-            border-radius: 50%;
             background-color: $background-color-btn;
             color: $color-button;
             border: none;
@@ -51,10 +48,9 @@ $color-power-false: #E74C3C;
 
             &:hover {
                 background-color: $background-color-btn-hover;
+                color: $color-button;
+                transform: rotate(360deg);
             }
         }
-
     }
-
-
 }

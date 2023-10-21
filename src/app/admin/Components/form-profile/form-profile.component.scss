@@ -11,32 +11,6 @@ $background-color-btn-hover: #efbd3d;
         align-items: center;
     }
 
-
-    mat-expansion-panel {
-        border-radius: 2rem !important;
-    }
-
-    .items {
-        border-radius: 1.5rem;
-    }
-
-    h1,
-    h2,
-    h3 {
-        color: rgb(4, 44, 84);
-        font-weight: 500;
-    }
-
-    h2 {
-        border-radius: 2rem;
-        min-width: 160px;
-        max-width: 250px;
-        position: relative;
-        top: -40px;
-        left: 10px;
-        margin-bottom: -20px;
-    }
-
     form{
         height: 600px;
     }
@@ -45,17 +19,13 @@ $background-color-btn-hover: #efbd3d;
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        height: 60px;
-        
+
         .button {
             height: 50px;
         }
 
-        .btn-secondary {
-            height: 70px;
-            width: 70px;
+        .btn-warning {
             font-size: 2em;
-            border-radius: 50%;
             background-color: $background-color-btn;
             color: $color-button;
             border: none;
@@ -63,8 +33,34 @@ $background-color-btn-hover: #efbd3d;
 
             &:hover {
                 background-color: $background-color-btn-hover;
+                color: $color-button;
+                transform: rotate(360deg);
             }
         }
     }
+}
 
+
+/* Objeto */
+
+.object{
+    border-radius: 1rem;
+    min-height: 150px;
+
+    .title{
+        position: relative;
+        top: -10px;
+        left: 20px;
+        border-radius: 1.5rem;
+        background-color: #f2f2f2;
+        font-weight: bold;
+        font-size: 150%;
+        color: rgb(0, 0, 0);
+    }
+
+    .items{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }

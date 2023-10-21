@@ -89,7 +89,7 @@
   <!-- Botones -->
   <div class="buttons">
     <button
-      class="btn btn-primary button"
+      class="btn btn-danger button"
       [disabled]="form.invalid || buttonStatus"
       (click)="action()"
     >
@@ -98,10 +98,12 @@
     <button
       type="button"
       *ngIf="mode === 'edit'"
-      class="btn-secondary"
+      class="btn btn-warning button"
       (click)="changeMode()"
     >
       {{ 'form.plus' | translate }}
     </button>
   </div>
 </div>
+
+{{ form.invalid }}

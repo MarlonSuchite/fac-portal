@@ -39,6 +39,7 @@
               [length]="totalElements"
               [pageSize]="pageSize"
               [pageSizeOptions]="pageSizeOptions"
+              [hidePageSize]="true"
               (page)="getPage($event)"
               aria-label="Select page"
             >
@@ -48,7 +49,7 @@
 
         <!--Panel  -->
         <section class="col-xl-9 mt-4">
-          <div class="border panel shadow-lg bg-white p-5">
+          <div class="border panel shadow-lg bg-white p-lg-5 p-3">
             <!-- Formulario -->
             <app-form-profile (addEvent)="firstCall()"></app-form-profile>
           </div>

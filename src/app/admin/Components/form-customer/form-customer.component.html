@@ -92,10 +92,11 @@
     >
       {{ 'customers.save' | translate }}
     </button>
+
     <button
       type="button"
       *ngIf="mode === 'edit'"
-      class="btn btn-warning"
+      class="btn btn-warning button"
       (click)="changeMode()"
     >
       {{ 'customers.plus' | translate }}

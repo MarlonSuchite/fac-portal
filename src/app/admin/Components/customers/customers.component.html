@@ -10,7 +10,7 @@
           <h1>Clientes</h1>
         </section>
 
-        <!-- Listado productos -->
+        <!-- Listado Clientes -->
         <section class="col-xl-3">
           <div class="p-3">
             <div class="search row bg-white shadow-lg">
@@ -44,6 +44,7 @@
               [length]="totalElements"
               [pageSize]="pageSize"
               [pageSizeOptions]="pageSizeOptions"
+              [hidePageSize]="true"
               aria-label="Select page"
               (page)="getPage($event)"
             >
@@ -53,7 +54,7 @@
 
         <!-- Panel Clientes -->
         <section class="col-xl-9 mt-4">
-          <div class="border p-5 panel shadow-lg bg-white">
+          <div class="border p-lg-5 p-3 panel shadow-lg bg-white">
             <app-form-customer></app-form-customer>
           </div>
         </section>

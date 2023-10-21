@@ -3,7 +3,7 @@
     <app-nav-bar></app-nav-bar>
   </section>
 
-  <section class="col-11">
+  <section class="col-11 mb-2">
     <div class="container-fluid">
       <div class="row gx-5 gy-2">
         <section class="col-12 mt-3">
@@ -39,6 +39,7 @@
               [length]="totalElements"
               [pageSize]="pageSize"
               [pageSizeOptions]="pageSizeOptions"
+              [hidePageSize]="true"
               aria-label="Select page"
               (page)="getPage($event)"
             >
@@ -48,7 +49,7 @@
 
         <!-- Panel usuarios -->
         <section class="col-xl-9 mt-4">
-          <div class="border p-5 panel shadow-lg bg-white">
+          <div class="border p-lg-5 p-3 panel shadow-lg bg-white">
             <app-form (addEvent)="firstCall()"></app-form>
           </div>
         </section>
@@ -56,3 +57,18 @@
     </div>
   </section>
 </div>
+
+<!-- 
+
+
+  -ARREGLAR LA VISTA DE PERFILES HACERLA RESPONSIVE
+  -PREGUNTAR POR EL LOGIN
+
+
+
+
+
+
+
+
+ -->

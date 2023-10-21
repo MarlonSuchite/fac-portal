@@ -1,8 +1,26 @@
+.img{
+  background-image: url(../../../../assets/paven.png);
+  width: 100%;
+  height: 100%;
+  padding: 0.1px;
+}
+
+.encabezado{
+
+  h1{
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-weight:900;
+    font-size: 2rem;
+  }
+
+}
+
 .container{
-  width: 400px;
-  height: 500px;
-  margin-top: 5rem;
-  padding: 0;
+  width: 350px;
+  height: 550px;
+  margin:  5rem auto;
+  z-index: 100;
 
   form{
     padding: 1rem;
@@ -15,8 +33,9 @@
   .btn-login{
     width: 80%;
     margin: auto;
-
-    .btn-dark{
+    
+    .btn-danger{
+      background-color: rgb(206, 80, 80);
       width: 100%;
       padding: .5rem;
     }
@@ -25,5 +44,16 @@
   .password{
     display: flex;
     justify-content: center;
+  }
+}
+
+.here{
+  color: rgb(206, 80, 80);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 400px){
+  .container{
+    width: 340px;
   }
 }

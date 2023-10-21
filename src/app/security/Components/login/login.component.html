@@ -1,47 +1,58 @@
-<div class="container shadow-lg rounded border">
-  <form [formGroup]="loginForm">
-    <div class="row mt-5">
-      <mat-form-field class="col-12">
-        <mat-label>{{ 'login.email.enterEmail' | translate }}</mat-label>
-        <input matInput placeholder="pat@example.com" formControlName="email" />
-      </mat-form-field>
-
-      <mat-form-field class="col-12">
-        <mat-label>{{ 'login.password.enterPassword' | translate }}</mat-label>
-        <input
-          matInput
-          [type]="hide ? 'password' : 'text'"
-          formControlName="password"
-        />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="hide = !hide"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
-        >
-          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-        </button>
-      </mat-form-field>
+<div class="img">
+  <div class="container shadow-lg border bg-white rounded">
+    <div class="encabezado mt-5">
+      <h1>Bienvenido</h1>
     </div>
-  </form>
+    <form [formGroup]="loginForm">
+      <div class="row mt-2">
+        <mat-form-field class="col-12">
+          <mat-label>{{ 'login.email.enterEmail' | translate }}</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            formControlName="email"
+          />
+        </mat-form-field>
 
-  <div class="btn-login">
-    <button
-      class="btn btn-dark rounded-pill"
-      [disabled]="loginForm.invalid"
-      (click)="logIn()"
-    >
-      Iniciar Sesion
-    </button>
-  </div>
+        <mat-form-field class="col-12">
+          <mat-label>{{
+            'login.password.enterPassword' | translate
+          }}</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </form>
 
-  <div class="password mt-3">
-    <p>{{ 'login.password.forgotPassword' | translate }}</p>
-    <p class="mx-1">
-      <a routerLink="/security/forgotPassword">
-        {{ 'login.password.here' | translate }}
-      </a>
-    </p>
+    <div class="btn-login">
+      <button
+        class="btn btn-danger rounded-pill"
+        [disabled]="loginForm.invalid"
+        (click)="logIn()"
+      >
+        Iniciar Sesion
+      </button>
+    </div>
+
+    <div class="password mt-3">
+      <p>{{ 'login.password.forgotPassword' | translate }}</p>
+      <p class="mx-1">
+        <a class="here" routerLink="/security/forgotPassword">
+          {{ 'login.password.here' | translate }}
+        </a>
+      </p>
+    </div>
   </div>
 </div>

@@ -30,24 +30,16 @@ export class FormProfileComponent implements OnInit {
       selected: false,
       items: [
         {
-          id: 2,
-          name: this.translate.instant('roles.configuration.security'),
-          role: '',
-          selected: false,
-          itemChild: [
-            {
-              id: 3,
-              name: this.translate.instant('roles.configuration.profiles'),
-              role: 'ROLE_PROFILES',
-              selected: false
-            },
-            {
-              id: 4,
-              name: this.translate.instant('roles.configuration.users'),
-              role: 'ROLE_USERS',
-              selected: false
-            }
-          ]
+          id: 3,
+          name: this.translate.instant('roles.configuration.profiles'),
+          role: 'ROLE_PROFILES',
+          selected: false
+        },
+        {
+          id: 4,
+          name: this.translate.instant('roles.configuration.users'),
+          role: 'ROLE_USERS',
+          selected: false
         }
       ]
     },
@@ -86,7 +78,7 @@ export class FormProfileComponent implements OnInit {
     this.params();
   }
   params(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
+    /*  this.activatedRoute.queryParams.subscribe(params => {
       if (params['id']) {
         this.mode = 'edit';
         this.desactivar(false);
@@ -107,11 +99,11 @@ export class FormProfileComponent implements OnInit {
         this.form.reset();
         this.desactivar(false);
       }
-    });
+    }); */
   }
 
   setearToggle(elements: any[], resources: string[]): void {
-    elements.forEach(element => {
+    /* elements.forEach(element => {
       element.items.forEach(item => {
         //Verificar si el rol existe la respuesta
         if (resources.includes(item.role)) {
@@ -126,7 +118,7 @@ export class FormProfileComponent implements OnInit {
           });
         }
       });
-    });
+    }); */
   }
 
   //Formulario
@@ -139,16 +131,16 @@ export class FormProfileComponent implements OnInit {
   }
 
   toggle(event: any, id: string) {
-    const elemento = this.recorrerElemento(this.roles, id);
+    /*   const elemento = this.recorrerElemento(this.roles, id);
     if (elemento) {
       elemento.selected = event.checked;
       this.activar(event.checked, elemento);
     }
-    console.log(this.rolesApi);
+    console.log(this.rolesApi); */
   }
 
   toggleChild(event: any, id: number) {
-    this.roles.forEach(rol => {
+    /*  this.roles.forEach(rol => {
       rol.items.forEach(items => {
         if (items.id === id && event.checked) {
           items.selected = event.checked;
@@ -170,11 +162,11 @@ export class FormProfileComponent implements OnInit {
         }
       });
     });
-    console.log(this.rolesApi);
+    console.log(this.rolesApi); */
   }
 
   recorrerElemento(elements: any[], id: string): any {
-    for (const element of elements) {
+    /*  for (const element of elements) {
       if (element.id === id) {
         console.log(element);
         return element;
@@ -184,11 +176,11 @@ export class FormProfileComponent implements OnInit {
       }
     }
 
-    return null;
+    return null; */
   }
 
   activar(event: boolean, element: any) {
-    if (element.items) {
+    /*  if (element.items) {
       element.items.forEach(item => {
         item.selected = event;
         if (item.role && event) {
@@ -208,23 +200,23 @@ export class FormProfileComponent implements OnInit {
           this.aliminarRoles(itemChild.role);
         }
       });
-    }
+    } */
   }
 
   agregarRoles(item: string) {
-    const existe = this.rolesApi.find(rol => rol === item);
+    /*  const existe = this.rolesApi.find(rol => rol === item);
     if (!existe) {
       this.rolesApi.push(item);
-    }
+    } */
   }
 
   aliminarRoles(item: string) {
-    this.rolesApi = this.rolesApi.filter(rol => rol !== item);
+    // this.rolesApi = this.rolesApi.filter(rol => rol !== item);
   }
 
   //Desactivar todo
   desactivar(event: boolean) {
-    this.roles.forEach(element => {
+    /*  this.roles.forEach(element => {
       element.selected = event;
       element.items.forEach(items => {
         items.selected = event;
@@ -236,12 +228,12 @@ export class FormProfileComponent implements OnInit {
           });
         }
       });
-    });
+    }); */
   }
 
   //Agregar
   action(): void {
-    if (this.mode === 'add') {
+    /* if (this.mode === 'add') {
       const profile: ProfileApi = {
         resources: this.rolesApi,
         profileId: null,
@@ -293,17 +285,17 @@ export class FormProfileComponent implements OnInit {
           );
         }
       });
-    }
+    }*/
   }
 
   changeMode() {
-    this.mode = 'add';
+    /*   this.mode = 'add';
     this.router.navigate(['/admin/profiles'], { queryParams: {} });
-    this.buttonStatus = false;
+    this.buttonStatus = false; */
   }
 
   changesObject(): void {
-    this.form.valueChanges.subscribe(res => {
+    /*  this.form.valueChanges.subscribe(res => {
       if (this.mode === 'edit') {
         this.copyProfile.forEach(element => {
           if (
@@ -318,6 +310,6 @@ export class FormProfileComponent implements OnInit {
           }
         });
       }
-    });
+    });*/
   }
 }

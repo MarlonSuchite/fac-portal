@@ -10,12 +10,11 @@
     <div class="row gx-4 gy-2">
       <!-- Nombre -->
       <mat-form-field class="col-lg-6">
-        <mat-label class="">{{ 'formProfile.name' | translate }} </mat-label>
+        <mat-label>{{ 'formProfile.name' | translate }} </mat-label>
         <input
           type="text"
           matInput
           [errorStateMatcher]="matcher"
-          placeholder=""
           formControlName="name"
         />
 
@@ -26,14 +25,11 @@
 
       <!-- Descripcion -->
       <mat-form-field class="col-lg-6">
-        <mat-label class=""
-          >{{ 'formProfile.description' | translate }}
-        </mat-label>
+        <mat-label>{{ 'formProfile.description' | translate }} </mat-label>
         <input
           type="text"
           matInput
           [errorStateMatcher]="matcher"
-          placeholder=""
           formControlName="description"
         />
 
@@ -42,67 +38,23 @@
         </mat-error>
       </mat-form-field>
 
-      <!-- Obeto -->
-      <div *ngFor="let rol of roles" class="mb-3">
-        <mat-accordion multi>
-          <mat-expansion-panel
-            [expanded]="open"
-            [disabled]="true"
-            class="border border-1"
-          >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <h1>
-                  <mat-slide-toggle
-                    [id]="rol.id"
-                    (change)="toggle($event, rol.id)"
-                    [checked]="rol.selected"
-                  ></mat-slide-toggle>
-                  {{ rol.name }}
-                </h1>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
+      <!-- Objeto -->
+      <div>
+        <section *ngFor="let rol of roles" class="mt-5 object border">
+          <span class="border p-2 title">
+            <mat-slide-toggle
+              [id]="rol.id"
+              (change)="toggle($event, rol.id)"
+              [checked]="rol.selected"
+            >
+            </mat-slide-toggle>
+            {{ rol.name }}
+          </span>
 
-            <!-- Items de cada modulo -->
+          <!-- Items de cada modulo -->
+          <div class="items mt-3">
             <section *ngFor="let item of rol.items">
-              <!-- Items solo con itemChild -->
-              <div
-                *ngIf="item?.itemChild"
-                class="mx-2 mt-4 p-3 border border-2 items"
-              >
-                <div>
-                  <h2 class="border border-2 p-2 bg-white">
-                    <mat-slide-toggle
-                      [id]="item.id"
-                      (change)="toggle($event, item.id)"
-                      [checked]="item.selected"
-                    ></mat-slide-toggle>
-                    {{ item.name }}
-                  </h2>
-
-                  <!-- Sub items -->
-                  <div>
-                    <section class="row gx-2 mx-3">
-                      <div
-                        *ngFor="let itemChil of item?.itemChild"
-                        class="col-2"
-                      >
-                        <h3>
-                          <mat-slide-toggle
-                            [id]="itemChil.id"
-                            (change)="toggleChild($event, itemChil.id)"
-                            [checked]="itemChil.selected"
-                          ></mat-slide-toggle>
-                          {{ itemChil.name }}
-                        </h3>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Items sin itemChild -->
-              <div *ngIf="!item?.itemChild" class="mx-2">
+              <div *ngIf="item" class="mx-5">
                 <h3>
                   <mat-slide-toggle
                     [id]="item.id"
@@ -113,14 +65,14 @@
                 </h3>
               </div>
             </section>
-          </mat-expansion-panel>
-        </mat-accordion>
+          </div>
+        </section>
       </div>
     </div>
   </form>
 
   <!-- Botones -->
-  <div class="buttons mt-2">
+  <div class="buttons">
     <button
       class="btn btn-danger button"
       [disabled]="form.invalid || buttonStatus"
@@ -131,7 +83,7 @@
     <button
       type="button"
       *ngIf="mode === 'edit'"
-      class="btn-secondary"
+      class="btn btn-warning button"
       (click)="changeMode()"
     >
       +
