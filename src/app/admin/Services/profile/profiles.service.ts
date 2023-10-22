@@ -8,8 +8,6 @@ import { ProfileApi } from '../../Interfaces/profile-api';
 })
 export class ProfilesService {
   apiProfile = environment.apiUrlProfile;
-  profiles = [];
-
   profile = {
     profileId: 1,
     code: 'Nombre',
@@ -34,12 +32,14 @@ export class ProfilesService {
 
   //Agregar perfil
   addProfile(value: ProfileApi) {
-    return this.http.post(this.apiProfile, value, {observe: 'response'});
+    return this.http.post(this.apiProfile, value, { observe: 'response' });
   }
 
   //Editar perfial
   updateProfile(value: ProfileApi) {
     const params = new HttpParams().append('id', value.profileId);
-    return this.http.put(`${this.apiProfile}/{id}?${params}`, value, {observe: 'response'});
+    return this.http.put(`${this.apiProfile}/{id}?${params}`, value, {
+      observe: 'response'
+    });
   }
 }

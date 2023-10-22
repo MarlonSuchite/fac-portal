@@ -58,7 +58,7 @@
                 <h3>
                   <mat-slide-toggle
                     [id]="item.id"
-                    (change)="toggleChild($event, item.id)"
+                    (change)="toggle($event, item.id)"
                     [checked]="item.selected"
                   ></mat-slide-toggle>
                   {{ item.name }}
