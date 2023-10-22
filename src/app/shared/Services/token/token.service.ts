@@ -8,6 +8,7 @@ export class TokenService {
     //Constructor
   }
 
+  //Token
   saveToken(token: string) {
     localStorage.setItem('token', token);
   }
@@ -20,6 +21,7 @@ export class TokenService {
     localStorage.removeItem('token');
   }
 
+  //Roles
   getRoles() {
     const roles = localStorage.getItem('roles');
     return JSON.parse(roles);
