@@ -20,7 +20,9 @@
           <section class="col-12 info bg-dark">
             <i class="bi bi-shield-fill-check"></i>
             <br />
-            <p class="mx-3 mt-3">Informacion de usuario</p>
+            <p class="mx-3 mt-3">
+              {{ 'userProfile.userInformation' | translate }}
+            </p>
           </section>
 
           <!-- Formulario -->
@@ -28,19 +30,19 @@
             <form [formGroup]="form" class="row">
               <!-- Nombre -->
               <mat-form-field class="col-lg-8 col-md-12 mt-4">
-                <mat-label>Nombre</mat-label>
+                <mat-label>{{ 'userProfile.name' | translate }}</mat-label>
                 <input matInput type="text" formControlName="name" />
               </mat-form-field>
 
               <!-- Correo -->
               <mat-form-field class="col-lg-8 col-md-12">
-                <mat-label>Email</mat-label>
+                <mat-label>{{ 'userProfile.email' | translate }}</mat-label>
                 <input matInput type="text" formControlName="email" />
               </mat-form-field>
 
               <!-- Perfil -->
               <mat-form-field class="col-lg-8 col-md-12">
-                <mat-label>Perfil</mat-label>
+                <mat-label>{{ 'userProfile.profile' | translate }}</mat-label>
                 <input matInput type="text" formControlName="profile" />
               </mat-form-field>
             </form>
@@ -50,7 +52,7 @@
           <section class="col-12 mb-5">
             <div>
               <button class="btn btn-danger" (click)="clickChangePassword()">
-                Cambiar contraseña
+                {{ 'userProfile.changePassword' | translate }}
               </button>
             </div>
           </section>

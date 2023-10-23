@@ -146,6 +146,13 @@
         "amount": "Monto",
         "taxes": "Impuestos",
         "total": "Total"
+    },
+    "userProfile": {
+        "userInformation": "Información de usuario",
+        "name": "Nombre",
+        "email": "Email",
+        "profile": "Perfil",
+        "changePassword": "Cambiar contraseña"
     }
 
     
