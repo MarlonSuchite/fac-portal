@@ -78,7 +78,7 @@
       [disabled]="form.invalid || buttonStatus"
       (click)="action()"
     >
-      Guardar
+      {{ 'formProfile.save' | translate }}
     </button>
     <button
       type="button"
@@ -86,7 +86,7 @@
       class="btn btn-warning button"
       (click)="changeMode()"
     >
-      +
+      {{ 'formProfile.plus' | translate }}
     </button>
   </div>
 </div>

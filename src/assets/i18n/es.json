@@ -44,7 +44,8 @@
         "profiles": "Perfiles"
     },
     "profiles":{
-        "profiles": "Perfiles"
+        "profiles": "Perfiles",
+        "search": "search"
     },
     "formProfile": {
         "add": "Agregar",
@@ -52,7 +53,9 @@
         "name": "Nombre",
         "description": "Descripción",
         "providerProfile": "Perfil de proveedor",
-        "required": "*Este campo es requerido"
+        "required": "*Este campo es requerido",
+        "save": "Guardar",
+        "plus": "+"
     },
     "roles":{
         "configuration": {
@@ -119,9 +122,11 @@
         "company": "Empresa",
         "avaibality": "Cantidad disponible",
         "status": "Estado",
-        "required": "*Este campo es requerido"
+        "required": "*Este campo es requerido",
+        "search": "search"
     },
     "customers": {
+        "customers": "Clientes",
         "add": "Agregar",
         "edit": "Editar",
         "name": "Nombre",
