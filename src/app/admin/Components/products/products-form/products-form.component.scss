@@ -1,8 +1,4 @@
-$background-color-btn: #ffc003;
-$color-button: white;
-$background-color-btn-hover: #131312;
-$color-power-true: #58D68D;
-$color-power-false: #E74C3C;
+@import "src/styles/_variables";
 
 .container-form {
     height: 100%;

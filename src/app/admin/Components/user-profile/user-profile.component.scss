@@ -1,12 +1,11 @@
-$color-red: #e95b5b;
-
+@import "src/styles/_variables";
 
 .row{
     margin-left: 0px;
 }
 
 .contenedor {
-    background-color: rgb(209, 209, 209, .3);
+    background-color: $rgb-color;
     background-image: url(../../../../assets/paven.png);
     width: 100%;
     height: 100%;
@@ -20,13 +19,13 @@ $color-red: #e95b5b;
     h1{
         font-size: 3vw;
         font-weight: bold;
-        color: black;
+        color: $h1;
     }
 
     p{
         font-size: 1.5vw;
         font-weight: 300;
-        color: #acacac;
+        color: $p;
     }
 }
 
@@ -48,7 +47,7 @@ $color-red: #e95b5b;
     p{  
         font-size: 2vw;
         font-weight: bold;
-        color: white;
+        color: $info;
     }
 }
 

@@ -1,3 +1,5 @@
+@import "src/styles/_variables";
+
 .img{
   background-image: url(../../../../assets/paven.png);
   width: 100%;
@@ -35,7 +37,7 @@
     margin: auto;
     
     .btn-danger{
-      background-color: rgb(206, 80, 80);
+      background-color: $rgb_4-color;
       width: 100%;
       padding: .5rem;
     }
@@ -48,7 +50,7 @@
 }
 
 .here{
-  color: rgb(206, 80, 80);
+  color: $rgb_4-color;
   text-decoration: none;
 }
 

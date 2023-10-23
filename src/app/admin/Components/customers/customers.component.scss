@@ -1,12 +1,11 @@
-$background-color: aliceblue;
-
+@import "src/styles/_variables";
 
 .row{
     margin-left: 0;
 }
 
 .contenedor {
-    background-color: rgb(209, 209, 209, .3);
+    background-color: $rgb-color;
     background-image: url(../../../../assets/paven.png);
     width: 100%;
     height: 100%;

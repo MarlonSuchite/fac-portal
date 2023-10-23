@@ -1,5 +1,4 @@
-$background-color-li: rgb(213, 220, 220, 0.5);
-$background-color-hover: white; 
+@import "src/styles/_variables";
 
 .li{
     background-color: $background-color-li;
@@ -7,7 +6,7 @@ $background-color-hover: white;
     cursor: pointer;
 
     &:hover{
-        background-color:$background-color-hover;
+        background-color: $background-color-hover;
     }
     
     .principal{
