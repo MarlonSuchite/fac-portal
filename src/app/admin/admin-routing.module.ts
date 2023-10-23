@@ -8,8 +8,13 @@ import { CustomersComponent } from './Components/customers/customers.component';
 import { guardianRoles } from '../shared/Guards/guardian-roles.guard';
 import { portectorGuard } from '../shared/Guards/protector.guard';
 import { ROLE_PROFILE, ROLE_USER } from '../utils/constants';
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 
 const routes: Routes = [
+  {
+    path: 'userProfile',
+    component: UserProfileComponent
+  },
   {
     path: 'users',
     component: UsersComponent,

@@ -25,6 +25,8 @@ import { MatCardModule } from '@angular/material/card';
 import { ProductsFormComponent } from './Components/products/products-form/products-form.component';
 import { CustomersComponent } from './Components/customers/customers.component';
 import { FormCustomerComponent } from './Components/form-customer/form-customer.component';
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+import { SecurityModule } from '../security/security.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { FormCustomerComponent } from './Components/form-customer/form-customer.
     ProductsComponent,
     ProductsFormComponent,
     CustomersComponent,
-    FormCustomerComponent
+    FormCustomerComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +60,8 @@ import { FormCustomerComponent } from './Components/form-customer/form-customer.
     MatExpansionModule,
     HttpClientModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    SecurityModule
   ]
 })
 export class AdminModule {}

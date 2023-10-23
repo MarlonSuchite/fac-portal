@@ -1,0 +1,67 @@
+<div class="row contenedor overflow-auto">
+  <section class="col-1">
+    <app-nav-bar></app-nav-bar>
+  </section>
+
+  <section class="col-10 p-4">
+    <div class="container-fluid">
+      <section class="col-12 mt-5">
+        <div class="col-12 profile-encabezado">
+          <h1>
+            {{ user.name }}
+          </h1>
+          <p class="mx-4">
+            {{ user.profile.name }}
+          </p>
+        </div>
+
+        <!-- Info -->
+        <div class="col-12 row card mt-5">
+          <section class="col-12 info bg-dark">
+            <i class="bi bi-shield-fill-check"></i>
+            <br />
+            <p class="mx-3 mt-3">Informacion de usuario</p>
+          </section>
+
+          <!-- Formulario -->
+          <section class="col-12">
+            <form [formGroup]="form" class="row">
+              <!-- Nombre -->
+              <mat-form-field class="col-lg-8 col-md-12 mt-4">
+                <mat-label>Nombre</mat-label>
+                <input matInput type="text" formControlName="name" />
+              </mat-form-field>
+
+              <!-- Correo -->
+              <mat-form-field class="col-lg-8 col-md-12">
+                <mat-label>Email</mat-label>
+                <input matInput type="text" formControlName="email" />
+              </mat-form-field>
+
+              <!-- Perfil -->
+              <mat-form-field class="col-lg-8 col-md-12">
+                <mat-label>Perfil</mat-label>
+                <input matInput type="text" formControlName="profile" />
+              </mat-form-field>
+            </form>
+          </section>
+
+          <!-- Adicional -->
+          <section class="col-12 mb-5">
+            <div>
+              <button class="btn btn-danger" (click)="clickChangePassword()">
+                Cambiar contraseña
+              </button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </section>
+</div>
+
+<app-change-password
+  *ngIf="changePassword"
+  [changePassword]="changePassword"
+  (clickButton)="receiveChange($event)"
+></app-change-password>

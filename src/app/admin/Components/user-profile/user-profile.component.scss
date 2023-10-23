@@ -1,0 +1,76 @@
+$color-red: #e95b5b;
+
+
+.row{
+    margin-left: 0px;
+}
+
+.contenedor {
+    background-color: rgb(209, 209, 209, .3);
+    background-image: url(../../../../assets/paven.png);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+}
+
+.profile-encabezado{
+    h1{
+        font-size: 3vw;
+        font-weight: bold;
+        color: black;
+    }
+
+    p{
+        font-size: 1.5vw;
+        font-weight: 300;
+        color: #acacac;
+    }
+}
+
+
+.card{
+    min-width: 300px;
+}
+
+.info{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    i{
+        font-size: 2vw;
+        color: $color-red;
+    }
+
+    p{  
+        font-size: 2vw;
+        font-weight: bold;
+        color: white;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .profile-encabezado{
+
+        h1{
+            font-size: 30px;
+        }
+        
+        p{
+            font-size: 15px;
+        }
+    }
+
+    .info{
+        i{
+            font-size: 20px;
+        }
+
+        p{
+            font-size: 20px;
+        }
+    }
+}

@@ -33,7 +33,6 @@ export class LoginComponent {
       password: this.loginForm.get('password').value
     };
     this._authService.login(params);
-    /*     this.router.navigate(['/admin/users']);
-     */
+    this.router.navigate(['/admin/userProfile']);
   }
 }

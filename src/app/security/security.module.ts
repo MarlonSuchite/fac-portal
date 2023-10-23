@@ -12,14 +12,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
-import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     ForgotPasswordComponent,
-    ChangePasswordComponent,
-    UserProfileComponent
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,

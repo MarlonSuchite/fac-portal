@@ -9,6 +9,20 @@ import { environment } from 'src/environments/environment.dev';
 export class UserService {
   api = environment.apiUrl;
 
+  user = {
+    id: 5,
+    email: 'esramirez@diunsa.hn',
+    name: 'Estuardo Ramirez',
+    status: true,
+    profile: {
+      id: 1,
+      name: 'PRF - Administrador General',
+      description: 'Perfil para administradores',
+      providerProfile: false,
+      status: true
+    }
+  };
+
   constructor(private http: HttpClient) {}
 
   //obtener todos los usuarios
@@ -28,12 +42,19 @@ export class UserService {
 
   //Agregar usario
   addNewUser(value: UserApi) {
-    return this.http.post(this.api, value, {observe: 'response'});
+    return this.http.post(this.api, value, { observe: 'response' });
   }
 
   //Mdificar usuario
   updateUser(value: UserApi) {
     const param = new HttpParams().append('id', value.userId);
-    return this.http.put(`${this.api}/{id}?${param}`, value,  {observe: 'response'});
+    return this.http.put(`${this.api}/{id}?${param}`, value, {
+      observe: 'response'
+    });
+  }
+
+  //Obtener usuario logeado
+  getLoggedUser(id: number) {
+    return this.user;
   }
 }
