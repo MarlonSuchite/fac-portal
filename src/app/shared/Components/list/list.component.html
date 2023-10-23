@@ -1,48 +1,53 @@
-<li
-  class="mb-2 list-group-item rounded-3 li"
-  (click)="
-    clickParamEvent(
-      params.userId || params.profileId || params.customerId || params.productId
-    )
-  "
->
-  <!-- Solo usuarios -->
-  <div *ngIf="params.userId">
-    <div class="principal">
-      {{ params.name }}
+<ul>
+  <li
+    class="mb-2 list-group-item rounded-3 li"
+    (click)="
+      clickParamEvent(
+        params.userId ||
+          params.profileId ||
+          params.customerId ||
+          params.productId
+      )
+    "
+  >
+    <!-- Solo usuarios -->
+    <div *ngIf="params.userId">
+      <div class="principal">
+        {{ params.name }}
+      </div>
+      <div class="secundario">
+        {{ params.email }}
+      </div>
     </div>
-    <div class="secundario">
-      {{ params.email }}
-    </div>
-  </div>
 
-  <!-- Solo perfiles -->
-  <div *ngIf="params.profileId">
-    <div class="principal">
-      {{ params.code }}
+    <!-- Solo perfiles -->
+    <div *ngIf="params.profileId">
+      <div class="principal">
+        {{ params.code }}
+      </div>
+      <div class="secundario">
+        {{ params.description }}
+      </div>
     </div>
-    <div class="secundario">
-      {{ params.description }}
-    </div>
-  </div>
 
-  <!-- Solo Clientes -->
-  <div *ngIf="params.customerId">
-    <div class="principal">
-      {{ params.name }}
+    <!-- Solo Clientes -->
+    <div *ngIf="params.customerId">
+      <div class="principal">
+        {{ params.name }}
+      </div>
+      <div class="secundario">
+        {{ params.address }}
+      </div>
     </div>
-    <div class="secundario">
-      {{ params.address }}
-    </div>
-  </div>
 
-  <!-- Solo productos -->
-  <div *ngIf="params.productId">
-    <div class="principal">
-      {{ params.name }}
+    <!-- Solo productos -->
+    <div *ngIf="params.productId">
+      <div class="principal">
+        {{ params.name }}
+      </div>
+      <div class="secundario">
+        {{ params.company }}
+      </div>
     </div>
-    <div class="secundario">
-      {{ params.company }}
-    </div>
-  </div>
-</li>
+  </li>
+</ul>

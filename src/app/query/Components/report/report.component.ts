@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormBuilder,
-  Validators
-} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuditService } from '../../Services/audit.service';
-import { Peticiones } from '../../interfaces/peticiones';
 import { formatDate } from '@angular/common';
 import { ReportService } from '../../Services/report/report.service';
 
@@ -17,13 +10,13 @@ import { ReportService } from '../../Services/report/report.service';
   styleUrls: ['./report.component.scss']
 })
 export class ReportComponent implements OnInit {
-  data = []
+  data = [];
   form!: FormGroup;
 
   buildForm() {
     this.form = this.fb.group({
       startDate: ['', Validators.required],
-      user: ['', Validators.required],
+      user: ['', Validators.required]
     });
   }
 
@@ -55,8 +48,12 @@ export class ReportComponent implements OnInit {
   searchParams() {
     const params = {
       //Formatear fechas
-      start: formatDate(this.form.get('startDate').value, 'yyyy-MM-dd', 'en-US'),
-      user: this.form.get('user').value,
+      start: formatDate(
+        this.form.get('startDate').value,
+        'yyyy-MM-dd',
+        'en-US'
+      ),
+      user: this.form.get('user').value
     };
 
     this.router.navigate(['query/report'], {
