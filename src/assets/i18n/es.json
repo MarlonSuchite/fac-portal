@@ -24,12 +24,14 @@
         "required": "*Este campo es requerido"
     },
     "audit": {
+        "audit": "Auditoria",
         "startdate": "Fecha Inicio",
         "date": "MM/DD/YYYY",
         "enddate": "Fecha Fin",
         "operation": "Operación",
         "operation1": "Operación 1",
         "operation2": "Operación 2",
+        "user": "Usuario",
         "entity": "Entidad",
         "entity1": "Entidad 1",
         "entity2": "Entidad 2",
@@ -70,6 +72,8 @@
         }
     },
     "login": {
+        "welcome": "Bienvenido",
+        "login": "Iniciar Sesión",
         "email": {
             "enterEmail": "Ingresa tu correo"
         },
@@ -139,8 +143,10 @@
         "required": "*Este campo es requerido"
     },
     "report": {
+        "report": "Reporte",
         "startdate": "Fecha Ingreso",
         "date": "MM/DD/YYYY",
+        "user": "Usuario",
         "required": "*Este campo es requerido" 
     },
     "tableReport": {
@@ -158,6 +164,11 @@
         "email": "Email",
         "profile": "Perfil",
         "changePassword": "Cambiar contraseña"
+    },
+    "dialog": {
+        "changeStatus": "Cambiar estado",
+        "changeStatusUser": "¿Seguro de cambiar el estado del usuario?",
+        "change": "Cambiar"
     }
 
     

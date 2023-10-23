@@ -1,8 +1,8 @@
-<div mat-dialog-title>Cambiar status</div>
-<div mat-dialog-content>Seguro de cambiar el status del usuario</div>
+<div mat-dialog-title>{{ 'dialog.changeStatus' | translate }}</div>
+<div mat-dialog-content>{{ 'dialog.changeStatus.user' | translate }}</div>
 <div mat-dialog-actions>
   <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
   <button mat-raised-button color="primary" [mat-dialog-close]="true">
-    Cambiar
+    {{ 'dialog.change' | translate }}
   </button>
 </div>

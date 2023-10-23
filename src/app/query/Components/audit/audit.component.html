@@ -6,7 +6,7 @@
   <section class="col-11 p-4">
     <div class="container-fluid mt-5 p-2">
       <div class="col-12">
-        <h1>Auditoria</h1>
+        <h1>{{ 'audit.audit' | translate }}</h1>
       </div>
 
       <form [formGroup]="form">
@@ -80,7 +80,7 @@
 
           <!-- Usuario -->
           <mat-form-field class="col-xl-3 col-lg-4">
-            <mat-label>Usuario</mat-label>
+            <mat-label>{{ 'audit.user' | translate }}</mat-label>
             <input matInput type="text" formControlName="user" />
           </mat-form-field>
 
