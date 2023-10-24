@@ -1,7 +1,7 @@
 {
     "navbar":{
         "user": "Usuario",
-        "audit": "Auditoria",
+        "audit": "Auditoría",
         "profiles": "Perfiles",
         "settings": "Ajustes",
         "exit": "Salir",
@@ -25,10 +25,10 @@
         "required": "*Este campo es requerido"
     },
     "audit": {
-        "audit": "Auditoria",
-        "startdate": "Fecha Inicio",
+        "audit": "Auditoría",
+        "startdate": "Fecha inicio",
         "date": "MM/DD/YYYY",
-        "enddate": "Fecha Fin",
+        "enddate": "Fecha fin",
         "operation": "Operación",
         "operation1": "Operación 1",
         "operation2": "Operación 2",
@@ -62,14 +62,14 @@
     },
     "roles":{
         "configuration": {
-            "configuration": "Configuracion",
+            "configuration": "Configuración",
             "security": "Seguridad",
             "profiles": "Perfiles",
             "users": "Usuarios"
         },
         "queries": {    
             "queries": "Consultas",
-            "audit": "Auditoria"
+            "audit": "Auditoría"
         }
     },
     "login": {
@@ -145,14 +145,14 @@
     },
     "report": {
         "report": "Reporte",
-        "startdate": "Fecha Ingreso",
+        "startdate": "Fecha ingreso",
         "date": "MM/DD/YYYY",
         "user": "Usuario",
         "required": "*Este campo es requerido" 
     },
     "tableReport": {
-        "startDate": "Fecha Inicio",
-        "endDate": "Fecha Salida",
+        "startDate": "Fecha inicio",
+        "endDate": "Fecha salida",
         "order": "No. Pedido",
         "customer": "Cliente",
         "amount": "Monto",
