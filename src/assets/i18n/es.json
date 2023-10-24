@@ -22,7 +22,8 @@
         "save": "Guardar",
         "plus": "+",
         "errorEmail": "*Por favor, introduce una dirección de correo electrónico válida",
-        "required": "*Este campo es requerido"
+        "required": "*Este campo es requerido",
+        "textOnly": "*Solo se permiten letras"
     },
     "audit": {
         "audit": "Auditoria",
@@ -58,7 +59,8 @@
         "providerProfile": "Perfil de proveedor",
         "required": "*Este campo es requerido",
         "save": "Guardar",
-        "plus": "+"
+        "plus": "+",
+        "textOnly": "*Solo se permiten letras"
     },
     "roles":{
         "configuration": {
@@ -128,7 +130,8 @@
         "avaibality": "Cantidad disponible",
         "status": "Estado",
         "required": "*Este campo es requerido",
-        "search": "search"
+        "search": "search",
+        "textOnly": "*Solo se permiten letras"
     },
     "customers": {
         "customers": "Clientes",
@@ -141,7 +144,8 @@
         "direction": "Dirección",
         "save": "Guardar",
         "plus": "+",
-        "required": "*Este campo es requerido"
+        "required": "*Este campo es requerido",
+        "textOnly": "*Solo se permiten letras"
     },
     "report": {
         "report": "Reporte",

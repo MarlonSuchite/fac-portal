@@ -34,13 +34,7 @@
 
       <mat-form-field class="col-md-6">
         <mat-label class="">{{ 'form.name' | translate }}</mat-label>
-        <input
-          type="name"
-          matInput
-          formControlName="name"
-          [errorStateMatcher]="matcher"
-          placeholder=""
-        />
+        <input type="name" matInput formControlName="name" placeholder="" />
         <mat-error
           *ngIf="
             form.get('name').hasError('name') &&
@@ -50,6 +44,13 @@
         </mat-error>
         <mat-error *ngIf="form.get('name').hasError('required')">
           {{ 'form.required' | translate }}
+        </mat-error>
+        <mat-error
+          *ngIf="
+            form.get('name')?.hasError('textOnly') && form.get('name').dirty
+          "
+        >
+          {{ 'form.textOnly' | translate }}
         </mat-error>
       </mat-form-field>
 

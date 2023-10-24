@@ -21,6 +21,9 @@
         <mat-error *ngIf="form.get('name')?.hasError('required')">
           {{ 'formProfile.required' | translate }}
         </mat-error>
+        <mat-error *ngIf="form.get('name')?.hasError('textOnly')">
+          {{ 'formProfile.textOnly' | translate }}
+        </mat-error>
       </mat-form-field>
 
       <!-- Descripcion -->
