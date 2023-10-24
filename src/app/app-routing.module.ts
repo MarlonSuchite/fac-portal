@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'query',
     loadChildren: () => import('./query/query.module').then(m => m.QueryModule)
+  },
+  {
+    path: 'operation',
+    loadChildren: () => import('./operation/operation.module').then(m => m.OperationModule)
   }
 ];
 
