@@ -48,11 +48,21 @@ export class FormValidations {
   }
 
   //Solo números
-  static numbersOnly(control: AbstractControl){
-    const value = control.value
-    if(/[a-zA-Z!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(value)){
-      return {numbersOnly: true}
+  static numbersOnly(control: AbstractControl) {
+    const value = control.value;
+    if (/[a-zA-Z!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(value)) {
+      return { numbersOnly: true };
     }
-    return false
+    return false;
+  }
+
+  //Fecha final mayor a fecha inicial
+  static endDate(startDate: string): ValidatorFn {
+    return (control: AbstractControl) => {
+      if (control.value < startDate) {
+        return { endDate: true };
+      }
+      return null;
+    };
   }
 }

@@ -1,4 +1,7 @@
 {
+    "h": {
+        "h":"H"
+    },
     "navbar":{
         "user": "Usuario",
         "audit": "Auditoría",
@@ -32,13 +35,17 @@
         "date": "MM/DD/YYYY",
         "enddate": "Fecha fin",
         "operation": "Operación",
-        "operation1": "Operación 1",
-        "operation2": "Operación 2",
+        "add": "Agregar",
+        "delete": "Eliminar",
+        "update": "Editar",
         "user": "Usuario",
         "entity": "Entidad",
-        "entity1": "Entidad 1",
-        "entity2": "Entidad 2",
-        "required": "*Este campo es requerido"
+        "users": "Usuarios",
+        "profiles": "Perfiles",
+        "products": "Productos",
+        "customers": "Clientes",
+        "required": "*Este campo es requerido",
+        "errorEmail": "*Introduce una dirección de correo electrónico válida"
     },
     "table": {
         "identifier": "Identificador",
@@ -46,7 +53,8 @@
         "entity": "Entidad",
         "user": "Usuario",
         "operation": "Operación",
-        "profiles": "Perfiles"
+        "profiles": "Perfiles",
+        "itemsPerPageLabel": "Items por pagina"
     },
     "profiles":{
         "profiles": "Perfiles",

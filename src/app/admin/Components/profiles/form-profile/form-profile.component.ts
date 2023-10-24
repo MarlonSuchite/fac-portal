@@ -1,10 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MyErrorStateMatcher } from '../profiles/profiles.component';
+import { MyErrorStateMatcher } from '../profiles.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProfilesService } from '../../Services/profile/profiles.service';
-import { ProfileApi } from '../../Interfaces/profile-api';
+import { ProfilesService } from '../../../Services/profile/profiles.service';
+import { ProfileApi } from '../../../Interfaces/profile-api';
 import { AlertService } from 'src/app/shared/Services/alert/alert.service';
 import { FormValidations } from 'src/app/utils/form-validations';
 

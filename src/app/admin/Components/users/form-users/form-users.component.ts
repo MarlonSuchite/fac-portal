@@ -1,21 +1,21 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MyErrorStateMatcher } from '../users/users.component';
-import { UserApi } from '../../Interfaces/user-api';
+import { MyErrorStateMatcher } from '../users.component';
+import { UserApi } from '../../../Interfaces/user-api';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserService } from '../../Services/user/user.service';
+import { UserService } from '../../../Services/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/Components/dialog/dialog.component';
-import { ProfilesService } from '../../Services/profile/profiles.service';
+import { ProfilesService } from '../../../Services/profile/profiles.service';
 import { AlertService } from 'src/app/shared/Services/alert/alert.service';
 import { FormValidations } from 'src/app/utils/form-validations';
 
 @Component({
   selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  templateUrl: './form-users.component.html',
+  styleUrls: ['./form-users.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormUsersComponent implements OnInit {
   @Output() addEvent = new EventEmitter<string>();
 
   mode: 'add' | 'edit';

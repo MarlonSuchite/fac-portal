@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuditService } from '../../Services/audit/audit.service';
 import { Peticiones } from '../../interfaces/peticiones';
 import { formatDate } from '@angular/common';
+import { FormValidations } from 'src/app/utils/form-validations';
 
 @Component({
   selector: 'app-audit',
@@ -13,16 +14,8 @@ import { formatDate } from '@angular/common';
 export class AuditComponent implements OnInit {
   data: Peticiones[] = [];
   form!: FormGroup;
+  maxDate = new Date();
 
-  buildForm() {
-    this.form = this.fb.group({
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      operation: ['', Validators.required],
-      entity: ['', Validators.required],
-      user: ['']
-    });
-  }
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -37,6 +30,26 @@ export class AuditComponent implements OnInit {
       if (params?.['start']) {
         this.callService();
       }
+    });
+  }
+
+  buildForm() {
+    this.form = this.fb.group({
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      operation: ['', Validators.required],
+      entity: ['', Validators.required],
+      user: ['', [Validators.email]]
+    });
+    this.setValidators();
+  }
+
+  setValidators() {
+    this.form.get('startDate').valueChanges.subscribe(res => {
+      this.form.controls['endDate'].setValidators([
+        Validators.required,
+        FormValidations.endDate(res)
+      ]);
     });
   }
 
