@@ -68,12 +68,12 @@ export class ProductsFormComponent implements OnInit {
   buildForm() {
     this.form = this.fb.group({
       name: ['', [FormValidations.textOnly, Validators.required]],
-      code: [''],
-      codeBar: [''],
-      sendDates: [''],
-      description: [''],
-      company: [''],
-      avaibality: ['']
+      code: ['', [FormValidations.numbersOnly, Validators.required]],
+      codeBar: ['', [FormValidations.numbersOnly, Validators.required]],
+      sendDates: ['', [FormValidations.numbersOnly, Validators.required]],
+      description: ['', [FormValidations.textOnly, Validators.required]],
+      company: ['', [FormValidations.textOnly, Validators.required]],
+      avaibality: ['', [FormValidations.numbersOnly, Validators.required]]
     });
     this.changesObject();
   }

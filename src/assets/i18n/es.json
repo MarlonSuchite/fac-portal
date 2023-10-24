@@ -23,7 +23,8 @@
         "plus": "+",
         "errorEmail": "*Por favor, introduce una dirección de correo electrónico válida",
         "required": "*Este campo es requerido",
-        "textOnly": "*Solo se permiten letras"
+        "textOnly": "*Solo se permiten letras",
+        "numbersOnly": "*Solo numeros"
     },
     "audit": {
         "audit": "Auditoría",
@@ -123,7 +124,7 @@
         "title": "Productos",
         "code": "Código",
         "name": "Nombre",
-        "sendDates": "Tiempo de entrega",
+        "sendDates": "Tiempo de entrega(Días)",
         "codeBar": "Código de barras",
         "description": "Descripción",
         "company": "Empresa",
@@ -131,7 +132,8 @@
         "status": "Estado",
         "required": "*Este campo es requerido",
         "search": "search",
-        "textOnly": "*Solo se permiten letras"
+        "textOnly": "*Solo se permiten letras",
+        "numbersOnly": "*Solo números"
     },
     "customers": {
         "customers": "Clientes",
@@ -145,7 +147,8 @@
         "save": "Guardar",
         "plus": "+",
         "required": "*Este campo es requerido",
-        "textOnly": "*Solo se permiten letras"
+        "textOnly": "*Solo se permiten letras",
+        "numbersOnly": "*Solo números"
     },
     "report": {
         "report": "Reporte",

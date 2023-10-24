@@ -1,4 +1,4 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export class FormValidations {
   static correctPassword(control: AbstractControl) {
@@ -45,5 +45,14 @@ export class FormValidations {
       return { textOnly: true };
     }
     return null;
+  }
+
+  //Solo números
+  static numbersOnly(control: AbstractControl){
+    const value = control.value
+    if(/[a-zA-Z!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(value)){
+      return {numbersOnly: true}
+    }
+    return false
   }
 }

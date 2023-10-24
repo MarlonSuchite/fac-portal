@@ -30,6 +30,9 @@
         <mat-error *ngIf="form.get('code').hasError('required')">
           {{ 'form.required' | translate }}
         </mat-error>
+        <mat-error *ngIf="form.get('code')?.hasError('numbersOnly')">
+          {{ 'products.numbersOnly' | translate }}
+        </mat-error>
       </mat-form-field>
 
       <!-- Codigo de barras -->
@@ -42,6 +45,9 @@
         <mat-error *ngIf="form.get('codeBar').hasError('required')">
           {{ 'form.required' | translate }}
         </mat-error>
+        <mat-error *ngIf="form.get('codeBar')?.hasError('numbersOnly')">
+          {{ 'products.numbersOnly' | translate }}
+        </mat-error>
       </mat-form-field>
 
       <!-- Tiempo de entrega -->
@@ -52,6 +58,9 @@
         <!-- Mensajes de error -->
         <mat-error *ngIf="form.get('sendDates').hasError('required')">
           {{ 'form.required' | translate }}
+        </mat-error>
+        <mat-error *ngIf="form.get('sendDates')?.hasError('numbersOnly')">
+          {{ 'products.numbersOnly' | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -64,6 +73,9 @@
         <mat-error *ngIf="form.get('description').hasError('required')">
           {{ 'form.required' | translate }}
         </mat-error>
+        <mat-error *ngIf="form.get('description')?.hasError('textOnly')">
+          {{ 'products.textOnly' | translate }}
+        </mat-error>
       </mat-form-field>
 
       <!-- Empresa -->
@@ -75,6 +87,9 @@
         <mat-error *ngIf="form.get('company').hasError('required')">
           {{ 'form.required' | translate }}
         </mat-error>
+        <mat-error *ngIf="form.get('company')?.hasError('textOnly')">
+          {{ 'products.textOnly' | translate }}
+        </mat-error>
       </mat-form-field>
 
       <!-- Disponibilidad del producto -->
@@ -85,6 +100,9 @@
         <!-- Mensajes de error -->
         <mat-error *ngIf="form.get('avaibality').hasError('required')">
           {{ 'form.required' | translate }}
+        </mat-error>
+        <mat-error *ngIf="form.get('avaibality')?.hasError('numbersOnly')">
+          {{ 'products.numbersOnly' | translate }}
         </mat-error>
       </mat-form-field>
     </div>

@@ -35,6 +35,9 @@
         >
           {{ form.get('DPI').value.length }}/13
         </mat-hint>
+        <mat-error *ngIf="form.get('DPI')?.hasError('numbersOnly')">
+          {{ 'customers.numbersOnly' | translate }}
+        </mat-error>
       </mat-form-field>
 
       <!-- NIT -->
@@ -50,6 +53,9 @@
         >
           {{ form.get('NIT').value.length }}/10
         </mat-hint>
+        <mat-error *ngIf="form.get('NIT')?.hasError('numbersOnly')">
+          {{ 'customers.numbersOnly' | translate }}
+        </mat-error>
       </mat-form-field>
 
       <!-- Pasaporte -->

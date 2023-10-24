@@ -61,7 +61,7 @@ import { SecurityModule } from '../security/security.module';
     HttpClientModule,
     MatDialogModule,
     MatCardModule,
-    SecurityModule
+    SecurityModule,
   ]
 })
 export class AdminModule {}

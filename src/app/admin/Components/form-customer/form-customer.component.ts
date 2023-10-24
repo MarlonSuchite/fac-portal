@@ -56,8 +56,8 @@ export class FormCustomerComponent implements OnInit {
   buildForm(): void {
     this.form = this.fb.group({
       name: ['', [Validators.required, FormValidations.textOnly]],
-      DPI: ['', [Validators.minLength(13), Validators.maxLength(13)]],
-      NIT: ['', [Validators.minLength(10), Validators.maxLength(10)]],
+      DPI: ['', [Validators.minLength(13), Validators.maxLength(13), FormValidations.numbersOnly]],
+      NIT: ['', [Validators.minLength(10), Validators.maxLength(10), FormValidations.numbersOnly]],
       passport: [
         ''
         /*  [
