@@ -27,15 +27,12 @@
             background-color: transparent;
 
             .button {
+                font-size: 1.5rem;
+
                 &:hover {
                     color: $rgb_3-color;
                 }
             }
         }
     }
-}
-
-.searchButton {
-    height: 2em;
-    margin-top: 2em;
 }

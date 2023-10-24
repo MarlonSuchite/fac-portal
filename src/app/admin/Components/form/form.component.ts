@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/Components/dialog/dialog.component';
 import { ProfilesService } from '../../Services/profile/profiles.service';
 import { AlertService } from 'src/app/shared/Services/alert/alert.service';
+import { FormValidations } from 'src/app/utils/form-validations';
 
 @Component({
   selector: 'app-form',
@@ -76,7 +77,7 @@ export class FormComponent implements OnInit {
   buildForm() {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      name: ['', Validators.required],
+      name: ['', [Validators.required, FormValidations.textOnly]],
       options: ['', Validators.required]
     });
     this.changesObject();

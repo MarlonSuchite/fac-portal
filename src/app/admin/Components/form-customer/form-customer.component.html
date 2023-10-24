@@ -17,6 +17,9 @@
         <mat-error *ngIf="form.get('name')?.hasError('required')">
           {{ 'customers.required' | translate }}
         </mat-error>
+        <mat-error *ngIf="form.get('name')?.hasError('textOnly')">
+          {{ 'customers.textOnly' | translate }}
+        </mat-error>
       </mat-form-field>
 
       <!-- DPI -->

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ProcessComponent } from './process/process.component';
+import { CreateOrderComponent } from './create-order/create-order.component';
 
 const routes: Routes = [
   {
-    path: 'process',
-    component: ProcessComponent
-  },
+    path: 'createOrder',
+    component: CreateOrderComponent
+  }
 ];
 
 @NgModule({

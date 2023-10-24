@@ -1,10 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/Components/dialog/dialog.component';
 import { ProductsService } from 'src/app/admin/Services/products/products.service';
 import { AlertService } from 'src/app/shared/Services/alert/alert.service';
+import { FormValidations } from 'src/app/utils/form-validations';
 
 @Component({
   selector: 'app-products-form',
@@ -66,7 +67,7 @@ export class ProductsFormComponent implements OnInit {
 
   buildForm() {
     this.form = this.fb.group({
-      name: [''],
+      name: ['', [FormValidations.textOnly, Validators.required]],
       code: [''],
       codeBar: [''],
       sendDates: [''],

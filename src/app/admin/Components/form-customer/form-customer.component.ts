@@ -3,6 +3,7 @@ import { CustomersService } from '../../Services/customers/customers.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/shared/Services/alert/alert.service';
+import { FormValidations } from 'src/app/utils/form-validations';
 
 @Component({
   selector: 'app-form-customer',
@@ -54,7 +55,7 @@ export class FormCustomerComponent implements OnInit {
 
   buildForm(): void {
     this.form = this.fb.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, FormValidations.textOnly]],
       DPI: ['', [Validators.minLength(13), Validators.maxLength(13)]],
       NIT: ['', [Validators.minLength(10), Validators.maxLength(10)]],
       passport: [

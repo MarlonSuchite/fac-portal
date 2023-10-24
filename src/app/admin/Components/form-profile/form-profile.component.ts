@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProfilesService } from '../../Services/profile/profiles.service';
 import { ProfileApi } from '../../Interfaces/profile-api';
 import { AlertService } from 'src/app/shared/Services/alert/alert.service';
+import { FormValidations } from 'src/app/utils/form-validations';
 
 @Component({
   selector: 'app-form-profile',
@@ -126,7 +127,7 @@ export class FormProfileComponent implements OnInit {
   //Formulario
   buildForm() {
     this.form = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, FormValidations.textOnly]],
       description: ['', Validators.required]
     });
     this.changesObject();

@@ -70,5 +70,6 @@ export class AuditComponent implements OnInit {
   clearParams() {
     this.data = [];
     this.form.reset();
+    this.router.navigate(['query/search'], { queryParams: {} });
   }
 }

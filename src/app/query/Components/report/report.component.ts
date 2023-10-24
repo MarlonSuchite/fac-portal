@@ -64,5 +64,6 @@ export class ReportComponent implements OnInit {
   clearParams() {
     this.data = [];
     this.form.reset();
+    this.router.navigate(['query/report'], { queryParams: {} });
   }
 }

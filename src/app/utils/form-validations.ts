@@ -36,4 +36,14 @@ export class FormValidations {
     }
     return null;
   }
+
+  //Solo letras
+  static textOnly(control: AbstractControl) {
+    const value = control.value;
+    if (/[0-9!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(value)) {
+      console.log('pase');
+      return { textOnly: true };
+    }
+    return null;
+  }
 }
