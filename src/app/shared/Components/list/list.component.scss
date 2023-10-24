@@ -2,7 +2,9 @@
 
 .li{
     background-color: $background-color-li;
+    width: 100%;
     transition: 300ms;
+
     cursor: pointer;
 
     &:hover{
@@ -12,9 +14,4 @@
     .principal{
         font-weight: bold;
     }
-    
-    /* 
-    .secundario{
-        font-weight: 900;
-    } */
 }

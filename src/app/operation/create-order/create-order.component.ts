@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-process',
-  templateUrl: './process.component.html',
-  styleUrls: ['./process.component.scss']
+  templateUrl: './create-order.component.html',
+  styleUrls: ['./create-order.component.scss']
 })
-export class ProcessComponent {
+export class CreateOrderComponent {
   productos: any[] = []; // Arreglo para almacenar los productos
 
   agregarProducto() {
