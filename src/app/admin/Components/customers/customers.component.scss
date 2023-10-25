@@ -55,6 +55,7 @@
     .panel {
         height: 800px;
         border-radius: 1rem;
+        width: 105%;
     }
     
 }
@@ -64,6 +65,14 @@ mat-paginator {
     width: 100%;
     min-width: 250px;
     background-color: transparent !important;
+}
+
+@media screen and (max-width: 1200px){
+    .contenedor{
+        .panel{
+            width: 100% ;
+        }
+    }
 }
 
 @media screen and (max-width: 720px){
