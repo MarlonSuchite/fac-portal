@@ -70,12 +70,15 @@
         />
 
         <!-- Mensajes de error -->
-        <!-- <mat-hint *ngIf="form.get('passport')?.hasError('Passport') && form.get('passport').dirty">
+        <mat-hint *ngIf="form.get('passport')?.hasError('Passport') && form.get('passport').dirty">
                     Formato: AA000000A {{form.get('passport').value.length}}/9
                 </mat-hint>
+                <mat-error *ngIf="form.get('passport')?.hasError('required') && form.get('passport').touched">
+                  *Este mensaje es requerido
+                </mat-error>
                 <mat-error *ngIf="form.get('passport')?.hasError('Passport') && form.get('passport').touched">
                     *Pasaporte no valido
-                </mat-error> -->
+                </mat-error>
       </mat-form-field>
 
       <!-- Direccion -->

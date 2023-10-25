@@ -73,7 +73,13 @@ export class FormCustomerComponent implements OnInit {
         ]
       ],
       passport: [
-        ''
+        '',
+        [
+          FormValidations.Passport,
+          Validators.required,
+          //Validators.pattern(/^[A-Z]{2}\d{6}[A-Z]$/),
+          Validators.maxLength(9) 
+        ]
         /*  [
            FormValidations.Passport,
            Validators.minLength(9)

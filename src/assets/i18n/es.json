@@ -156,7 +156,8 @@
         "plus": "+",
         "required": "*Este campo es requerido",
         "textOnly": "*Solo se permiten letras",
-        "numbersOnly": "*Solo números"
+        "numbersOnly": "*Solo números",
+        "invalidPassport": "*Pasaporte no valido"
     },
     "report": {
         "report": "Reporte",
