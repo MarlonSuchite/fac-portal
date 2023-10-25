@@ -19,12 +19,7 @@
           formControlName="email"
           [errorStateMatcher]="matcher"
         />
-        <mat-error
-          *ngIf="
-            form.get('email').hasError('email') &&
-            !form.get('email').hasError('email')
-          "
-        >
+        <mat-error *ngIf="form.get('email').hasError('email')">
           {{ 'form.errorEmail' | translate }}
         </mat-error>
         <mat-error *ngIf="form.get('email').hasError('required')">
