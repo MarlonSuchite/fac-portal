@@ -1,5 +1,9 @@
 @import "src/styles/_variables";
 
+.side{
+    width: 60px;
+}
+
 .row{
     margin-left: 0;
 }
@@ -57,4 +61,10 @@ mat-paginator {
     width: 100%;
     min-width: 250px;
     background-color: transparent !important;
+}
+
+@media screen and (max-width: 720px){
+    .side{
+        width: auto;
+    }
 }

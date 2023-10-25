@@ -1,5 +1,9 @@
 @import "src/styles/_variables";
 
+.side{
+    width: 60px;
+}
+
 .row{
     margin-left: 0;
 }
@@ -54,7 +58,10 @@
         height: 800px;
         border-radius: 1rem;
     }
+}
 
-
-
+@media screen and (max-width: 720px){
+    .side{
+        width: auto;
+    }
 }
