@@ -11,7 +11,7 @@
         "products": "Productos",
         "customers": "Clientes",
         "report": "Reporte",
-        "process": "Proceso de pedido"
+        "orders": "Pedidos"
     },
     "users":{
         "user": "Usuarios"

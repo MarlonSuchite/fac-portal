@@ -12,7 +12,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BlockUIModule } from 'ng-block-ui';
 import { BlockUIHttpModule } from 'ng-block-ui/http';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatSelectModule } from '@angular/material/select';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 export const httpTranslateLoader = (http: HttpClient): TranslateHttpLoader =>
   new TranslateHttpLoader(http, environment.refTranslate, '.json');
@@ -38,7 +39,9 @@ export const httpTranslateLoader = (http: HttpClient): TranslateHttpLoader =>
       delayStart: 150,
       delayStop: 150
     }),
-    BlockUIHttpModule.forRoot()
+    BlockUIHttpModule.forRoot(),
+    MatSelectModule,
+    NgxMatSelectSearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]
