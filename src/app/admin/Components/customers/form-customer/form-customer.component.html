@@ -28,13 +28,7 @@
         <input matInput type="text" formControlName="DPI" maxlength="13" />
 
         <!-- Mensajes de error -->
-        <mat-hint
-          *ngIf="
-            form.get('DPI')?.hasError('minlength') && form.get('DPI').dirty
-          "
-        >
-          {{ form.get('DPI').value.length }}/13
-        </mat-hint>
+        <mat-hint> {{ form.get('DPI').value?.length }}/13 </mat-hint>
         <mat-error *ngIf="form.get('DPI')?.hasError('numbersOnly')">
           {{ 'customers.numbersOnly' | translate }}
         </mat-error>
@@ -46,13 +40,7 @@
         <input matInput type="text" formControlName="NIT" maxlength="10" />
 
         <!-- Mensajes de error -->
-        <mat-hint
-          *ngIf="
-            form.get('NIT')?.hasError('minlength') && form.get('NIT').dirty
-          "
-        >
-          {{ form.get('NIT').value.length }}/10
-        </mat-hint>
+        <mat-hint> {{ form.get('NIT').value?.length }}/10 </mat-hint>
         <mat-error *ngIf="form.get('NIT')?.hasError('numbersOnly')">
           {{ 'customers.numbersOnly' | translate }}
         </mat-error>
@@ -70,15 +58,21 @@
         />
 
         <!-- Mensajes de error -->
-        <mat-hint *ngIf="form.get('passport')?.hasError('Passport') && form.get('passport').dirty">
-                    Formato: AA000000A {{form.get('passport').value.length}}/9
-                </mat-hint>
-                <mat-error *ngIf="form.get('passport')?.hasError('required') && form.get('passport').touched">
-                  *Este mensaje es requerido
-                </mat-error>
-                <mat-error *ngIf="form.get('passport')?.hasError('Passport') && form.get('passport').touched">
-                    *Pasaporte no valido
-                </mat-error>
+        <mat-hint>
+          {{ 'customers.format' | translate }}
+          {{ form.get('passport').value?.length }}/9
+        </mat-hint>
+        <mat-error *ngIf="form.get('passport')?.hasError('required')">
+          {{ 'customers.required' | translate }}
+        </mat-error>
+        <mat-error
+          *ngIf="
+            !form.get('passport')?.hasError('required') &&
+            form.get('passport')?.hasError('Passport')
+          "
+        >
+          {{ 'customers.invalidPassport' | translate }}
+        </mat-error>
       </mat-form-field>
 
       <!-- Direccion -->

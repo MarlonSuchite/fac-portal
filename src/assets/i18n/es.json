@@ -157,7 +157,8 @@
         "required": "*Este campo es requerido",
         "textOnly": "*Solo se permiten letras",
         "numbersOnly": "*Solo números",
-        "invalidPassport": "*Pasaporte no valido"
+        "invalidPassport": "*Pasaporte no valido",
+        "format": "Formato: AA000000A"
     },
     "report": {
         "report": "Reporte",

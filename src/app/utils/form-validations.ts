@@ -32,6 +32,7 @@ export class FormValidations {
   static Passport(control: AbstractControl) {
     const value = control.value;
     if (!/^[A-Z]{2}\d{6}[A-Z]$/.test(value)) {
+      console.log('entre');
       return { Passport: true };
     }
     return null;
