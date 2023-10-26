@@ -187,6 +187,16 @@
         "changeStatus": "Cambiar estado",
         "changeStatusUser": "¿Seguro de cambiar el estado del usuario?",
         "change": "Cambiar"
+    },
+    "createOrder": {
+        "create": "Creación del pedido",
+        "edit": "Modificación del pedido",
+        "customer": "Clientes: Nombre",
+        "products": "Productos",
+        "price": "Precio",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "required": "*Este campo es requerido"
     }
 
     

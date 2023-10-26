@@ -1,14 +1,52 @@
 @import "src/styles/_variables";
 
-.side{
-    width: 60px;
+.row {
+    margin-left: 0px;
 }
 
-.contenedor{
+.contenedor {
     background-image: url(../../../../assets/paven.png);
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.card{
+    min-width: 300px;
+}
+
+.info{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    i{
+        font-size: 2vw;
+        color: $color-red;
+    }
+
+    p{  
+        font-size: 2vw;
+        font-weight: bold;
+        color: $info;
+    }
+}
+
+.button{
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 850px) {
+    .info{
+        i{
+            font-size: 20px;
+        }
+
+        p{
+            font-size: 20px;
+        }
+    }
 }
