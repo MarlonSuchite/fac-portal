@@ -7,13 +7,19 @@ import { ProductsComponent } from './Components/products/products.component';
 import { CustomersComponent } from './Components/customers/customers.component';
 import { guardianRoles } from '../shared/Guards/guardian-roles.guard';
 import { portectorGuard } from '../shared/Guards/protector.guard';
-import { ROLE_PROFILE, ROLE_USER } from '../utils/constants';
+import {
+  ROLE_CUSTOMER,
+  ROLE_PRODUCT,
+  ROLE_PROFILE,
+  ROLE_USER
+} from '../utils/constants';
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
     path: 'userProfile',
-    component: UserProfileComponent
+    component: UserProfileComponent,
+    canActivate: [portectorGuard]
   },
   {
     path: 'users',
@@ -27,19 +33,13 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductsComponent
-    /*  canActivate: [
-      portectorGuard,
-      guardianRoles(['ROLE_PRODUCTS'])
-    ] */
+    component: ProductsComponent,
+    canActivate: [portectorGuard, guardianRoles(ROLE_PRODUCT)]
   },
   {
     path: 'customers',
-    component: CustomersComponent
-    /*   canActivate: [
-      portectorGuard,
-      guardianRoles(['ROLE_CUSTOMERS'])
-    ] */
+    component: CustomersComponent,
+    canActivate: [portectorGuard, guardianRoles(ROLE_CUSTOMER)]
   }
 ];
 
