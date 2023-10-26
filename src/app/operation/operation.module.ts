@@ -11,9 +11,13 @@ import { CreateOrderComponent } from './Components/create-order/create-order.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TranslateModule } from '@ngx-translate/core';
+import { OrderListComponent } from './Components/order-list/order-list.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
-  declarations: [OrdersComponent, CreateOrderComponent],
+  declarations: [OrdersComponent, CreateOrderComponent, OrderListComponent],
   imports: [
     CommonModule,
     OperationRoutingModule,
@@ -24,7 +28,10 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatInputModule,
-    TranslateModule
+    TranslateModule,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class OperationModule {}

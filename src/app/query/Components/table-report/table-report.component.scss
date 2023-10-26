@@ -1,10 +1,12 @@
 .table{
-    background-color:transparent;  
-    border-radius: 1rem;
-    height: 50vh;
-  }
-  
-  
-  mat-paginator{
-    background-color: transparent !important;
-  }
+  background-color: transparent !important;  
+  height: 50vh;
+}
+
+.contenedor{
+  min-width: 500px;
+}
+
+mat-paginator{
+  background-color: transparent !important;
+}

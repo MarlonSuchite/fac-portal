@@ -4,16 +4,23 @@
   </section>
 
   <section class="col-11 mb-2">
-    <div class="container-fluid">
-      <div class="buttons">
-        <button
-          type="button"
-          class="btn btn-warning button"
-          (click)="addOrder()"
-        >
-          +
-        </button>
-      </div>
+    <div class="container-fluid row px-5 pe-3">
+      <section class="col-12 mt-5 encabezado">
+        <h1>Pedidos</h1>
+        <div class="buttons mb-2 mx-5">
+          <button
+            type="button"
+            class="btn btn-warning button pb-5"
+            (click)="addOrder()"
+          >
+            +
+          </button>
+        </div>
+      </section>
+
+      <section class="col-12 bg-white p-2 border shadow-lg table">
+        <app-order-list [data]="data"></app-order-list>
+      </section>
     </div>
   </section>
 </div>

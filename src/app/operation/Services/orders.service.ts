@@ -39,6 +39,81 @@ export class OrdersService {
     totalPrice: 24
   };
 
+  orders = [
+    {
+      orderId: 1,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 2,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 3,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 4,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 5,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 6,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 7,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 8,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 9,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 10,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 11,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    },
+    {
+      orderId: 12,
+      customer: 'Pedro',
+      products: ['Caja', 'Camisa'],
+      totalPrice: 300
+    }
+  ];
+
   getCustomers() {
     return this.customers;
   }
@@ -59,5 +134,9 @@ export class OrdersService {
 
   updateOrder(value: any) {
     return console.log(value);
+  }
+
+  getOrders() {
+    return this.orders;
   }
 }

@@ -1,15 +1,15 @@
 <div class="row contenedor overflow-auto">
-  <section class="col-1">
+  <section class="col-1 side">
     <app-nav-bar></app-nav-bar>
   </section>
 
-  <section class="col-11 p-4">
-    <div class="container-fluid mt-5 p-3">
-      <div class="col-12 mx-3">
+  <section class="col-11 px-5 pe-3">
+    <div class="container-fluid mt-2 p-md-4 p-3 bg-white">
+      <div class="m-3">
         <h1>{{ 'report.report' | translate }}</h1>
       </div>
       <form [formGroup]="form">
-        <div class="row gy-4">
+        <div class="row gy-3">
           <!-- fecha 1 -->
 
           <mat-form-field class="col-md-4">
@@ -18,6 +18,7 @@
               matInput
               [matDatepicker]="picker"
               formControlName="startDate"
+              [max]="maxDate"
             />
 
             <mat-hint>{{ 'report.date' | translate }}</mat-hint>
@@ -34,14 +35,14 @@
           <!-- Usuario -->
           <mat-form-field class="col-lg-4 col-md-6">
             <mat-label>{{ 'report.user' | translate }}</mat-label>
-            <input matInput type="text" formControlName="user" />
+            <input matInput type="email" formControlName="user" />
             <mat-error *ngIf="form.get('user')?.hasError('required')">
               {{ 'report.required' | translate }}
             </mat-error>
           </mat-form-field>
 
           <!-- Buscar -->
-          <section class="col-md-2">
+          <section class="col-md-2 mt-4 pt-2">
             <button (click)="searchParams()" [disabled]="form.invalid">
               <i class="bi bi-search button"></i>
             </button>
@@ -55,7 +56,7 @@
             </section> -->
         </div>
       </form>
-      <div class="mx-2">
+      <div class="table mt-5 border shadow-lg">
         <app-table-report [dataSource]="data"></app-table-report>
       </div>
     </div>

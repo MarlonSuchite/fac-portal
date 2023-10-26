@@ -12,11 +12,12 @@ import { ReportService } from '../../Services/report/report.service';
 export class ReportComponent implements OnInit {
   data = [];
   form!: FormGroup;
+  maxDate = new Date();
 
   buildForm() {
     this.form = this.fb.group({
       startDate: ['', Validators.required],
-      user: ['', Validators.required]
+      user: ['', [Validators.required, Validators.email]]
     });
   }
 
