@@ -16,7 +16,7 @@ export class CreateOrderComponent implements OnInit {
   products = new FormControl([], [Validators.required]);
   mode: 'add' | 'edit';
   client: User;
-  productsSelect: any[];
+  productsSelect: any[] = [];
   price = 0;
   totalPrice = new FormControl<number>(0);
   options: User[];
