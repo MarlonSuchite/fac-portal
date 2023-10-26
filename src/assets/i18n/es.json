@@ -45,7 +45,8 @@
         "products": "Productos",
         "customers": "Clientes",
         "required": "*Este campo es requerido",
-        "errorEmail": "*Introduce una dirección de correo electrónico válida"
+        "errorEmail": "*Introduce una dirección de correo electrónico válida",
+        "errorDate": "*Esta fecha no debe ser menor a la inicial"
     },
     "table": {
         "identifier": "Identificador",
@@ -165,7 +166,8 @@
         "startdate": "Fecha ingreso",
         "date": "MM/DD/YYYY",
         "user": "Usuario",
-        "required": "*Este campo es requerido" 
+        "required": "*Este campo es requerido",
+        "errorEmail": "*Introduce una dirección de correo electrónico válida"
     },
     "tableReport": {
         "startDate": "Fecha inicio",
@@ -197,6 +199,17 @@
         "save": "Guardar",
         "cancel": "Cancelar",
         "required": "*Este campo es requerido"
+    },
+    "order": {
+        "orders": "Pedidos",
+        "plus": "+"
+    },
+    "orderTable": {
+        "order":"Pedido",
+        "customer": "Cliente",
+        "products": "Productos",
+        "totalPrice": "Precio total",
+        "actions": "Acciones"
     }
 
     

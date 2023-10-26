@@ -27,6 +27,8 @@
               [for]="picker"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+
+            <!--Errores  -->
             <mat-error *ngIf="form.get('startDate')?.hasError('required')">
               {{ 'report.required' | translate }}
             </mat-error>
@@ -36,8 +38,13 @@
           <mat-form-field class="col-lg-4 col-md-6">
             <mat-label>{{ 'report.user' | translate }}</mat-label>
             <input matInput type="email" formControlName="user" />
+
+            <!-- Errores -->
             <mat-error *ngIf="form.get('user')?.hasError('required')">
               {{ 'report.required' | translate }}
+            </mat-error>
+            <mat-error *ngIf="form.get('user')?.hasError('email')">
+              {{ 'report.errorEmail' | translate }}
             </mat-error>
           </mat-form-field>
 
@@ -50,10 +57,6 @@
               <i class="bi bi-trash-fill button"></i>
             </button>
           </section>
-
-          <!--  <section class="col-6 searchButton">
-              <i class="bi bi-trash button mt-2" (click)="clearParams()"></i>
-            </section> -->
         </div>
       </form>
       <div class="table mt-5 border shadow-lg">

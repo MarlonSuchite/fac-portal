@@ -52,7 +52,7 @@
               {{ 'audit.required' | translate }}
             </mat-error>
             <mat-error *ngIf="form.get('endDate')?.hasError('endDate')">
-              *Esta fecha no debe ser menor a la inicial
+              {{ 'audit.errorDate' | translate }}
             </mat-error>
           </mat-form-field>
 

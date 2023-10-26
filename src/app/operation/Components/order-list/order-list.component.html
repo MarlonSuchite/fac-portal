@@ -10,29 +10,39 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="orderId">
-      <th mat-header-cell *matHeaderCellDef>Pedido</th>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ 'orderTable.order' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">{{ element.orderId }}</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="customer">
-      <th mat-header-cell *matHeaderCellDef>cliente</th>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ 'orderTable.customer' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">{{ element.customer }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="products">
-      <th mat-header-cell *matHeaderCellDef>Cliente</th>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ 'orderTable.products' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">{{ element.products }}</td>
     </ng-container>
 
     <ng-container matColumnDef="totalPrice">
-      <th mat-header-cell *matHeaderCellDef>Precio total</th>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ 'orderTable.totalPrice' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">{{ element.totalPrice }}</td>
     </ng-container>
 
     <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ 'orderTable.actions' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">
         <i class="bi bi-pencil-square" (click)="updated(element.orderId)"></i>
       </td>

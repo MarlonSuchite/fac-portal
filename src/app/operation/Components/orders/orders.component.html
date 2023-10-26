@@ -6,14 +6,14 @@
   <section class="col-11 mb-2">
     <div class="container-fluid row px-5 pe-3">
       <section class="col-12 mt-5 encabezado">
-        <h1>Pedidos</h1>
+        <h1>{{ 'order.orders' | translate }}</h1>
         <div class="buttons mb-2 mx-5">
           <button
             type="button"
             class="btn btn-warning button pb-5"
             (click)="addOrder()"
           >
-            +
+            {{ 'order.plus' | translate }}
           </button>
         </div>
       </section>
