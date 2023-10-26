@@ -210,7 +210,10 @@
         "products": "Productos",
         "totalPrice": "Precio total",
         "actions": "Acciones"
+    },
+    "paginator": {
+        "itemsPerPageLabel": "Items por pagina",
+        "of": "de",
+        "nextPageLabel": "Pagina siguiente"
     }
-
-    
 }

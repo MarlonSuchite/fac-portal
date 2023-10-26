@@ -5,9 +5,10 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Peticiones } from '../../interfaces/peticiones';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-table-report',
   templateUrl: './table-report.component.html',
@@ -21,6 +22,15 @@ export class TableReportComponent implements OnChanges {
     'taxes',
     'total'
   ];
+  constructor(
+    private paginatorInt: MatPaginatorIntl,
+    private translate: TranslateService
+  ) {
+    this.translate.get('table.itemsPerPageLabel').subscribe();
+    this.paginatorInt.itemsPerPageLabel = this.translate.instant(
+      'table.itemsPerPageLabel'
+    );
+  }
   @Input() dataSource: Peticiones[] = [];
   tableDataSource = new MatTableDataSource<Peticiones>(this.dataSource);
 

@@ -8,10 +8,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment.dev';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BlockUIModule } from 'ng-block-ui';
 import { BlockUIHttpModule } from 'ng-block-ui/http';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginatorIntlCro } from './utils/utilities/mat-paginator-intl-cro/mat-paginator-intl-cro.component';
 
 export const httpTranslateLoader = (http: HttpClient): TranslateHttpLoader =>
   new TranslateHttpLoader(http, environment.refTranslate, '.json');
@@ -39,7 +41,15 @@ export const httpTranslateLoader = (http: HttpClient): TranslateHttpLoader =>
     }),
     BlockUIHttpModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useFactory: (translate: any) => {
+        return new MatPaginatorIntlCro(translate);
+      },
+      deps: [TranslateService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
