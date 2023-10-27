@@ -77,13 +77,8 @@ export class FormCustomerComponent implements OnInit {
         [
           FormValidations.Passport,
           Validators.required,
-          //Validators.pattern(/^[A-Z]{2}\d{6}[A-Z]$/),
-          Validators.maxLength(9) 
+          Validators.maxLength(9)
         ]
-        /*  [
-           FormValidations.Passport,
-           Validators.minLength(9)
-         ] */
       ],
       address: ['', [Validators.required]]
     });
@@ -117,6 +112,7 @@ export class FormCustomerComponent implements OnInit {
       this._customerService.updateCustomer(customer);
       this.form.reset();
       this.mode = 'add';
+      this.alerta.mostrarAlerta('success', '200 Agregado');
     }
   }
 

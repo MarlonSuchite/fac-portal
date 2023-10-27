@@ -180,7 +180,6 @@ export class FormUsersComponent implements OnInit {
       if (this.mode === 'edit') {
         this.copyUser.forEach(element => {
           if (
-            element.email === res.email &&
             element.name === res.name &&
             element.profileId === res.options
           ) {

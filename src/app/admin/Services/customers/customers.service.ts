@@ -36,7 +36,7 @@ export class CustomersService {
     customerId: 3,
     name: 'María González',
     DPI: '9876543210101',
-    NIT: 'C987654321',
+    NIT: '4987654321',
     passport: 'CD987654A',
     address: '456 Calle Secundaria, Ciudad',
     state: 'Inactivo'
