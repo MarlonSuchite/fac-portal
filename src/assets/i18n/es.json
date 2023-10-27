@@ -206,7 +206,11 @@
         "price": "Precio",
         "save": "Guardar",
         "cancel": "Cancelar",
-        "required": "*Este campo es requerido"
+        "required": "*Este campo es requerido",
+        "selectProduct": "Seleccione un producto",
+        "pro": "*Este producto ya esta agregado",
+        "stock": "Selecciona la cantidad",
+        "minor": "*No puede ser menor o igual a cero"
     },
     "order": {
         "orders": "Pedidos",

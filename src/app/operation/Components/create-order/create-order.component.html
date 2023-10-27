@@ -36,102 +36,112 @@
 
             <!-- Tabla -->
             <form [formGroup]="formTable" class="col-xl-12">
-              <button (click)="addControl()" *ngIf="tableFormArray.valid">
-                add
-              </button>
-
               <!-- Table -->
-              <table
-                mat-table
-                [dataSource]="dataSourceArray"
-                formArrayName="products"
-                class="mat-elevation-z8 mb-5"
-              >
-                <ng-container
-                  matColumnDef="{{ item }}"
-                  *ngFor="let item of displayedColumns; let index = index"
+              <div class="table overflow-auto shadow-lg border">
+                <div class="plus bg-success" *ngIf="tableFormArray.valid">
+                  <i class="bi bi-plus-lg" (click)="addControl()"></i>
+                </div>
+
+                <table
+                  mat-table
+                  [dataSource]="dataSourceArray"
+                  formArrayName="products"
+                  class="border-0 mb-5"
                 >
-                  <th
-                    id="{{ index }}"
-                    mat-header-cell
-                    *matHeaderCellDef
-                    class="th"
+                  <ng-container
+                    matColumnDef="{{ item }}"
+                    *ngFor="let item of displayedColumns; let index = index"
                   >
-                    {{ item }}
-                  </th>
+                    <th
+                      id="{{ index }}"
+                      mat-header-cell
+                      *matHeaderCellDef
+                      class="th"
+                    >
+                      {{ item }}
+                    </th>
 
-                  <td
-                    mat-cell
-                    *matCellDef="let element; let index = index"
-                    [formGroupName]="index"
-                    class="td"
-                  >
-                    <!-- Seleecion del producto -->
-                    <div *ngIf="item === 'Producto'">
-                      <mat-form-field class="mat-form mt-3 mx-5">
-                        <mat-label>Seleccione un producto</mat-label>
-                        <mat-select
-                          formControlName="productId"
-                          (valueChange)="repetir($event)"
-                        >
-                          <mat-option
-                            *ngFor="let product of productsApi"
-                            [value]="product.id"
-                            >{{ product.name }}</mat-option
+                    <td
+                      mat-cell
+                      *matCellDef="let element; let index = index"
+                      [formGroupName]="index"
+                      class="td"
+                    >
+                      <!-- Seleecion del producto -->
+                      <div *ngIf="item === 'Producto'">
+                        <mat-form-field class="mat-form mt-3 mx-5">
+                          <mat-label>{{
+                            'createOrder.selectProduct' | translate
+                          }}</mat-label>
+                          <mat-select
+                            formControlName="productId"
+                            (valueChange)="repetir($event)"
                           >
-                        </mat-select>
+                            <mat-option
+                              *ngFor="let product of productsApi"
+                              [value]="product.id"
+                              >{{ product.name }}</mat-option
+                            >
+                          </mat-select>
 
-                        <mat-error *ngIf="formTable.get('products')?.hasError">
-                          Este producto ya esta agregado
-                        </mat-error>
-                      </mat-form-field>
-                    </div>
+                          <mat-error
+                            *ngIf="formTable.get('products')?.hasError"
+                          >
+                            {{ 'createOrder.pro' | translate }}
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
 
-                    <!-- Cantidad -->
-                    <div *ngIf="item === 'Cantidad'">
-                      <mat-form-field class="mat-form mt-3 mx-5">
-                        <mat-label>Selecciona la cantidad</mat-label>
-                        <input
-                          matInput
-                          type="number"
-                          formControlName="stock"
-                          (change)="cantidad($event, index)"
-                        />
+                      <!-- Cantidad -->
+                      <div *ngIf="item === 'Cantidad'">
+                        <mat-form-field class="mat-form mt-3 mx-5">
+                          <mat-label>{{
+                            'createOrder.stock' | translate
+                          }}</mat-label>
+                          <input
+                            matInput
+                            type="number"
+                            formControlName="stock"
+                            (change)="cantidad($event, index)"
+                          />
 
-                        <mat-error
-                          *ngIf="
-                            tableFormArray?.at(index)?.get('stock')?.errors
-                          "
-                        >
-                          No puede ser menor o igual a cero
-                        </mat-error>
-                      </mat-form-field>
-                    </div>
+                          <mat-error
+                            *ngIf="
+                              tableFormArray?.at(index)?.get('stock')?.errors
+                            "
+                          >
+                            {{ 'createOrder.minor' | translate }}
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
 
-                    <!-- Price -->
-                    <div *ngIf="item === 'Precio'">
-                      <mat-form-field class="mat-form mt-3 mx-5">
-                        <mat-label>Precio</mat-label>
-                        <input matInput type="text" formControlName="price" />
-                      </mat-form-field>
-                    </div>
+                      <!-- Price -->
+                      <div *ngIf="item === 'Precio'">
+                        <mat-form-field class="mat-form mt-3 mx-5">
+                          <mat-label>{{
+                            'createOrder.price' | translate
+                          }}</mat-label>
+                          <input matInput type="text" formControlName="price" />
+                        </mat-form-field>
+                      </div>
 
-                    <!-- Accion -->
-                    <div *ngIf="item === 'Accion'">
-                      <i
-                        class="bi bi-trash-fill mx-5 mt-3"
-                        (click)="delete(index)"
-                      ></i>
-                    </div>
-                  </td>
-                </ng-container>
+                      <!-- Accion -->
+                      <div *ngIf="item === 'Accion'">
+                        <i
+                          class="bi bi-trash-fill mx-5 mt-3"
+                          (click)="delete(index)"
+                        ></i>
+                      </div>
+                    </td>
+                  </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr
-                  mat-row
-                  *matRowDef="let row; columns: displayedColumns"
-                ></tr>
-              </table>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                  ></tr>
+                </table>
+              </div>
             </form>
 
             <!-- Precio -->
@@ -139,13 +149,17 @@
 
           <div class="button mb-5 mx-3">
             <button
-              class="btn btn-dark"
+              class="btn btn-danger"
               (click)="action()"
-              [disabled]="myControl.invalid || tableFormArray.invalid"
+              [disabled]="
+                myControl.invalid ||
+                tableFormArray.invalid ||
+                tableFormArray.value.length === 0
+              "
             >
               {{ 'createOrder.save' | translate }}
             </button>
-            <button class="btn btn-warning mx-4" (click)="cancel()">
+            <button class="btn btn-light mx-4" (click)="cancel()">
               {{ 'createOrder.cancel' | translate }}
             </button>
           </div>

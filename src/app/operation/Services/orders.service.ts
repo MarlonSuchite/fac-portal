@@ -37,12 +37,17 @@ export class OrdersService {
     customerId: 17,
     products: [
       {
-        producId: 1,
+        productId: 1,
         stock: 2,
-        price: 12
+        price: 24
+      },
+      {
+        productId: 2,
+        stock: 2,
+        price: 24
       }
     ],
-    totalPrice: 24
+    totalPrice: 48
   };
 
   orders = [

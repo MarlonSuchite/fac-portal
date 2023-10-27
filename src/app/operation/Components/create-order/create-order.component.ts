@@ -20,15 +20,15 @@ import { FormValidations } from 'src/app/utils/form-validations';
 })
 export class CreateOrderComponent implements OnInit {
   mode: 'add' | 'edit';
-  productsSelect: any[] = [];
   productsSelectedId = [];
   client: User;
   price = 0;
   totalPrice = new FormControl(0);
   options: User[];
   productsApi = [];
-  myControl = new FormControl('', [Validators.required]);
+  myControl = new FormControl<string | number>('', [Validators.required]);
   products = [];
+  pA = [];
 
   form: FormGroup;
   formTable: FormGroup;
@@ -57,12 +57,35 @@ export class CreateOrderComponent implements OnInit {
       if (params['id']) {
         this.mode = 'edit';
         const parametros = this._ordersService.getOrder(1);
-        this.productsSelect = parametros.products;
+        this.products = parametros.products;
+        this.myControl.setValue(parametros.customerId);
         this.price = parametros.totalPrice;
         this.totalPrice.setValue(parametros.totalPrice);
+        this.modeEdit(parametros.products);
+        // this.addSelectedProductId(parametros.products)
       } else {
         this.mode = 'add';
       }
+    });
+  }
+
+  modeEdit(products: any[]) {
+    products.forEach(product => {
+      const productFormGroup = this.createControls();
+      productFormGroup.get('productId').setValue(product.productId);
+      productFormGroup.get('stock').setValue(product.stock);
+      productFormGroup.get('price').setValue(product.price);
+
+      (this.formTable.get('products') as FormArray).push(productFormGroup);
+    });
+
+    this.products = (this.formTable.get('products') as FormArray).controls;
+    this.dataSourceArray = new MatTableDataSource(this.products);
+  }
+
+  addSelectedProductId(products: any[]) {
+    products.forEach(product => {
+      this.productsSelectedId.push(product.productId);
     });
   }
 
@@ -94,7 +117,7 @@ export class CreateOrderComponent implements OnInit {
     this.router.navigate(['/operation/orders']);
   }
 
-  repetir(event) {
+  repetir(event: any) {
     this.formTable.get('products').valueChanges.subscribe(res => {
       if (this.tableFormArray.valid) {
         this.productsSelectedId.push(event);
@@ -102,7 +125,7 @@ export class CreateOrderComponent implements OnInit {
     });
   }
 
-  cantidad(value, index) {
+  cantidad(value: any, index: any) {
     //Valor del stock
     const stockValue = this.tableFormArray.at(index).get('stock').value;
 
@@ -118,29 +141,29 @@ export class CreateOrderComponent implements OnInit {
     let precioTotal = 0;
 
     // Recorre los controles de productos en el FormArray
-    for (const control of this.tableFormArray.controls) {
+    this.tableFormArray.controls.forEach(control => {
       const precio = control.get('price').value;
       if (precio) {
         precioTotal += precio;
       }
-    }
+    });
 
     // Actualiza el valor del FormControl totalPrice
     this.totalPrice.setValue(precioTotal);
   }
 
   delete(index) {
+    const id = this.tableFormArray.at(index).get('productId').value;
     this.tableFormArray.removeAt(index);
     this.dataSourceArray.data = this.tableFormArray.controls;
     this.cambiosArray();
+    this.productsSelectedId = this.productsSelectedId.filter(res => res !== id);
   }
 
   action() {
     if (this.mode === 'add') {
       //Habilitar el campo de precio para poder tomar su valor
-      this.tableFormArray.controls.forEach(control => {
-        control.get('price').enable();
-      });
+      this.habilitar();
 
       const params = {
         clientId: this.myControl.value,
@@ -151,11 +174,23 @@ export class CreateOrderComponent implements OnInit {
       this.router.navigate(['/operation/orders']);
     } else {
       const params = {
-        clientId: this.client.id,
+        clientId: this.myControl.value,
         totalPrice: this.totalPrice.value
       };
       this._ordersService.updateOrder(params);
       this.router.navigate(['/operation/orders']);
     }
+  }
+
+  habilitar() {
+    this.tableFormArray.controls.forEach(control => {
+      control.get('price').enable();
+    });
+  }
+
+  desabilitar() {
+    this.tableFormArray.controls.forEach(control => {
+      control.get('price').disable();
+    });
   }
 }
