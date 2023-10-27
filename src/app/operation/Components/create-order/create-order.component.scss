@@ -11,17 +11,20 @@
     position: fixed;
     top: 0;
     left: 0;
+    
 }
 
 .card{
     width: 94%;
     min-width: 300px;
+    overflow: hidden;
 }
 
 .info{
     display: flex;
     align-items: center;
     width: 100%;
+
 
     i{
         font-size: 2vw;
@@ -50,4 +53,26 @@
             font-size: 20px;
         }
     }
+}
+
+.mat-form{
+    width: 80%;
+    display: flex;
+}
+
+
+.th{
+    text-align: center;
+}
+
+.bi{
+    font-size: 2rem;
+    color: red;
+    cursor: pointer;
+}
+
+table{
+    width: 100%;
+    min-width: 500px;
+    overflow: auto;
 }

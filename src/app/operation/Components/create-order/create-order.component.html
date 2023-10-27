@@ -19,63 +19,129 @@
         <section class="col-12 s mt-5">
           <form class="row mb-3">
             <!-- Clientes -->
-            <mat-form-field class="col-xl-4 col-lg-6" appearance="fill">
-              <mat-label>{{ 'createOrder.customer' | translate }}</mat-label>
-              <input
-                type="text"
-                matInput
-                [formControl]="myControl"
-                [matAutocomplete]="auto"
-              />
-              <mat-autocomplete
-                #auto="matAutocomplete"
-                [displayWith]="displayFn"
-              >
-                <mat-option
-                  *ngFor="let option of filteredOptions | async"
-                  [value]="option"
-                  (click)="addClient(option)"
-                >
+            <mat-form-field class="col-xl-6 col-lg-6 col-md-12">
+              <mat-label>Clientes</mat-label>
+              <mat-select [formControl]="myControl">
+                <mat-option *ngFor="let option of options" [value]="option.id">
                   {{ option.name }}
                 </mat-option>
-              </mat-autocomplete>
-
-              <!-- Errores -->
-              <mat-error *ngIf="myControl.hasError('required')">
-                {{ 'createOrder.required' | translate }}
-              </mat-error>
-            </mat-form-field>
-
-            <!-- Productos -->
-            <mat-form-field class="col-xl-4 col-lg-6">
-              <mat-label>{{ 'createOrder.products' | translate }}</mat-label>
-              <mat-select [formControl]="products" multiple>
-                <mat-option
-                  *ngFor="let product of productsApi"
-                  [value]="product.id"
-                  (click)="calcularPrecio(product.id)"
-                  >{{ product.name }}</mat-option
-                >
               </mat-select>
-
-              <!-- Errores -->
-              <mat-error *ngIf="products.hasError('required')">
-                {{ 'createOrder.required' | translate }}
-              </mat-error>
             </mat-form-field>
 
             <!-- Precio -->
-            <mat-form-field class="col-xl-4">
+            <mat-form-field class="col-xl-6 col-lg-6 col-md-12">
               <mat-label>{{ 'createOrder.price' | translate }}</mat-label>
               <input matInput type="text" [formControl]="totalPrice" />
             </mat-form-field>
+
+            <!-- Tabla -->
+            <form [formGroup]="formTable" class="col-xl-12">
+              <button (click)="addControl()" *ngIf="tableFormArray.valid">
+                add
+              </button>
+
+              <!-- Table -->
+              <table
+                mat-table
+                [dataSource]="dataSourceArray"
+                formArrayName="products"
+                class="mat-elevation-z8 mb-5"
+              >
+                <ng-container
+                  matColumnDef="{{ item }}"
+                  *ngFor="let item of displayedColumns; let index = index"
+                >
+                  <th
+                    id="{{ index }}"
+                    mat-header-cell
+                    *matHeaderCellDef
+                    class="th"
+                  >
+                    {{ item }}
+                  </th>
+
+                  <td
+                    mat-cell
+                    *matCellDef="let element; let index = index"
+                    [formGroupName]="index"
+                    class="td"
+                  >
+                    <!-- Seleecion del producto -->
+                    <div *ngIf="item === 'Producto'">
+                      <mat-form-field class="mat-form mt-3 mx-5">
+                        <mat-label>Seleccione un producto</mat-label>
+                        <mat-select
+                          formControlName="productId"
+                          (valueChange)="repetir($event)"
+                        >
+                          <mat-option
+                            *ngFor="let product of productsApi"
+                            [value]="product.id"
+                            >{{ product.name }}</mat-option
+                          >
+                        </mat-select>
+
+                        <mat-error *ngIf="formTable.get('products')?.hasError">
+                          Este producto ya esta agregado
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <!-- Cantidad -->
+                    <div *ngIf="item === 'Cantidad'">
+                      <mat-form-field class="mat-form mt-3 mx-5">
+                        <mat-label>Selecciona la cantidad</mat-label>
+                        <input
+                          matInput
+                          type="number"
+                          formControlName="stock"
+                          (change)="cantidad($event, index)"
+                        />
+
+                        <mat-error
+                          *ngIf="
+                            tableFormArray?.at(index)?.get('stock')?.errors
+                          "
+                        >
+                          No puede ser menor o igual a cero
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <!-- Price -->
+                    <div *ngIf="item === 'Precio'">
+                      <mat-form-field class="mat-form mt-3 mx-5">
+                        <mat-label>Precio</mat-label>
+                        <input matInput type="text" formControlName="price" />
+                      </mat-form-field>
+                    </div>
+
+                    <!-- Accion -->
+                    <div *ngIf="item === 'Accion'">
+                      <i
+                        class="bi bi-trash-fill mx-5 mt-3"
+                        (click)="delete(index)"
+                      ></i>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+              </table>
+            </form>
+
+            <!-- Precio -->
           </form>
 
           <div class="button mb-5 mx-3">
             <button
               class="btn btn-dark"
               (click)="action()"
-              [disabled]="products.invalid || myControl.invalid"
+              [disabled]="myControl.invalid"
             >
               {{ 'createOrder.save' | translate }}
             </button>

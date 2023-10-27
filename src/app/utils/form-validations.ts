@@ -66,4 +66,23 @@ export class FormValidations {
       return null;
     };
   }
+
+  //Products
+  static productSelected(productsSelected: number[]): ValidatorFn {
+    return (control: AbstractControl) => {
+      if (productsSelected.includes(control.value)) {
+        return { productSelected: false };
+      }
+      return null;
+    };
+  }
+
+  //Menor que 0
+  static menorQue0(control: AbstractControl) {
+    const value = control.value;
+    if (value <= 0) {
+      return { menorQue0: true };
+    }
+    return null;
+  }
 }

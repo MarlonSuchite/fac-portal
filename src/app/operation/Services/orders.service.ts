@@ -35,7 +35,13 @@ export class OrdersService {
   order = {
     orderId: 1,
     customerId: 17,
-    products: [1, 2],
+    products: [
+      {
+        producId: 1,
+        stock: 2,
+        price: 12
+      }
+    ],
     totalPrice: 24
   };
 
