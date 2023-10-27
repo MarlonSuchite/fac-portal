@@ -15,30 +15,39 @@
     position: fixed;
     top: 0;
     left: 0;
+
+    
 }
 
 .encabezado {
     display: flex;
     align-items: center;
-
+    
     h1 {
-        font-size: 3vw;
+        font-size: 2.5em;
         font-weight: bold;
-        color: $h1;
+        margin-bottom: -0.5rem;
     }
 }
 
 .buttons {
+    margin-top: 10px;
     .button {
         height: 40px;
     }
 
     .btn-warning {
-        font-size: 2em;
+        font-size: 20px;
         background-color: $background-color-btn;
         color: $color-button;
         border: none;
         transition: 300ms;
+
+        &:hover {
+            background-color: $background-color-btn-hover;
+            color: $color-button;
+            transform: rotate(270deg);
+        }
     }
 }
 
