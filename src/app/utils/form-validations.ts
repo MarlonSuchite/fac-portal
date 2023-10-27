@@ -31,6 +31,11 @@ export class FormValidations {
 
   static Passport(control: AbstractControl) {
     const value = control.value;
+
+    if (!value || value === null) {
+      return null;
+    }
+
     if (!/^[A-Z]{2}\d{6}[A-Z]$/.test(value)) {
       console.log('entre');
       return { Passport: true };
@@ -41,6 +46,7 @@ export class FormValidations {
   //Solo letras
   static textOnly(control: AbstractControl) {
     const value = control.value;
+
     if (/[0-9!@#$%^&*()+{}[\]:;<>,.?~\\-]/.test(value)) {
       console.log('pase');
       return { textOnly: true };
@@ -51,6 +57,11 @@ export class FormValidations {
   //Solo números
   static numbersOnly(control: AbstractControl) {
     const value = control.value;
+
+    if (!value || value === null) {
+      return null;
+    }
+
     if (/[a-zA-Z!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(value)) {
       return { numbersOnly: true };
     }

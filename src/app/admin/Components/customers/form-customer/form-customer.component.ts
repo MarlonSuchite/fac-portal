@@ -72,14 +72,7 @@ export class FormCustomerComponent implements OnInit {
           FormValidations.numbersOnly
         ]
       ],
-      passport: [
-        '',
-        [
-          FormValidations.Passport,
-          Validators.required,
-          Validators.maxLength(9)
-        ]
-      ],
+      passport: ['', [FormValidations.Passport, Validators.maxLength(9)]],
       address: ['', [Validators.required]]
     });
     this.changesObject();
