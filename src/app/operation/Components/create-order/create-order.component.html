@@ -141,7 +141,7 @@
             <button
               class="btn btn-dark"
               (click)="action()"
-              [disabled]="myControl.invalid"
+              [disabled]="myControl.invalid || tableFormArray.invalid"
             >
               {{ 'createOrder.save' | translate }}
             </button>
