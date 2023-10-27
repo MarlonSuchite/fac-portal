@@ -76,12 +76,20 @@
         "configuration": {
             "configuration": "Configuración",
             "security": "Seguridad",
+            "operation": "Operación",
             "profiles": "Perfiles",
-            "users": "Usuarios"
+            "users": "Usuarios",
+            "customers": "Clientes",
+            "products": "Productos"
         },
         "queries": {    
             "queries": "Consultas",
-            "audit": "Auditoría"
+            "audit": "Auditoría",
+            "report": "Reporte"
+        },
+        "operation": {
+            "operation": "Operación",
+            "orders": "Pedidos"
         }
     },
     "login": {

@@ -41,7 +41,7 @@ export class FormValidations {
   //Solo letras
   static textOnly(control: AbstractControl) {
     const value = control.value;
-    if (/[0-9!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(value)) {
+    if (/[0-9!@#$%^&*()+{}[\]:;<>,.?~\\-]/.test(value)) {
       console.log('pase');
       return { textOnly: true };
     }

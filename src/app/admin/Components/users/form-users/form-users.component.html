@@ -55,8 +55,8 @@
           {{ 'form.required' | translate }}
         </mat-error>
         <mat-select formControlName="options" [(value)]="options.name">
-          <mat-option *ngFor="let op of options" [value]="op.id"
-            >{{ op.name }} {{ op.description }}</mat-option
+          <mat-option *ngFor="let op of options" [value]="op.profileId"
+            >{{ op.code}}</mat-option
           >
         </mat-select>
       </mat-form-field>

@@ -33,13 +33,25 @@ export class FormProfileComponent implements OnInit {
         {
           id: 3,
           name: this.translate.instant('roles.configuration.profiles'),
-          role: 'ROLE_PROFILES',
+          role: 'ROLE_PROFILE',
           selected: false
         },
         {
           id: 4,
           name: this.translate.instant('roles.configuration.users'),
-          role: 'ROLE_USERS',
+          role: 'ROLE_USER',
+          selected: false
+        },
+        {
+          id: 5,
+          name: this.translate.instant('roles.configuration.customers'),
+          role: 'ROLE_CUSTOMER',
+          selected: false
+        },
+        {
+          id: 6,
+          name: this.translate.instant('roles.configuration.products'),
+          role: 'ROLE_PRODUCT',
           selected: false
         }
       ]
@@ -54,7 +66,26 @@ export class FormProfileComponent implements OnInit {
           name: this.translate.instant('roles.queries.audit'),
           role: 'ROLE_AUDIT',
           selected: false
+        },
+        {
+          id: 23,
+          name: this.translate.instant('roles.queries.report'),
+          role: 'ROLE_REPORT',
+          selected: false
         }
+      ]
+    },
+    {
+      id: 30,
+      name: this.translate.instant('roles.operation.operation'),
+      selected: false,
+      items: [
+        {
+          id: 31,
+          name: this.translate.instant('roles.operation.orders'),
+          role: 'ROLE_ORDER',
+          selected: false
+        },
       ]
     }
   ];

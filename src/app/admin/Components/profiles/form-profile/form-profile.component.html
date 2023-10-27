@@ -1,4 +1,4 @@
-<div class="container-form">
+<div class="container-form overflow-auto">
   <!-- Encabezdo -->
   <div class="encabezado mb-2">
     <h1 *ngIf="mode === 'add'">{{ 'formProfile.add' | translate }}</h1>
@@ -75,7 +75,7 @@
   </form>
 
   <!-- Botones -->
-  <div class="buttons">
+  <div class="buttons ">
     <button
       class="btn btn-danger button"
       [disabled]="form.invalid || buttonStatus"

@@ -58,6 +58,7 @@
         height: 800px;
         border-radius: 1rem;
         width: 105%;
+        overflow: hidden;
     }
 }
 
@@ -68,6 +69,8 @@
         }
     }
 }
+
+
 
 @media screen and (max-width: 720px){
     .side{

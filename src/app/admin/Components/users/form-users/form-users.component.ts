@@ -25,13 +25,13 @@ export class FormUsersComponent implements OnInit {
   user: UserApi;
   buttonStatus: boolean;
   statusUser: boolean;
+  param = {
+    page: 0,
+    size: 10,
+    sort: ''
+  };
 
-  options: any = [
-    { id: 1, name: 'QA - Proveedor' },
-    { id: 2, name: 'PRF - Administrador General' },
-    { id: 3, name: 'PRF - Proveedores' },
-    { id: 4, name: 'Test Role' }
-  ];
+  options: any = [];
 
   constructor(
     private fb: FormBuilder,
@@ -46,6 +46,11 @@ export class FormUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._profileService.getProfiles(this.param).subscribe({
+      next: (res: any) => {
+        this.options = res.content
+      }
+    })
     this.mode = 'add';
     this.params();
   }
