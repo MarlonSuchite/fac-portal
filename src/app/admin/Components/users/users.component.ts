@@ -103,7 +103,13 @@ export class UsersComponent implements OnInit {
   //Obtener el parametro de busqueda
   searchParams(): void {
     this.router.navigate([`${ROUTES_ADMIN_USERS}`], {
-      queryParams: { page: 0, search: this.searchValue.value }
+      queryParams: {
+         page: 0,
+         search: this.searchValue.value,
+        size: this.size,
+        sort: this.sort
+        }
     });
+    this.searchValue.setValue(' ')
   }
 }

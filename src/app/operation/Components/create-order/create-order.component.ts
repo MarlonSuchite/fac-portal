@@ -175,6 +175,7 @@ export class CreateOrderComponent implements OnInit {
     } else {
       const params = {
         clientId: this.myControl.value,
+        products: this.tableFormArray.value,
         totalPrice: this.totalPrice.value
       };
       this._ordersService.updateOrder(params);

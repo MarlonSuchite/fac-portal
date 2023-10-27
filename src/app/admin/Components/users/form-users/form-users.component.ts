@@ -154,7 +154,7 @@ export class FormUsersComponent implements OnInit {
         this.params();
         this._alertService.mostrarAlerta(
           'success',
-          `${res.status} Estaus cambiado`
+          `${res.status} Estatus cambiado`
         );
       },
       error: (err: any) => {

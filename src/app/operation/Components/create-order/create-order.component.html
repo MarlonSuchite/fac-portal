@@ -26,6 +26,11 @@
                   {{ option.name }}
                 </mat-option>
               </mat-select>
+
+              <!--Errores -->
+              <mat-error *ngIf="myControl?.errors">
+                *Este campo es requerido
+              </mat-error>
             </mat-form-field>
 
             <!-- Precio -->
@@ -85,7 +90,9 @@
                           </mat-select>
 
                           <mat-error
-                            *ngIf="formTable.get('products')?.hasError"
+                          *ngIf="
+                          tableFormArray?.at(index)?.get('productId')?.errors
+                        "
                           >
                             {{ 'createOrder.pro' | translate }}
                           </mat-error>

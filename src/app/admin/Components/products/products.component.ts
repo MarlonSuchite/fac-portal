@@ -86,5 +86,6 @@ export class ProductsComponent implements OnInit {
         sort: this.sort
       }
     });
+    this.searchValue.setValue(' ')
   }
 }

@@ -106,8 +106,11 @@ export class ProfilesComponent implements OnInit {
     this.router.navigate([`${ROUTES_ADMIN_PROFILES}`], {
       queryParams: {
         page: 0,
-        search: this.searchValue.value
+        search: this.searchValue.value,
+        size: this.size,
+        sort: this.sort
       }
     });
+    this.searchValue.setValue(' ')
   }
 }
